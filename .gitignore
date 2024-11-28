@@ -1,0 +1,17 @@
+# Environnements virtuels
+venv_backend/
+
+# Fichiers de dépendances Python
+__pycache__/
+*.pyc
+*.pyo
+*.env
+
+# Node.js (frontend)
+node_modules/
+.env
+.next/
+
+# Autres fichiers inutiles
+.DS_Store
+*.log
