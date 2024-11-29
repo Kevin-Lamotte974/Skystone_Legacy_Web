@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import '../../styles/pages/Home.css';
 import '../../styles/components/FloatingIslands.css';
+import '../../styles/components/MenuButtons.css';
 
 function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -148,23 +149,14 @@ function Home() {
               </p>
             </div>
 
-            <div className="main-menu">
-              <button 
-                className="menu-button start-button"
-                onClick={handleStartGame}
-              >
-                {isMobile ? "Jouer" : "Nouvelle Aventure"}
+            <div className="menu-container">
+              <button className="menu-button" onClick={handleStartGame}>
+                Nouvelle Aventure
               </button>
-              <button 
-                className="menu-button load-button"
-                onClick={handleContinueGame}
-              >
+              <button className="menu-button" onClick={handleContinueGame}>
                 Continuer
               </button>
-              <button 
-                className="menu-button options-button"
-                onClick={handleOptions}
-              >
+              <button className="menu-button" onClick={handleOptions}>
                 Options
               </button>
             </div>
