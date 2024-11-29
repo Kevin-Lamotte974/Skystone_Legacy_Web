@@ -1,0 +1,360 @@
+/* Variables globales */
+:root {
+  --primary-color: #4facfe;
+  --secondary-color: #00f2fe;
+  --background-dark: #1a1a2e;
+  --text-color: #ffffff;
+  --menu-bg: rgba(0, 0, 0, 0.7);
+}
+
+/* Reset et styles de base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.game-container {
+  min-height: 100vh;
+  width: 100%;
+  background: var(--background-dark);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+}
+
+/* Wrapper principal pour centrer le contenu */
+.content-wrapper {
+  position: relative;
+  width: 90%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5vh;
+}
+
+/* Fond animé */
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: radial-gradient(circle at center, rgba(79, 172, 254, 0.1) 0%, rgba(0, 242, 254, 0.05) 100%);
+}
+
+.floating-islands {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, transparent 0%, rgba(79, 172, 254, 0.1) 100%);
+  opacity: 0.5;
+  animation: float 20s infinite linear;
+}
+
+.crystals {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(0, 242, 254, 0.1) 0%, transparent 100%);
+  animation: sparkle 15s infinite linear;
+}
+
+/* Contenu principal */
+.game-logo,
+.main-menu,
+.info-panel {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Menu principal */
+.main-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3vh;
+  margin: 2vh 0;
+}
+
+.menu-button {
+  padding: 2vh 0;
+  width: 35vw;
+  max-width: 800px;
+  font-size: calc(1.2vw + 0.8vh);
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.menu-button:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 25px rgba(79, 172, 254, 0.3);
+}
+
+.menu-button:active {
+  transform: translateY(2px);
+}
+
+.start-button {
+  background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+  width: 40vw;
+  max-width: 900px;
+  font-size: calc(1.4vw + 1vh);
+  padding: 2.5vh 0;
+  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+}
+
+.start-button:hover {
+  background: linear-gradient(45deg, #3d8cde 0%, #00d2de 100%);
+  box-shadow: 0 8px 30px rgba(79, 172, 254, 0.4);
+}
+
+/* Titre et logo */
+.game-logo {
+  text-align: center;
+  margin-bottom: 2vh;
+}
+
+.title {
+  font-size: calc(4vw + 2vh);
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 20px #4facfe;
+  animation: glow 2s infinite alternate;
+  letter-spacing: 4px;
+  margin-bottom: 2vh;
+}
+
+.subtitle {
+  font-size: calc(1.2vw + 0.8vh);
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 2px;
+}
+
+/* Panneau d'information */
+.info-panel {
+  position: fixed;
+  bottom: 12vh;
+  width: 100%;
+  text-align: center;
+}
+
+.news-ticker {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1.5vh 2vw;
+  border-radius: 8px;
+  margin: 0 auto;
+  width: 50%;
+  max-width: 1000px;
+  font-size: calc(0.6vw + 0.6vh);
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer controls */
+.footer-controls {
+  position: fixed;
+  bottom: 3vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+  z-index: 10;
+}
+
+.sound-toggle {
+  background: none;
+  border: none;
+  font-size: calc(2vw + 1vh);
+  cursor: pointer;
+  color: #fff;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  padding: 1vh;
+  border-radius: 50%;
+}
+
+.sound-toggle:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.credits {
+  font-size: calc(0.7vw + 0.5vh);
+  opacity: 0.7;
+}
+
+/* Écran de chargement */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--background-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  gap: 3vh;
+}
+
+.crystal-loader {
+  width: calc(6vw + 6vh);
+  height: calc(6vw + 6vh);
+  background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+  border-radius: 15px;
+  animation: crystal-spin 2s infinite;
+  box-shadow: 0 0 30px rgba(79, 172, 254, 0.3);
+}
+
+/* Animations */
+@keyframes crystal-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 20px #4facfe; }
+  to { text-shadow: 0 0 40px #4facfe, 0 0 60px #00f2fe; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.1); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes sparkle {
+  0% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.2); }
+  100% { opacity: 0.3; transform: scale(1); }
+}
+
+/* Media Queries - Tablette */
+@media (max-width: 1024px) {
+  .title {
+    font-size: calc(3vw + 2vh);
+  }
+  
+  .subtitle {
+    font-size: calc(1vw + 0.8vh);
+  }
+  
+  .menu-button {
+    width: 30vw;
+    font-size: calc(1vw + 0.8vh);
+  }
+  
+  .start-button {
+    width: 35vw;
+    font-size: calc(1.2vw + 1vh);
+  }
+  
+  .news-ticker {
+    width: 60%;
+    font-size: calc(0.7vw + 0.6vh);
+  }
+}
+
+/* Media Queries - Petite Tablette */
+@media (max-width: 768px) {
+  .title {
+    font-size: calc(2.5vw + 2vh);
+  }
+  
+  .subtitle {
+    font-size: calc(0.9vw + 0.7vh);
+  }
+  
+  .menu-button {
+    width: 25vw;
+    font-size: calc(0.9vw + 0.7vh);
+  }
+  
+  .start-button {
+    width: 30vw;
+    font-size: calc(1.1vw + 1vh);
+  }
+  
+  .news-ticker {
+    width: 70%;
+    font-size: calc(0.6vw + 0.5vh);
+  }
+}
+
+/* Media Queries - Mobile */
+@media (max-width: 480px) {
+  .title {
+    font-size: calc(2vw + 1.5vh);
+  }
+  
+  .subtitle {
+    font-size: calc(0.8vw + 0.6vh);
+  }
+  
+  .menu-button {
+    width: 100%;
+    max-width: 20vw;
+    font-size: calc(0.8vw + 0.6vh);
+  }
+  
+  .start-button {
+    width: 100%;
+    max-width: 25vw;
+    font-size: calc(0.9vw + 0.8vh);
+  }
+  
+  .news-ticker {
+    padding: 1vh;
+    font-size: calc(0.5vw + 0.4vh);
+  }
+  
+  .footer-controls {
+    flex-direction: column;
+    right: 1vw;
+    bottom: 1vh;
+    gap: 0.5vh;
+  }
+  
+  .sound-toggle {
+    font-size: calc(1vw + 0.8vh);
+    padding: 0.5vh;
+  }
+  
+  .credits {
+    font-size: calc(0.4vw + 0.3vh);
+  }
+  
+  .crystal-loader {
+    width: calc(3vw + 3vh);
+    height: calc(3vw + 3vh);
+  }
+}
