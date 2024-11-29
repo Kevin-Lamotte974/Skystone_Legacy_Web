@@ -1,0 +1,307 @@
+/* Conteneur des îles flottantes */
+.floating-islands {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Styles communs pour les îles */
+.island {
+  position: absolute;
+  transform-style: preserve-3d;
+  clip-path: polygon(var(--island-shape));
+}
+
+/* Base de l'île */
+.island-base {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    /* Couche de terre */
+    linear-gradient(180deg,
+      #2d4b5e 0%,
+      #345a70 15%,
+      #3d6b86 25%,
+      #654321 25%,  /* Début de la terre */
+      #8b4513 40%,
+      #654321 50%,
+      #2d1810 60%   /* Fin de la terre */
+    );
+  clip-path: inherit;
+}
+
+/* Couche d'herbe */
+.island-grass {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    /* Texture d'herbe */
+    repeating-linear-gradient(
+      45deg,
+      #2d5a1b 0%,
+      #367220 2%,
+      #2d5a1b 4%
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      #367220 0%,
+      #408027 2%,
+      #367220 4%
+    );
+  clip-path: polygon(
+    var(--grass-shape)
+  );
+  opacity: 0.9;
+}
+
+/* Végétation */
+.island-vegetation {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: inherit;
+}
+
+/* Arbres et buissons */
+.vegetation-detail {
+  position: absolute;
+  width: 15%;
+  height: 20%;
+  background: radial-gradient(
+    ellipse at bottom,
+    #1a4a1f 0%,
+    #2d5a1b 50%,
+    transparent 100%
+  );
+}
+
+.tree {
+  position: absolute;
+  width: 10%;
+  height: 25%;
+}
+
+.tree::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20%;
+  height: 40%;
+  background: #4a3728;
+  border-radius: 2px;
+}
+
+.tree::after {
+  content: '';
+  position: absolute;
+  bottom: 30%;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  background: radial-gradient(
+    ellipse at center,
+    #2d5a1b 0%,
+    #1a4a1f 100%
+  );
+  border-radius: 50% 50% 30% 30%;
+}
+
+/* Ombre sous l'île */
+.island-shadow {
+  position: absolute;
+  width: 100%;
+  height: 20%;
+  bottom: -10%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.3) 0%,
+    transparent 70%
+  );
+  transform: scaleY(0.3);
+  filter: blur(8px);
+}
+
+/* Cristaux sur les îles */
+.island-crystal {
+  position: absolute;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  background: linear-gradient(135deg,
+    rgba(79, 172, 254, 0.8) 0%,
+    rgba(0, 242, 254, 0.4) 50%,
+    rgba(79, 172, 254, 0.8) 100%
+  );
+  animation: crystalGlow 2s infinite alternate ease-in-out;
+  filter: drop-shadow(0 0 10px rgba(79, 172, 254, 0.5));
+}
+
+.island-crystal::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  clip-path: inherit;
+}
+
+/* Configuration spécifique pour chaque île */
+.island-1 {
+  --island-shape: 25% 0%, 45% 5%, 75% 10%, 90% 25%, 100% 45%, 95% 65%, 85% 80%, 60% 90%, 40% 95%, 20% 90%, 5% 75%, 0% 55%, 5% 35%, 15% 15%;
+  --grass-shape: 25% 0%, 45% 5%, 75% 10%, 90% 25%, 100% 45%, 95% 65%, 85% 80%, 60% 90%, 40% 95%, 20% 90%, 5% 75%, 0% 55%, 5% 35%, 15% 15%;
+  --vegetation-position: 30% 30%;
+  width: 35vw;
+  height: 25vh;
+  top: 20%;
+  left: 10%;
+  animation: floatIsland1 20s infinite ease-in-out;
+}
+
+.island-1 .vegetation-detail:nth-child(1) { top: 20%; left: 30%; transform: scale(1.2); }
+.island-1 .vegetation-detail:nth-child(2) { top: 30%; right: 25%; transform: scale(0.8); }
+.island-1 .tree:nth-child(3) { top: 15%; left: 45%; transform: scale(1.1); }
+.island-1 .tree:nth-child(4) { top: 25%; right: 35%; transform: scale(0.9); }
+
+.island-2 {
+  --island-shape: 15% 0%, 35% 5%, 65% 15%, 85% 30%, 95% 50%, 90% 70%, 75% 85%, 50% 95%, 30% 90%, 15% 80%, 5% 65%, 0% 45%, 5% 25%;
+  --grass-shape: 15% 0%, 35% 5%, 65% 15%, 85% 30%, 95% 50%, 90% 70%, 75% 85%, 50% 95%, 30% 90%, 15% 80%, 5% 65%, 0% 45%, 5% 25%;
+  --vegetation-position: 70% 40%;
+  width: 25vw;
+  height: 20vh;
+  top: 45%;
+  right: 15%;
+  animation: floatIsland2 25s infinite ease-in-out;
+}
+
+.island-2 .vegetation-detail:nth-child(1) { top: 25%; left: 35%; transform: scale(1); }
+.island-2 .vegetation-detail:nth-child(2) { top: 35%; right: 30%; transform: scale(0.7); }
+.island-2 .tree:nth-child(3) { top: 20%; left: 50%; transform: scale(0.8); }
+
+.island-3 {
+  --island-shape: 30% 0%, 50% 10%, 80% 20%, 95% 40%, 100% 60%, 90% 80%, 70% 90%, 45% 95%, 25% 85%, 10% 70%, 0% 50%, 5% 30%, 20% 15%;
+  --grass-shape: 30% 0%, 50% 10%, 80% 20%, 95% 40%, 100% 60%, 90% 80%, 70% 90%, 45% 95%, 25% 85%, 10% 70%, 0% 50%, 5% 30%, 20% 15%;
+  --vegetation-position: 50% 50%;
+  width: 20vw;
+  height: 15vh;
+  top: 15%;
+  right: 25%;
+  animation: floatIsland3 15s infinite ease-in-out;
+}
+
+.island-3 .vegetation-detail:nth-child(1) { top: 30%; left: 40%; transform: scale(0.9); }
+.island-3 .tree:nth-child(2) { top: 25%; right: 40%; transform: scale(0.7); }
+
+/* Tailles et positions des cristaux */
+.island-1 .island-crystal {
+  width: 3vw;
+  height: 3vw;
+  top: 30%;
+  right: 20%;
+}
+
+.island-2 .island-crystal {
+  width: 2.5vw;
+  height: 2.5vw;
+  top: 40%;
+  left: 25%;
+}
+
+.island-3 .island-crystal {
+  width: 2vw;
+  height: 2vw;
+  top: 35%;
+  right: 30%;
+}
+
+/* Animations des îles flottantes */
+@keyframes floatIsland1 {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(1deg);
+  }
+}
+
+@keyframes floatIsland2 {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(15px) rotate(-1deg);
+  }
+}
+
+@keyframes floatIsland3 {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-25px) rotate(2deg);
+  }
+}
+
+/* Animation des cristaux */
+@keyframes crystalGlow {
+  0% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+}
+
+@keyframes vegetationSway {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(3deg); }
+}
+
+.vegetation-detail, .tree {
+  animation: vegetationSway 4s infinite ease-in-out;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .island-1 {
+    width: 45vw;
+    height: 30vh;
+  }
+  
+  .island-2 {
+    width: 35vw;
+    height: 25vh;
+  }
+  
+  .island-3 {
+    width: 30vw;
+    height: 20vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .island-1 {
+    width: 55vw;
+    height: 35vh;
+  }
+  
+  .island-2 {
+    width: 45vw;
+    height: 30vh;
+  }
+  
+  .island-3 {
+    width: 40vw;
+    height: 25vh;
+  }
+}

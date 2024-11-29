@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import '../../styles/pages/Home.css';
+import '../../styles/components/FloatingIslands.css';
 
 function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -52,7 +53,43 @@ function Home() {
       ) : (
         <>
           <div className="animated-background">
-            <div className="floating-islands"></div>
+            <div className="floating-islands">
+              <div className="island island-1">
+                <div className="island-shadow"></div>
+                <div className="island-base"></div>
+                <div className="island-grass"></div>
+                <div className="island-vegetation">
+                  <div className="vegetation-detail"></div>
+                  <div className="vegetation-detail"></div>
+                  <div className="tree"></div>
+                  <div className="tree"></div>
+                </div>
+                <div className="island-crystal"></div>
+              </div>
+
+              <div className="island island-2">
+                <div className="island-shadow"></div>
+                <div className="island-base"></div>
+                <div className="island-grass"></div>
+                <div className="island-vegetation">
+                  <div className="vegetation-detail"></div>
+                  <div className="vegetation-detail"></div>
+                  <div className="tree"></div>
+                </div>
+                <div className="island-crystal"></div>
+              </div>
+
+              <div className="island island-3">
+                <div className="island-shadow"></div>
+                <div className="island-base"></div>
+                <div className="island-grass"></div>
+                <div className="island-vegetation">
+                  <div className="vegetation-detail"></div>
+                  <div className="tree"></div>
+                </div>
+                <div className="island-crystal"></div>
+              </div>
+            </div>
             <div className="crystals"></div>
           </div>
 
