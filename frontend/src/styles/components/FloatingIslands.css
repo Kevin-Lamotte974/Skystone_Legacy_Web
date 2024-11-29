@@ -1,0 +1,259 @@
+.floating-islands-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  perspective: 2000px;
+}
+
+.island {
+  position: absolute;
+  width: 400px;
+  height: 200px;
+  transform-style: preserve-3d;
+  animation: floatAnimation 8s ease-in-out infinite;
+}
+
+/* Surface principale de l'île */
+.island-top {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+/* Couche supérieure avec relief */
+.island-surface {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #4a8505, #2d5203);
+  clip-path: polygon(
+    20% 0%, 
+    35% 15%, 
+    65% 15%, 
+    80% 0%,
+    100% 20%,
+    85% 40%,
+    90% 60%,
+    85% 80%,
+    70% 90%,
+    50% 100%,
+    30% 90%,
+    15% 80%,
+    10% 60%,
+    15% 40%,
+    0% 20%
+  );
+  transform: translateZ(50px);
+  box-shadow: 
+    inset 5px 5px 15px rgba(255, 255, 255, 0.2),
+    inset -5px -5px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Relief central */
+.island-elevation {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  left: 10%;
+  top: 10%;
+  background: linear-gradient(45deg, #3d6b04, #234502);
+  clip-path: polygon(
+    30% 0%,
+    70% 0%,
+    90% 30%,
+    80% 70%,
+    50% 90%,
+    20% 70%,
+    10% 30%
+  );
+  transform: translateZ(65px);
+  box-shadow: 
+    5px 5px 15px rgba(0, 0, 0, 0.3),
+    -5px -5px 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Couches de relief latérales */
+.side-relief {
+  position: absolute;
+  width: 100%;
+  height: 150px;
+  transform-style: preserve-3d;
+}
+
+.side-relief-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #6b4423, #3d2614);
+  clip-path: polygon(
+    15% 0%,
+    85% 0%,
+    100% 20%,
+    90% 50%,
+    85% 100%,
+    15% 100%,
+    10% 50%,
+    0% 20%
+  );
+  transform: rotateX(-60deg) translateY(75px) translateZ(-20px);
+}
+
+.side-relief-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #5a3819, #2c1a0d);
+  clip-path: polygon(
+    10% 0%,
+    90% 0%,
+    100% 30%,
+    85% 70%,
+    80% 100%,
+    20% 100%,
+    15% 70%,
+    0% 30%
+  );
+  transform: rotateX(-120deg) translateY(-75px) translateZ(-20px);
+}
+
+/* Strates rocheuses */
+.rock-layers {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      transparent 0px,
+      rgba(0, 0, 0, 0.1) 2px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0px,
+      rgba(0, 0, 0, 0.1) 2px,
+      transparent 4px
+    );
+  transform: translateZ(55px);
+}
+
+/* Racines et débris */
+.hanging-details {
+  position: absolute;
+  width: 90%;
+  height: 120px;
+  left: 5%;
+  bottom: -100px;
+  transform-style: preserve-3d;
+}
+
+.roots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 15%,
+      #3d2614 15.5%,
+      #3d2614 16%,
+      transparent 16.5%,
+      transparent 30%
+    );
+  opacity: 0.7;
+  transform: rotateX(-50deg) translateZ(-30px);
+}
+
+.falling-debris {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 50% 0%,
+    #5a3819 0%,
+    transparent 60%
+  );
+  transform: rotateX(-40deg) translateZ(-40px);
+  opacity: 0.5;
+}
+
+/* Positionnement des îles */
+.island-1 {
+  top: 20%;
+  left: 15%;
+  transform: rotateY(-15deg) scale(1.2);
+}
+
+.island-2 {
+  top: 45%;
+  right: 20%;
+  transform: rotateY(20deg) scale(0.9);
+}
+
+.island-3 {
+  bottom: 25%;
+  left: 35%;
+  transform: rotateY(-10deg) scale(1.1);
+}
+
+/* Animation de flottement */
+@keyframes floatAnimation {
+  0%, 100% {
+    transform: translateY(0) rotateX(5deg) rotateZ(0deg);
+    filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.5));
+  }
+  25% {
+    transform: translateY(-15px) rotateX(8deg) rotateZ(1deg);
+    filter: drop-shadow(0 45px 45px rgba(0, 0, 0, 0.45));
+  }
+  50% {
+    transform: translateY(-30px) rotateX(6deg) rotateZ(-1deg);
+    filter: drop-shadow(0 60px 50px rgba(0, 0, 0, 0.4));
+  }
+  75% {
+    transform: translateY(-15px) rotateX(7deg) rotateZ(0.5deg);
+    filter: drop-shadow(0 45px 45px rgba(0, 0, 0, 0.45));
+  }
+}
+
+/* Ombre portée */
+.island-shadow {
+  position: absolute;
+  width: 140%;
+  height: 40px;
+  left: -20%;
+  bottom: -180px;
+  background: radial-gradient(
+    ellipse at center, 
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  transform: rotateX(60deg) scale(1, 0.6);
+  filter: blur(12px);
+  opacity: 0.5;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .island {
+    width: 300px;
+    height: 150px;
+  }
+  
+  .island-1 {
+    left: 5%;
+    transform: rotateY(-10deg) scale(1);
+  }
+  
+  .island-2 {
+    right: 5%;
+    transform: rotateY(15deg) scale(0.8);
+  }
+  
+  .island-3 {
+    left: 20%;
+    transform: rotateY(-5deg) scale(0.9);
+  }
+}
