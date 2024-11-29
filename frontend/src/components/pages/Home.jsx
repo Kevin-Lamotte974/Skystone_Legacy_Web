@@ -55,39 +55,48 @@ function Home() {
           <div className="animated-background">
             <div className="floating-islands">
               <div className="island island-1">
-                <div className="island-shadow"></div>
-                <div className="island-base"></div>
-                <div className="island-grass"></div>
-                <div className="island-vegetation">
-                  <div className="vegetation-detail"></div>
-                  <div className="vegetation-detail"></div>
-                  <div className="tree"></div>
-                  <div className="tree"></div>
+                <div className="island-structure">
+                  <div className="island-cliffs">
+                    <div className="cliff-texture"></div>
+                    <div className="hanging-roots"></div>
+                    <div className="rock-debris"></div>
+                  </div>
+                  <div className="island-top">
+                    <div className="grass-texture"></div>
+                    <div className="surface-details"></div>
+                  </div>
                 </div>
-                <div className="island-crystal"></div>
+                <div className="island-shadow"></div>
               </div>
 
               <div className="island island-2">
-                <div className="island-shadow"></div>
-                <div className="island-base"></div>
-                <div className="island-grass"></div>
-                <div className="island-vegetation">
-                  <div className="vegetation-detail"></div>
-                  <div className="vegetation-detail"></div>
-                  <div className="tree"></div>
+                <div className="island-structure">
+                  <div className="island-cliffs">
+                    <div className="cliff-texture"></div>
+                    <div className="hanging-roots"></div>
+                    <div className="rock-debris"></div>
+                  </div>
+                  <div className="island-top">
+                    <div className="grass-texture"></div>
+                    <div className="surface-details"></div>
+                  </div>
                 </div>
-                <div className="island-crystal"></div>
+                <div className="island-shadow"></div>
               </div>
 
               <div className="island island-3">
-                <div className="island-shadow"></div>
-                <div className="island-base"></div>
-                <div className="island-grass"></div>
-                <div className="island-vegetation">
-                  <div className="vegetation-detail"></div>
-                  <div className="tree"></div>
+                <div className="island-structure">
+                  <div className="island-cliffs">
+                    <div className="cliff-texture"></div>
+                    <div className="hanging-roots"></div>
+                    <div className="rock-debris"></div>
+                  </div>
+                  <div className="island-top">
+                    <div className="grass-texture"></div>
+                    <div className="surface-details"></div>
+                  </div>
                 </div>
-                <div className="island-crystal"></div>
+                <div className="island-shadow"></div>
               </div>
             </div>
             <div className="crystals"></div>

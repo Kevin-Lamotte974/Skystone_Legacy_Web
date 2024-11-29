@@ -4,197 +4,255 @@
   width: 100%;
   height: 100%;
   z-index: 1;
+  perspective: 1500px;
 }
 
 /* Styles communs pour les îles */
 .island {
   position: absolute;
   transform-style: preserve-3d;
-  clip-path: polygon(var(--island-shape));
+  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.5));
 }
 
-/* Base de l'île */
-.island-base {
+/* Structure principale de l'île */
+.island-structure {
   position: absolute;
   width: 100%;
   height: 100%;
+  transform-style: preserve-3d;
+}
+
+/* Structure rocheuse principale */
+.island-cliffs {
+  position: absolute;
+  width: 100%;
+  height: 180%;
+  bottom: -80%;
   background: 
-    /* Couche de terre */
     linear-gradient(180deg,
-      #2d4b5e 0%,
-      #345a70 15%,
-      #3d6b86 25%,
-      #654321 25%,  /* Début de la terre */
-      #8b4513 40%,
-      #654321 50%,
-      #2d1810 60%   /* Fin de la terre */
+      #8B7355 0%,
+      #6F4E37 30%,
+      #513C28 60%,
+      #3B2B1F 100%
     );
-  clip-path: inherit;
+  clip-path: polygon(
+    0% 15%,
+    8% 25%,
+    15% 18%,
+    25% 30%,
+    32% 22%,
+    40% 35%,
+    48% 25%,
+    55% 38%,
+    65% 28%,
+    75% 40%,
+    85% 30%,
+    92% 35%,
+    100% 25%,
+    98% 45%,
+    95% 65%,
+    92% 85%,
+    88% 100%,
+    12% 100%,
+    8% 85%,
+    5% 65%,
+    2% 45%
+  );
+  transform-origin: bottom;
+  transform: rotateX(-30deg) translateZ(-20px);
 }
 
-/* Couche d'herbe */
-.island-grass {
+/* Texture rocheuse détaillée */
+.cliff-texture {
   position: absolute;
   width: 100%;
   height: 100%;
   background: 
-    /* Texture d'herbe */
+    linear-gradient(90deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      transparent 25%,
+      rgba(0, 0, 0, 0.2) 50%,
+      transparent 75%,
+      rgba(0, 0, 0, 0.2) 100%
+    ),
     repeating-linear-gradient(
       45deg,
-      #2d5a1b 0%,
-      #367220 2%,
-      #2d5a1b 4%
+      transparent 0px,
+      rgba(0, 0, 0, 0.1) 2px,
+      transparent 4px
     ),
     repeating-linear-gradient(
       -45deg,
-      #367220 0%,
-      #408027 2%,
-      #367220 4%
+      transparent 0px,
+      rgba(0, 0, 0, 0.1) 2px,
+      transparent 4px
     );
-  clip-path: polygon(
-    var(--grass-shape)
-  );
-  opacity: 0.9;
 }
 
-/* Végétation */
-.island-vegetation {
+/* Racines pendantes */
+.hanging-roots {
+  position: absolute;
+  width: 100%;
+  height: 40%;
+  bottom: -40%;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 15%,
+      #3B2B1F 15.5%,
+      #3B2B1F 16%,
+      transparent 16.5%,
+      transparent 30%
+    );
+  filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.3));
+  transform: translateZ(-10px);
+}
+
+/* Surface herbeuse améliorée */
+.island-top {
   position: absolute;
   width: 100%;
   height: 100%;
-  clip-path: inherit;
+  background: 
+    linear-gradient(
+      to bottom,
+      #4a7325 0%,
+      #3c5e1f 100%
+    );
+  border-radius: 50% 50% 45% 45%;
+  transform: translateZ(0);
+  overflow: hidden;
+  box-shadow: 
+    inset 0 -5px 15px rgba(0, 0, 0, 0.3),
+    0 -2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Arbres et buissons */
-.vegetation-detail {
+/* Texture d'herbe améliorée */
+.grass-texture {
   position: absolute;
-  width: 15%;
-  height: 20%;
-  background: radial-gradient(
-    ellipse at bottom,
-    #1a4a1f 0%,
-    #2d5a1b 50%,
-    transparent 100%
-  );
-}
-
-.tree {
-  position: absolute;
-  width: 10%;
-  height: 25%;
-}
-
-.tree::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20%;
-  height: 40%;
-  background: #4a3728;
-  border-radius: 2px;
-}
-
-.tree::after {
-  content: '';
-  position: absolute;
-  bottom: 30%;
-  left: 0;
   width: 100%;
-  height: 70%;
-  background: radial-gradient(
-    ellipse at center,
-    #2d5a1b 0%,
-    #1a4a1f 100%
-  );
-  border-radius: 50% 50% 30% 30%;
+  height: 100%;
+  background: 
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 100%
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent 0px,
+      transparent 2px,
+      rgba(0, 0, 0, 0.1) 3px,
+      transparent 4px
+    );
+  opacity: 0.8;
+}
+
+/* Débris rocheux */
+.rock-debris {
+  position: absolute;
+  width: 100%;
+  height: 30%;
+  bottom: -25%;
+  background: 
+    radial-gradient(
+      circle at 20% 50%,
+      #3B2B1F 0%,
+      transparent 2%
+    ),
+    radial-gradient(
+      circle at 40% 70%,
+      #3B2B1F 0%,
+      transparent 3%
+    ),
+    radial-gradient(
+      circle at 60% 60%,
+      #3B2B1F 0%,
+      transparent 2%
+    ),
+    radial-gradient(
+      circle at 80% 40%,
+      #3B2B1F 0%,
+      transparent 3%
+    );
+  transform: translateZ(-30px);
 }
 
 /* Ombre sous l'île */
 .island-shadow {
   position: absolute;
-  width: 100%;
-  height: 20%;
-  bottom: -10%;
+  width: 170%;
+  height: 60%;
+  left: -35%;
+  bottom: -120px;
   background: radial-gradient(
     ellipse at center,
-    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.3) 40%,
     transparent 70%
   );
-  transform: scaleY(0.3);
-  filter: blur(8px);
+  transform: rotateX(60deg) scale(1, 0.6);
+  filter: blur(20px);
+  opacity: 0.6;
 }
 
-/* Cristaux sur les îles */
-.island-crystal {
-  position: absolute;
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-  background: linear-gradient(135deg,
-    rgba(79, 172, 254, 0.8) 0%,
-    rgba(0, 242, 254, 0.4) 50%,
-    rgba(79, 172, 254, 0.8) 100%
-  );
-  animation: crystalGlow 2s infinite alternate ease-in-out;
-  filter: drop-shadow(0 0 10px rgba(79, 172, 254, 0.5));
+/* Animation de flottement */
+@keyframes floatIsland {
+  0%, 100% {
+    transform: translateY(0) rotateX(5deg) rotateY(0deg);
+    filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.5));
+  }
+  50% {
+    transform: translateY(-20px) rotateX(8deg) rotateY(3deg);
+    filter: drop-shadow(0 50px 50px rgba(0, 0, 0, 0.4));
+  }
 }
 
-.island-crystal::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.4) 50%,
-    transparent 100%
-  );
-  clip-path: inherit;
-}
-
-/* Configuration spécifique pour chaque île */
+/* Configuration spécifique de l'île */
 .island-1 {
-  --island-shape: 25% 0%, 45% 5%, 75% 10%, 90% 25%, 100% 45%, 95% 65%, 85% 80%, 60% 90%, 40% 95%, 20% 90%, 5% 75%, 0% 55%, 5% 35%, 15% 15%;
-  --grass-shape: 25% 0%, 45% 5%, 75% 10%, 90% 25%, 100% 45%, 95% 65%, 85% 80%, 60% 90%, 40% 95%, 20% 90%, 5% 75%, 0% 55%, 5% 35%, 15% 15%;
-  --vegetation-position: 30% 30%;
   width: 35vw;
   height: 25vh;
   top: 20%;
   left: 10%;
-  animation: floatIsland1 20s infinite ease-in-out;
+  animation: floatIsland 20s infinite ease-in-out;
 }
 
-.island-1 .vegetation-detail:nth-child(1) { top: 20%; left: 30%; transform: scale(1.2); }
-.island-1 .vegetation-detail:nth-child(2) { top: 30%; right: 25%; transform: scale(0.8); }
-.island-1 .tree:nth-child(3) { top: 15%; left: 45%; transform: scale(1.1); }
-.island-1 .tree:nth-child(4) { top: 25%; right: 35%; transform: scale(0.9); }
+/* Responsive design */
+@media (max-width: 768px) {
+  .island-1 {
+    width: 60vw;
+    height: 30vh;
+  }
+}
 
+/* Configuration spécifique de l'île 2 */
 .island-2 {
-  --island-shape: 15% 0%, 35% 5%, 65% 15%, 85% 30%, 95% 50%, 90% 70%, 75% 85%, 50% 95%, 30% 90%, 15% 80%, 5% 65%, 0% 45%, 5% 25%;
-  --grass-shape: 15% 0%, 35% 5%, 65% 15%, 85% 30%, 95% 50%, 90% 70%, 75% 85%, 50% 95%, 30% 90%, 15% 80%, 5% 65%, 0% 45%, 5% 25%;
-  --vegetation-position: 70% 40%;
+  --island-shape: 15% 0%, 35% 5%, 65% 15%, 85% 30%, 95% 50%, 90% 70%, 75% 85%, 50% 95%, 30% 90%, 15% 80%, 5% 65%, 0% 45%, 5% 25%, 15% 20%;
+  --soil-shape: 20% 5%, 40% 10%, 70% 15%, 90% 30%, 95% 50%, 90% 70%, 80% 85%, 55% 95%, 35% 90%, 15% 85%, 5% 70%, 0% 50%, 5% 30%, 15% 20%;
+  --grass-shape: 25% 0%, 45% 5%, 75% 10%, 90% 25%, 95% 45%, 90% 65%, 85% 80%, 60% 90%, 40% 95%, 20% 90%, 5% 75%, 0% 55%, 5% 35%, 20% 15%;
   width: 25vw;
   height: 20vh;
   top: 45%;
   right: 15%;
-  animation: floatIsland2 25s infinite ease-in-out;
+  animation: floatIsland 25s infinite ease-in-out;
 }
 
 .island-2 .vegetation-detail:nth-child(1) { top: 25%; left: 35%; transform: scale(1); }
 .island-2 .vegetation-detail:nth-child(2) { top: 35%; right: 30%; transform: scale(0.7); }
 .island-2 .tree:nth-child(3) { top: 20%; left: 50%; transform: scale(0.8); }
 
+/* Configuration spécifique de l'île 3 */
 .island-3 {
   --island-shape: 30% 0%, 50% 10%, 80% 20%, 95% 40%, 100% 60%, 90% 80%, 70% 90%, 45% 95%, 25% 85%, 10% 70%, 0% 50%, 5% 30%, 20% 15%;
-  --grass-shape: 30% 0%, 50% 10%, 80% 20%, 95% 40%, 100% 60%, 90% 80%, 70% 90%, 45% 95%, 25% 85%, 10% 70%, 0% 50%, 5% 30%, 20% 15%;
-  --vegetation-position: 50% 50%;
+  --soil-shape: 25% 5%, 45% 10%, 75% 15%, 90% 30%, 95% 50%, 90% 70%, 80% 85%, 55% 95%, 35% 90%, 15% 85%, 5% 70%, 0% 50%, 5% 30%, 15% 20%;
+  --grass-shape: 30% 0%, 50% 5%, 80% 10%, 95% 25%, 100% 45%, 95% 65%, 85% 80%, 60% 90%, 40% 95%, 20% 90%, 5% 75%, 0% 55%, 5% 35%, 20% 15%;
   width: 20vw;
   height: 15vh;
   top: 15%;
   right: 25%;
-  animation: floatIsland3 15s infinite ease-in-out;
+  animation: floatIsland 15s infinite ease-in-out;
 }
 
 .island-3 .vegetation-detail:nth-child(1) { top: 30%; left: 40%; transform: scale(0.9); }
@@ -225,28 +283,28 @@
 /* Animations des îles flottantes */
 @keyframes floatIsland1 {
   0%, 100% {
-    transform: translateY(0) rotate(0deg);
+    transform: translateY(0) rotateX(5deg) rotateY(0deg);
   }
   50% {
-    transform: translateY(-20px) rotate(1deg);
+    transform: translateY(-20px) rotateX(8deg) rotateY(2deg);
   }
 }
 
 @keyframes floatIsland2 {
   0%, 100% {
-    transform: translateY(0) rotate(0deg);
+    transform: translateY(0) rotateX(5deg) rotateY(0deg);
   }
   50% {
-    transform: translateY(15px) rotate(-1deg);
+    transform: translateY(15px) rotateX(3deg) rotateY(-2deg);
   }
 }
 
 @keyframes floatIsland3 {
   0%, 100% {
-    transform: translateY(0) rotate(0deg);
+    transform: translateY(0) rotateX(5deg) rotateY(0deg);
   }
   50% {
-    transform: translateY(-25px) rotate(2deg);
+    transform: translateY(-25px) rotateX(7deg) rotateY(3deg);
   }
 }
 
