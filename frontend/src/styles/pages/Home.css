@@ -267,6 +267,136 @@
   animation: vegetationSway 4s infinite ease-in-out;
 }
 
+/* Nouvel arrière-plan atmosphérique */
+.home-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #0a192f;
+}
+
+.animated-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(98, 114, 164, 0.15) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(139, 233, 253, 0.1) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at center,
+      #1a1b26 0%,
+      #16161e 50%,
+      #0a0a12 100%
+    );
+  overflow: hidden;
+}
+
+/* Grille moderne */
+.modern-grid {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  transform: perspective(500px) rotateX(60deg);
+  animation: gridMove 20s linear infinite;
+}
+
+/* Particules flottantes */
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(1px 1px at 10% 10%, rgba(139, 233, 253, 0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 20% 20%, rgba(98, 114, 164, 0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 30% 30%, rgba(189, 147, 249, 0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 40% 40%, rgba(255, 121, 198, 0.3) 0%, transparent 100%);
+  filter: blur(1px);
+  opacity: 0.5;
+  animation: particlesDrift 15s ease-in-out infinite alternate;
+}
+
+/* Effet de lumière */
+.light-effect {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(
+      circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(139, 233, 253, 0.1) 0%,
+      transparent 40%
+    );
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* Vagues de fond */
+.background-waves {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  background-image: 
+    linear-gradient(90deg,
+      transparent 0%,
+      rgba(139, 233, 253, 0.05) 25%,
+      rgba(98, 114, 164, 0.05) 50%,
+      rgba(139, 233, 253, 0.05) 75%,
+      transparent 100%
+    );
+  animation: waveMove 20s linear infinite;
+  transform: translateY(30%);
+}
+
+/* Animations */
+@keyframes gridMove {
+  0% {
+    transform: perspective(500px) rotateX(60deg) translateY(0);
+  }
+  100% {
+    transform: perspective(500px) rotateX(60deg) translateY(50px);
+  }
+}
+
+@keyframes particlesDrift {
+  0% {
+    transform: translateY(-10px) translateX(-10px);
+  }
+  100% {
+    transform: translateY(10px) translateX(10px);
+  }
+}
+
+@keyframes waveMove {
+  0% {
+    transform: translateX(0) translateY(30%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(30%);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .modern-grid {
+    background-size: 30px 30px;
+  }
+}
+
 /* Media Queries - Tablette */
 @media (max-width: 1024px) {
   .title {
@@ -365,5 +495,224 @@
   .crystal-loader {
     width: calc(3vw + 3vh);
     height: calc(3vw + 3vh);
+  }
+}
+
+/* Bouton d'information */
+.info-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  z-index: 1000;
+}
+
+.info-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+}
+
+.info-icon {
+  width: 24px;
+  height: 24px;
+  color: rgba(255, 255, 255, 0.9);
+  display: block;
+}
+
+.title-icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+  vertical-align: middle;
+  color: #4a9eff;
+}
+
+.section-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  vertical-align: middle;
+  color: #66ccff;
+}
+
+.list-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  vertical-align: middle;
+  color: #66ccff;
+}
+
+.close-icon {
+  width: 20px;
+  height: 20px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Ajustements pour les titres avec icônes */
+.info-content h2,
+.info-section h3 {
+  display: flex;
+  align-items: center;
+}
+
+/* Animation des icônes */
+.info-button:hover .info-icon {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.close-button:hover .close-icon {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
+
+/* Ajustement des listes avec icônes */
+.info-section li {
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+}
+
+.info-section li:before {
+  content: none;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .info-content {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .info-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .info-section h3 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Modale d'information */
+.info-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1100;
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease;
+}
+
+.info-content {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: rgba(15, 20, 25, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 30px;
+  color: #fff;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.info-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #4a9eff;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(74, 158, 255, 0.3);
+}
+
+.info-section {
+  margin-bottom: 25px;
+}
+
+.info-section h3 {
+  font-size: 1.4rem;
+  color: #66ccff;
+  margin-bottom: 10px;
+}
+
+.info-section p {
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 15px;
+}
+
+.info-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.info-section li {
+  padding: 8px 0;
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  padding-left: 20px;
+}
+
+.info-section li:before {
+  content: "•";
+  color: #66ccff;
+  position: absolute;
+  left: 0;
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.close-button:hover {
+  background: rgba(0, 0, 0, 0.6);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.close-icon {
+  width: 20px;
+  height: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
