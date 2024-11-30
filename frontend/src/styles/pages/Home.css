@@ -1,15 +1,12 @@
-/* Imports des composants */
-@import '../components/InfoModal.css';
-@import '../components/Buttons.css';
-@import '../components/Icons.css';
-
 /* Variables globales */
 :root {
   --crystal-blue: #00c6ff;
   --deep-blue: #0072ff;
   --night-blue: #1a1a2e;
+  --neon-blue: #4facfe;
   --crystal-glow: rgba(0, 198, 255, 0.5);
   --text-color: #ffffff;
+  --menu-gradient: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(0, 0, 0, 0.9));
 }
 
 /* Reset et styles de base */
@@ -30,97 +27,130 @@ body {
   position: relative;
   min-height: 100vh;
   width: 100vw;
-  background: linear-gradient(135deg, var(--night-blue), #000000);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+}
+
+/* Fond du jeu */
+.game-background {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, var(--night-blue), #000000);
+  overflow: hidden;
+}
+
+.crystal-overlay {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(79, 172, 254, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(0, 198, 255, 0.1) 0%, transparent 50%);
+  animation: crystalShimmer 10s infinite alternate;
 }
 
 /* Wrapper du contenu */
 .content-wrapper {
   position: relative;
   width: 100%;
-  height: 100vh;
+  max-width: 1400px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem 4rem;
-  z-index: 20;
+  padding: 2rem;
+  gap: 4rem;
+  z-index: 10;
 }
 
 /* Logo et titre */
 .game-logo {
-  position: relative;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  text-align: left;
-  z-index: 25;
-  flex: 1;
+  gap: 1.5rem;
 }
 
 .menu-logo {
   width: 400px;
   height: auto;
-  margin-bottom: 1rem;
-  animation: crystalPulse 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(0, 198, 255, 0.3));
+  animation: logoFloat 6s ease-in-out infinite;
 }
 
 .title {
   font-size: clamp(1rem, 2vw, 2rem);
   color: var(--text-color);
-  text-align: left;
-  margin: 0.5rem 0;
-  font-weight: bold;
-  letter-spacing: 2px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  background: linear-gradient(90deg, #fff, var(--crystal-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 5px rgba(0, 198, 255, 0.3));
 }
 
 .subtitle {
-  font-size: clamp(1rem, 2.5vw, 1.3rem);
-  color: var(--text-color);
-  text-align: left;
-  opacity: 0.9;
-  margin: 0.5rem 0;
-  letter-spacing: 1px;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 2px;
 }
 
 /* Menu container */
 .menu-container {
-  width: 400px;
+  flex: 0 0 350px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 2rem;
-  background: rgba(26, 26, 46, 0.8);
+  background: var(--menu-gradient);
   backdrop-filter: blur(10px);
   border-radius: 15px;
-  border: 1px solid rgba(0, 198, 255, 0.3);
-  box-shadow: 0 0 20px rgba(0, 198, 255, 0.1);
-  margin-left: 2rem;
+  border: 1px solid rgba(0, 198, 255, 0.2);
+  box-shadow: 
+    0 0 20px rgba(0, 198, 255, 0.1),
+    inset 0 0 20px rgba(0, 198, 255, 0.05);
+  transform: translateX(0);
+  transition: transform 0.3s ease;
 }
 
-/* Boutons */
 .menu-button {
-  width: 100%;
-  padding: 0.8rem 1.5rem;
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
-  background: linear-gradient(45deg, var(--deep-blue), var(--crystal-blue));
+  padding: 1rem 2rem;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
   color: white;
+  background: linear-gradient(45deg, var(--deep-blue), var(--crystal-blue));
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 500;
-  box-shadow: 0 2px 10px rgba(0, 198, 255, 0.2);
+  letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
 }
 
 .menu-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 198, 255, 0.3);
-  background: linear-gradient(45deg, var(--crystal-blue), var(--deep-blue));
+  box-shadow: 0 5px 15px rgba(0, 198, 255, 0.3);
+}
+
+.menu-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.menu-button:hover::before {
+  left: 100%;
 }
 
 /* Alerte personnalisée */
@@ -137,172 +167,19 @@ body {
   color: var(--text-color);
   font-size: 1rem;
   text-align: center;
-  z-index: 30;
+  z-index: 1000;
   animation: alertFadeIn 0.3s ease-out;
-  box-shadow: 0 0 20px rgba(0, 198, 255, 0.2);
-}
-
-/* Media queries */
-@media (max-width: 1024px) {
-  .content-wrapper {
-    flex-direction: column;
-    padding: 2rem;
-    justify-content: center;
-    gap: 2rem;
-  }
-
-  .game-logo {
-    align-items: center;
-    text-align: center;
-  }
-
-  .title, .subtitle {
-    text-align: center;
-  }
-
-  .menu-logo {
-    width: 90%;
-  }
-
-  .menu-container {
-    width: 90%;
-    margin-left: 0;
-  }
 }
 
 /* Animations */
-@keyframes crystalPulse {
-  0%, 100% {
-    filter: brightness(1);
-  }
-  50% {
-    filter: brightness(1.2);
-  }
-}
-
-@keyframes alertFadeIn {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -20px);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
-}
-
-/* Effet de particules cristallines */
-.game-container::before {
-  content: '';
-  position: fixed;
-  width: 200%;
-  height: 200%;
-  top: -50%;
-  left: -50%;
-  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
-  pointer-events: none;
-}
-
-/* Menu container */
-.menu-container {
-  background: rgba(26, 26, 46, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 198, 255, 0.2);
-  border-radius: 20px;
-  padding: clamp(1rem, 5vw, 2rem);
-  margin-top: clamp(1rem, 5vh, 2rem);
-  position: relative;
-  z-index: 2;
-  width: 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* Boutons */
-.menu-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 100%;
-  max-width: 400px;
-}
-
-.menu-button {
-  width: 100%;
-  padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1.5rem, 4vw, 2rem);
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
-  letter-spacing: 2px;
-  background: linear-gradient(45deg, var(--deep-blue), var(--crystal-blue));
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  text-transform: uppercase;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(0, 198, 255, 0.2);
-}
-
-/* Écran de chargement */
-.loading-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, var(--night-blue), #000000);
-  z-index: 1000;
-  overflow: hidden;
-  gap: 1rem;
-}
-
-.loading-screen::before {
-  content: '';
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  top: -50%;
-  left: -50%;
-  background: radial-gradient(circle at center, rgba(0, 198, 255, 0.1) 0%, transparent 60%);
-  animation: rotate 20s linear infinite;
-  pointer-events: none;
-}
-
-.loading-logo {
-  width: 250px !important;
-  height: auto !important;
-  object-fit: contain;
-  animation: logoFloat 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 20px rgba(0, 198, 255, 0.3));
-}
-
-.loading-text {
-  color: var(--text-color);
-  font-size: 1.2rem;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  opacity: 0.8;
-  background: linear-gradient(90deg, transparent, var(--crystal-blue), transparent);
-  padding: 0.5rem 2rem;
-  border-radius: 4px;
-  animation: textPulse 2s ease-in-out infinite;
-}
-
-@keyframes textPulse {
-  0%, 100% {
+@keyframes crystalShimmer {
+  0% {
     opacity: 0.5;
-    transform: scale(0.95);
+    background-position: 0% 0%;
   }
-  50% {
-    opacity: 1;
-    transform: scale(1);
+  100% {
+    opacity: 0.8;
+    background-position: 100% 100%;
   }
 }
 
@@ -315,114 +192,54 @@ body {
   }
 }
 
-@keyframes loadingBar {
-  0% {
-    width: 0;
-    opacity: 0.5;
+@keyframes alertFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
   }
-  50% {
-    width: 100px;
+  to {
     opacity: 1;
-  }
-  100% {
-    width: 0;
-    opacity: 0.5;
+    transform: translate(-50%, 0);
   }
 }
 
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
+/* Media queries */
+@media (max-width: 1024px) {
+  .content-wrapper {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 
-/* Media queries pour l'écran de chargement */
-@media (max-width: 768px) {
-  .loading-logo {
-    width: 200px !important;
+  .game-logo {
+    align-items: center;
   }
-  
-  .loading-text {
-    font-size: 1rem;
-    letter-spacing: 3px;
+
+  .menu-logo {
+    width: 300px;
+  }
+
+  .menu-container {
+    width: 90%;
+    max-width: 350px;
   }
 }
 
 @media (max-width: 480px) {
-  .loading-logo {
-    width: 150px !important;
+  .menu-logo {
+    width: 250px;
   }
-  
-  .loading-text {
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-  }
-}
 
-/* Media queries pour les ajustements spécifiques */
-@media (max-width: 768px) {
   .menu-container {
     padding: 1.5rem;
   }
-  
+
   .menu-button {
     padding: 0.8rem 1.5rem;
   }
-}
-
-@media (max-width: 480px) {
-  .game-logo {
-    width: 500px;
-  }
-  
-  .menu-container {
-    width: 600px;
-    padding: 1rem;
-  }
-  
-  .loading-text {
-    font-size: 1rem;
-  }
-}
-
-/* Animations */
-@keyframes crystalPulse {
-  0%, 100% {
-    filter: brightness(1);
-  }
-  50% {
-    filter: brightness(1.2);
-  }
-}
-
-@keyframes crystalBg {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes loadingPulse {
-  0%, 100% {
-    transform: scale(0.95);
-    filter: brightness(0.8) drop-shadow(0 0 20px var(--crystal-glow));
-  }
-  50% {
-    transform: scale(1);
-    filter: brightness(1.2) drop-shadow(0 0 40px var(--crystal-glow));
-  }
-}
-
-/* Effet de rayonnement derrière le logo */
-.game-logo {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  z-index: 25;
-  flex: 1;
 }
 
 /* Menu principal */
@@ -975,7 +792,6 @@ body {
   text-align: center;
   z-index: 30;
   animation: alertFadeIn 0.3s ease-out;
-  box-shadow: 0 0 20px rgba(0, 198, 255, 0.2);
 }
 
 .alert-content {
