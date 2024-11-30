@@ -24,7 +24,10 @@ function Home() {
         <div className="game-logo">
           <img src={skystone_logo} alt="Skystone Legacy" className="menu-logo" />
           <h1 className="title">Skystone Legacy</h1>
-          <p className="subtitle">A Crystal Adventure</p>
+          <p className="subtitle">
+            <span className="subtitle-text">Forgez Votre Dynastie de Cristal</span>
+            <span className="subtitle-decoration">✧</span>
+          </p>
         </div>
 
         <div className="menu-container">
