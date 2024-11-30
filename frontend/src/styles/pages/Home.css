@@ -68,7 +68,7 @@ body {
 }
 
 .title {
-  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-size: clamp(1rem, 2vw, 2rem);
   color: var(--text-color);
   text-align: left;
   margin: 0.5rem 0;
@@ -246,32 +246,120 @@ body {
   box-shadow: 0 0 20px rgba(0, 198, 255, 0.2);
 }
 
-/* Loading screen */
+/* Écran de chargement */
 .loading-screen {
   position: fixed;
-  inset: 0;
-  background: var(--night-blue);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, var(--night-blue), #000000);
   z-index: 1000;
-  padding: 20px;
+  overflow: hidden;
+  gap: 1rem;
+}
+
+.loading-screen::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: radial-gradient(circle at center, rgba(0, 198, 255, 0.1) 0%, transparent 60%);
+  animation: rotate 20s linear infinite;
+  pointer-events: none;
 }
 
 .loading-logo {
-  width: 400px;
-  height: auto;
-  animation: loadingPulse 2s ease-in-out infinite;
+  width: 250px !important;
+  height: auto !important;
+  object-fit: contain;
+  animation: logoFloat 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(0, 198, 255, 0.3));
 }
 
 .loading-text {
   color: var(--text-color);
-  font-size: clamp(1rem, 3vw, 1.2rem);
-  margin-top: clamp(1rem, 5vh, 2rem);
+  font-size: 1.2rem;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  text-align: center;
+  opacity: 0.8;
+  background: linear-gradient(90deg, transparent, var(--crystal-blue), transparent);
+  padding: 0.5rem 2rem;
+  border-radius: 4px;
+  animation: textPulse 2s ease-in-out infinite;
+}
+
+@keyframes textPulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes logoFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes loadingBar {
+  0% {
+    width: 0;
+    opacity: 0.5;
+  }
+  50% {
+    width: 100px;
+    opacity: 1;
+  }
+  100% {
+    width: 0;
+    opacity: 0.5;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Media queries pour l'écran de chargement */
+@media (max-width: 768px) {
+  .loading-logo {
+    width: 200px !important;
+  }
+  
+  .loading-text {
+    font-size: 1rem;
+    letter-spacing: 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .loading-logo {
+    width: 150px !important;
+  }
+  
+  .loading-text {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+  }
 }
 
 /* Media queries pour les ajustements spécifiques */

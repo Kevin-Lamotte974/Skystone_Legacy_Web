@@ -58,8 +58,8 @@ function Home() {
     <div className="game-container">
       {isLoading ? (
         <div className="loading-screen">
-          <img src={skystone_logo} alt="Skystone Legacy" className="game-logo loading-logo" />
           <div className="loading-text">Chargement...</div>
+          <img src={skystone_logo} alt="Skystone Legacy" className="loading-logo" />
         </div>
       ) : (
         <>
