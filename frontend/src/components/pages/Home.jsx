@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import '../../styles/pages/Home.css';
 import '../../styles/components/Buttons.css';
-import '../../styles/components/ModernBackground.css';
+import '../../styles/components/Background.css';
 import '../../styles/components/InfoModal.css';
 import skystone_logo from '../../assets/logo/Crystal_Skystone_Legacy.png';
 
@@ -43,8 +43,9 @@ function Home() {
   return (
     <div className="game-container">
       <div className="game-background">
-        <div className="crystal-overlay"></div>
+        <div className="crystal-stars"></div>
         <div className="crystal-grid"></div>
+        <div className="crystal-waves"></div>
         <div className="crystal-particles"></div>
         <div className="crystal-glow"></div>
       </div>
