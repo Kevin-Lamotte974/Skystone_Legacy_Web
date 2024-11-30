@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAudio } from '../../context/AudioContext';
 import '../../styles/pages/Home.css';
 import '../../styles/components/Buttons.css';
 import '../../styles/components/Background.css';
@@ -10,15 +12,20 @@ function Home() {
   const [alertMessage, setAlertMessage] = useState('');
   const [showInfo, setShowInfo] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+  const { playMusic } = useAudio();
 
   useEffect(() => {
+    // Démarrer la musique
+    playMusic();
+    
     // Simuler un temps de chargement
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [playMusic]);
 
   const handleMenuClick = (action) => {
     if (action === 'Info') {
@@ -77,7 +84,7 @@ function Home() {
           <button 
             className="menu-button"
             data-action="options"
-            onClick={() => handleMenuClick('Settings')}
+            onClick={() => navigate('/options')}
           >
             Options
           </button>
