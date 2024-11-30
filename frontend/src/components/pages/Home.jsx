@@ -83,6 +83,13 @@ function Home() {
           </button>
           <button 
             className="menu-button"
+            data-action="join-game"
+            onClick={() => handleMenuClick('Join Game')}
+          >
+            Rejoindre une partie
+          </button>
+          <button 
+            className="menu-button"
             data-action="options"
             onClick={() => navigate('/options')}
           >
