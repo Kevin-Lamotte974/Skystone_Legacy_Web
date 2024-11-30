@@ -5,8 +5,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(5px);
+  background-color: rgba(27, 40, 56, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,23 +14,24 @@
 }
 
 .info-content {
-  background: rgba(10, 20, 30, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  padding: 30px;
-  width: 80%;
+  background: linear-gradient(135deg, var(--background-dark), var(--background-light));
+  padding: 2rem;
+  border-radius: 10px;
   max-width: 800px;
+  width: 80%;
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
-  color: #fff;
+  color: var(--text-color);
+  border: 2px solid var(--accent-color);
+  box-shadow: 0 0 20px rgba(65, 105, 225, 0.3);
   animation: slideUp 0.3s ease;
 }
 
 .info-content h2 {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: #4a9eff;
+  color: var(--secondary-color);
   display: flex;
   align-items: center;
 }
@@ -42,7 +42,7 @@
 
 .info-section h3 {
   font-size: 1.4rem;
-  color: #66ccff;
+  color: var(--accent-color);
   margin-bottom: 15px;
   display: flex;
   align-items: center;
@@ -50,7 +50,7 @@
 
 .info-section p {
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-color);
   margin-bottom: 15px;
 }
 
@@ -61,7 +61,7 @@
 
 .info-section li {
   margin-bottom: 10px;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-color);
   display: flex;
   align-items: center;
   padding-left: 0;

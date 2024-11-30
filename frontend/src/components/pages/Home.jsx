@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import '../../styles/pages/Home.css';
 import '../../styles/components/FloatingIslands.css';
 import '../../styles/components/MenuButtons.css';
+import skystone_logo from '../../assets/logo/Crystal_Skystone_Legacy.png';
 
 function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
   const [isSoundOn, setIsSoundOn] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
+  const [customAlert, setCustomAlert] = useState({ show: false, message: '' });
 
   useEffect(() => {
     // Gestion du chargement initial
@@ -24,20 +26,27 @@ function Home() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const showCustomAlert = (message) => {
+    setCustomAlert({ show: true, message });
+    setTimeout(() => {
+      setCustomAlert({ show: false, message: '' });
+    }, 3000);
+  };
+
   // Gestionnaires d'événements pour les boutons
   const handleStartGame = () => {
     console.log('Démarrage du jeu...');
-    alert('Démarrage d\'une nouvelle aventure !');
+    showCustomAlert('Démarrage d\'une nouvelle aventure !');
   };
 
   const handleContinueGame = () => {
     console.log('Chargement de la partie...');
-    alert('Chargement de la dernière sauvegarde...');
+    showCustomAlert('Chargement de la dernière sauvegarde...');
   };
 
   const handleOptions = () => {
     console.log('Ouverture des options...');
-    alert('Menu des options');
+    showCustomAlert('Menu des options');
   };
 
   const toggleSound = () => {
@@ -49,8 +58,8 @@ function Home() {
     <div className="game-container">
       {isLoading ? (
         <div className="loading-screen">
-          <div className="crystal-loader"></div>
-          <p>Chargement de Skystone Legacy...</p>
+          <img src={skystone_logo} alt="Skystone Legacy" className="game-logo loading-logo" />
+          <div className="loading-text">Chargement...</div>
         </div>
       ) : (
         <>
@@ -143,6 +152,7 @@ function Home() {
 
           <div className="content-wrapper">
             <div className="game-logo">
+              <img src={skystone_logo} alt="Skystone Legacy" className="menu-logo" />
               <h1 className="title">Skystone Legacy</h1>
               <p className="subtitle">
                 {isMobile ? "L'aventure commence" : "Un monde d'aventures vous attend"}
@@ -160,25 +170,15 @@ function Home() {
                 Options
               </button>
             </div>
-
-            {!isMobile && (
-              <div className="info-panel">
-                <div className="news-ticker">
-                  <p>Dernières nouvelles : La mise à jour "Les Cristaux Perdus" arrive bientôt !</p>
-                </div>
-              </div>
-            )}
-
-            <div className="footer-controls">
-              <button 
-                className="sound-toggle"
-                onClick={toggleSound}
-              >
-                {isSoundOn ? '🔊' : '🔈'}
-              </button>
-              <span className="credits">v1.0 | &copy; 2024 Skystone Legacy</span>
-            </div>
           </div>
+
+          {customAlert.show && (
+            <div className="custom-alert">
+              <div className="alert-content">
+                {customAlert.message}
+              </div>
+            </div>
+          )}
         </>
       )}
     </div>
