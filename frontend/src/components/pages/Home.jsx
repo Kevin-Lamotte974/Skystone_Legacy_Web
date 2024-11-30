@@ -11,6 +11,8 @@ function Home() {
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState('');
   const [showInfo, setShowInfo] = useState(false);
+  const [showDroidModal, setShowDroidModal] = useState(false);
+  const [character, setCharacter] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   const { playMusic } = useAudio();
@@ -19,6 +21,12 @@ function Home() {
     // Démarrer la musique
     playMusic();
     
+    // Charger les données du personnage
+    const savedCharacter = localStorage.getItem('character');
+    if (savedCharacter) {
+      setCharacter(JSON.parse(savedCharacter));
+    }
+
     // Simuler un temps de chargement
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -35,6 +43,26 @@ function Home() {
       setShowAlert(true);
       setTimeout(() => setShowAlert(false), 3000);
     }
+  };
+
+  const handleDroidClick = () => {
+    if (character) {
+      setShowDroidModal(true);
+    } else {
+      setAlertMessage('Aucun droïde créé. Commencez une nouvelle partie !');
+      setShowAlert(true);
+      setTimeout(() => setShowAlert(false), 3000);
+    }
+  };
+
+  const getClassDescription = (className) => {
+    const classes = {
+      warrior: 'Maître du combat rapproché',
+      mage: 'Manipulateur des arcanes',
+      archer: 'Expert du combat à distance',
+      rogue: 'Maître de la furtivité'
+    };
+    return classes[className] || '';
   };
 
   if (isLoading) {
@@ -59,6 +87,78 @@ function Home() {
       <div className="content-wrapper">
         <div className="game-logo">
           <img src={skystone_logo} alt="Skystone Legacy" className="menu-logo" />
+        </div>
+
+        <div className="home-content">
+          <div 
+            className="droid-icon-container"
+            onClick={handleDroidClick}
+            style={{ cursor: 'pointer' }}
+          >
+            <svg 
+              className="droid-icon"
+              viewBox="0 0 100 100" 
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {/* Fond lumineux */}
+              <circle 
+                cx="50" 
+                cy="50" 
+                r="40" 
+                className="droid-glow"
+              />
+              {/* Corps principal */}
+              <circle 
+                cx="50" 
+                cy="50" 
+                r="35" 
+                className="droid-body"
+              />
+              {/* Antennes */}
+              <line 
+                x1="35" 
+                y1="15" 
+                x2="35" 
+                y2="5" 
+                className="droid-antenna"
+              />
+              <line 
+                x1="65" 
+                y1="15" 
+                x2="65" 
+                y2="5" 
+                className="droid-antenna"
+              />
+              {/* Œil principal */}
+              <circle 
+                cx="50" 
+                cy="40" 
+                r="12" 
+                className="droid-eye"
+              />
+              {/* Œil interne */}
+              <circle 
+                cx="50" 
+                cy="40" 
+                r="6" 
+                className="droid-eye-inner"
+              />
+              {/* Détails du corps */}
+              <path 
+                d="M30 60 Q50 80 70 60" 
+                className="droid-detail"
+                fill="none"
+              />
+              <line 
+                x1="30" 
+                y1="50" 
+                x2="70" 
+                y2="50" 
+                className="droid-detail"
+              />
+            </svg>
+          </div>
+
           <h1 className="title">Skystone Legacy</h1>
           <p className="subtitle">
             <span className="subtitle-text">Forgez Votre Dynastie de Cristal</span>
@@ -70,7 +170,7 @@ function Home() {
           <button 
             className="menu-button"
             data-action="new-game"
-            onClick={() => handleMenuClick('New Game')}
+            onClick={() => navigate('/character-creation')}
           >
             Nouvelle Partie
           </button>
@@ -105,6 +205,12 @@ function Home() {
       >
         <span className="info-icon">ⓘ</span>
       </button>
+
+      {showAlert && (
+        <div className="custom-alert">
+          {alertMessage}
+        </div>
+      )}
 
       {showInfo && (
         <div className="info-modal">
@@ -145,9 +251,28 @@ function Home() {
         </div>
       )}
 
-      {showAlert && (
-        <div className="custom-alert">
-          {alertMessage}
+      {showDroidModal && character && (
+        <div className="droid-modal">
+          <div className="droid-modal-content">
+            <button className="close-modal" onClick={() => setShowDroidModal(false)}>×</button>
+            <h2>Profil du Droïde</h2>
+            <div className="droid-info">
+              <div className="droid-name">
+                <span className="info-label">Nom:</span>
+                <span className="info-value">{character.name}</span>
+              </div>
+              <div className="droid-class">
+                <span className="info-label">Classe:</span>
+                <span className="info-value">
+                  {character.class.charAt(0).toUpperCase() + character.class.slice(1)}
+                </span>
+              </div>
+              <div className="droid-description">
+                <span className="info-label">Spécialisation:</span>
+                <span className="info-value">{getClassDescription(character.class)}</span>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
