@@ -64,7 +64,6 @@ body {
   width: 400px;
   height: auto;
   margin-bottom: 1rem;
-  filter: drop-shadow(0 0 30px var(--crystal-glow));
   animation: crystalPulse 4s ease-in-out infinite;
 }
 
@@ -73,7 +72,6 @@ body {
   color: var(--text-color);
   text-align: left;
   margin: 0.5rem 0;
-  text-shadow: 0 0 20px var(--crystal-glow);
   font-weight: bold;
   letter-spacing: 2px;
 }
@@ -84,7 +82,6 @@ body {
   text-align: left;
   opacity: 0.9;
   margin: 0.5rem 0;
-  text-shadow: 0 0 10px var(--crystal-glow);
   letter-spacing: 1px;
 }
 
@@ -176,12 +173,10 @@ body {
 /* Animations */
 @keyframes crystalPulse {
   0%, 100% {
-    filter: drop-shadow(0 0 30px var(--crystal-glow));
-    transform: scale(1);
+    filter: brightness(1);
   }
   50% {
-    filter: drop-shadow(0 0 50px var(--crystal-glow)) brightness(1.2);
-    transform: scale(1.05);
+    filter: brightness(1.2);
   }
 }
 
@@ -204,12 +199,7 @@ body {
   height: 200%;
   top: -50%;
   left: -50%;
-  background: 
-    radial-gradient(circle at center, transparent 0%, var(--night-blue) 100%),
-    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 50L20 80L80 80L50 50Z' fill='rgba(0,198,255,0.03)'/%3E%3C/svg%3E");
-  animation: crystalBg 15s linear infinite;
-  opacity: 0.5;
-  z-index: 1;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
   pointer-events: none;
 }
 
@@ -313,12 +303,10 @@ body {
 /* Animations */
 @keyframes crystalPulse {
   0%, 100% {
-    filter: drop-shadow(0 0 30px var(--crystal-glow));
-    transform: scale(1);
+    filter: brightness(1);
   }
   50% {
-    filter: drop-shadow(0 0 50px var(--crystal-glow)) brightness(1.2);
-    transform: scale(1.05);
+    filter: brightness(1.2);
   }
 }
 
@@ -339,24 +327,14 @@ body {
 }
 
 /* Effet de rayonnement derrière le logo */
-.game-logo::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 120%;
-  height: 120%;
-  background: radial-gradient(circle at center, var(--crystal-blue) 0%, transparent 70%);
-  transform: translate(-50%, -50%);
-  z-index: -1;
-  opacity: 0.1;
-  animation: glowPulse 4s ease-in-out infinite;
-}
-
-@keyframes glowPulse {
-  0% { opacity: 0.1; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 0.2; transform: translate(-50%, -50%) scale(1.1); }
-  100% { opacity: 0.1; transform: translate(-50%, -50%) scale(1); }
+.game-logo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  z-index: 25;
+  flex: 1;
 }
 
 /* Menu principal */
@@ -373,8 +351,6 @@ body {
   font-size: calc(4vw + 2vh);
   font-weight: bold;
   color: #fff;
-  text-shadow: 0 0 20px #4facfe;
-  animation: glow 2s infinite alternate;
   letter-spacing: 4px;
   margin-bottom: 2vh;
 }
@@ -401,11 +377,6 @@ body {
 }
 
 /* Animations */
-@keyframes glow {
-  from { text-shadow: 0 0 20px #4facfe; }
-  to { text-shadow: 0 0 40px #4facfe, 0 0 60px #00f2fe; }
-}
-
 @keyframes float {
   0% { transform: translateY(0) scale(1); }
   50% { transform: translateY(-20px) scale(1.1); }
@@ -793,7 +764,6 @@ body {
   margin-bottom: 20px;
   color: #4a9eff;
   text-align: center;
-  text-shadow: 0 0 10px rgba(74, 158, 255, 0.3);
 }
 
 .info-section {
