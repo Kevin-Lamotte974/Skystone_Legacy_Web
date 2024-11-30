@@ -37,22 +37,6 @@
   animation: gridFlow 20s linear infinite;
 }
 
-/* Vagues d'énergie */
-.crystal-waves {
-  position: absolute;
-  inset: 0;
-  background: 
-    repeating-linear-gradient(
-      45deg,
-      var(--crystal-blue) 0%,
-      transparent 5%,
-      transparent 45%
-    );
-  background-size: 350% 350%;
-  opacity: 0.1;
-  animation: waveMove 15s linear infinite;
-}
-
 /* Particules flottantes */
 .crystal-particles::before,
 .crystal-particles::after {
@@ -101,15 +85,6 @@
   }
   100% {
     transform: perspective(1000px) rotateX(60deg) translateY(50px);
-  }
-}
-
-@keyframes waveMove {
-  0% {
-    background-position: 0% 0%;
-  }
-  100% {
-    background-position: 100% 100%;
   }
 }
 

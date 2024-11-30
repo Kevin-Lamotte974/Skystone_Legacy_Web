@@ -45,7 +45,6 @@ function Home() {
       <div className="game-background">
         <div className="crystal-stars"></div>
         <div className="crystal-grid"></div>
-        <div className="crystal-waves"></div>
         <div className="crystal-particles"></div>
         <div className="crystal-glow"></div>
       </div>
