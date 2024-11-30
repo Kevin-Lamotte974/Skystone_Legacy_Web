@@ -25,7 +25,9 @@ function CharacterCreation() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem('character', JSON.stringify(character));
+    
+    // Pour l'instant, on redirige simplement vers la page d'accueil
+    // La sauvegarde sera implémentée plus tard avec la base de données
     navigate('/');
   };
 

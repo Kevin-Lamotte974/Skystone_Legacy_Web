@@ -12,7 +12,6 @@ function Home() {
   const [alertMessage, setAlertMessage] = useState('');
   const [showInfo, setShowInfo] = useState(false);
   const [showDroidModal, setShowDroidModal] = useState(false);
-  const [character, setCharacter] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   const { playMusic } = useAudio();
@@ -21,12 +20,6 @@ function Home() {
     // Démarrer la musique
     playMusic();
     
-    // Charger les données du personnage
-    const savedCharacter = localStorage.getItem('character');
-    if (savedCharacter) {
-      setCharacter(JSON.parse(savedCharacter));
-    }
-
     // Simuler un temps de chargement
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -46,23 +39,7 @@ function Home() {
   };
 
   const handleDroidClick = () => {
-    if (character) {
-      setShowDroidModal(true);
-    } else {
-      setAlertMessage('Aucun droïde créé. Commencez une nouvelle partie !');
-      setShowAlert(true);
-      setTimeout(() => setShowAlert(false), 3000);
-    }
-  };
-
-  const getClassDescription = (className) => {
-    const classes = {
-      warrior: 'Maître du combat rapproché',
-      mage: 'Manipulateur des arcanes',
-      archer: 'Expert du combat à distance',
-      rogue: 'Maître de la furtivité'
-    };
-    return classes[className] || '';
+    setShowDroidModal(true);
   };
 
   if (isLoading) {
@@ -207,8 +184,10 @@ function Home() {
       </button>
 
       {showAlert && (
-        <div className="custom-alert">
-          {alertMessage}
+        <div className="alert-modal">
+          <div className="alert-content">
+            {alertMessage}
+          </div>
         </div>
       )}
 
@@ -238,39 +217,17 @@ function Home() {
                 le monde ou découvrir les causes du cataclysme.
               </p>
             </section>
-
-            <section>
-              <h2>✨ Caractéristiques principales</h2>
-              <ul>
-                <li><strong>Frontend</strong> : Interface utilisateur dynamique créée avec React.js</li>
-                <li><strong>Backend</strong> : API REST robuste gérée avec Django et Django REST Framework</li>
-                <li><strong>Exploration</strong> : Parcourez des îles flottantes, relevez des défis uniques et affrontez des factions rivales</li>
-              </ul>
-            </section>
           </div>
         </div>
       )}
 
-      {showDroidModal && character && (
+      {showDroidModal && (
         <div className="droid-modal">
           <div className="droid-modal-content">
             <button className="close-modal" onClick={() => setShowDroidModal(false)}>×</button>
             <h2>Profil du Droïde</h2>
             <div className="droid-info">
-              <div className="droid-name">
-                <span className="info-label">Nom:</span>
-                <span className="info-value">{character.name}</span>
-              </div>
-              <div className="droid-class">
-                <span className="info-label">Classe:</span>
-                <span className="info-value">
-                  {character.class.charAt(0).toUpperCase() + character.class.slice(1)}
-                </span>
-              </div>
-              <div className="droid-description">
-                <span className="info-label">Spécialisation:</span>
-                <span className="info-value">{getClassDescription(character.class)}</span>
-              </div>
+              <p>Les données du droïde seront disponibles une fois la base de données connectée.</p>
             </div>
           </div>
         </div>
