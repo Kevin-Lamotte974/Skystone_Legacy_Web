@@ -1,0 +1,62 @@
+/* Animations pour les îles flottantes */
+@keyframes floatIsland {
+  0%, 100% {
+    transform: translateY(0) rotateX(5deg) rotateY(0deg);
+    filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.5));
+  }
+  50% {
+    transform: translateY(-20px) rotateX(8deg) rotateY(3deg);
+    filter: drop-shadow(0 50px 50px rgba(0, 0, 0, 0.4));
+  }
+}
+
+/* Animation des particules */
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(10px, -10px);
+  }
+  50% {
+    transform: translate(-5px, -15px);
+  }
+  75% {
+    transform: translate(-10px, -5px);
+  }
+}
+
+/* Animation des effets de lumière */
+@keyframes lightPulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+/* Animation des vagues */
+@keyframes waveEffect {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(-25%) translateY(2%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Animation des débris rocheux */
+@keyframes debrisFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+}

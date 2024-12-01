@@ -1,0 +1,130 @@
+/* Variante alternative du background avec des effets différents */
+.game-background {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, var(--night-blue), #000000);
+  overflow: hidden;
+}
+
+/* Effet de nébuleuse */
+.nebula {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 30% 50%, rgba(0, 198, 255, 0.1), transparent 50%),
+    radial-gradient(circle at 70% 50%, rgba(79, 172, 254, 0.1), transparent 50%);
+  filter: blur(30px);
+  animation: nebulaShift 20s ease-in-out infinite;
+}
+
+/* Constellation dynamique */
+.constellation {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(1px 1px at 10% 10%, white, transparent),
+    radial-gradient(1px 1px at 20% 20%, var(--crystal-blue), transparent),
+    radial-gradient(1px 1px at 30% 30%, var(--neon-blue), transparent),
+    radial-gradient(1px 1px at 40% 40%, white, transparent),
+    radial-gradient(1px 1px at 50% 50%, var(--crystal-blue), transparent);
+  opacity: 0.7;
+  animation: constellationTwinkle 4s ease-in-out infinite;
+}
+
+/* Lignes d'énergie */
+.energy-lines {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(90deg, transparent 50%, var(--crystal-blue) 50%),
+    linear-gradient(0deg, transparent 50%, var(--neon-blue) 50%);
+  background-size: 100px 100px;
+  opacity: 0.1;
+  animation: energyFlow 10s linear infinite;
+}
+
+/* Vortex cristallin */
+.crystal-vortex {
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    var(--crystal-blue),
+    transparent 60%
+  );
+  opacity: 0.1;
+  animation: vortexSpin 20s linear infinite;
+}
+
+/* Aurore boréale */
+.aurora {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--crystal-blue) 25%,
+    var(--neon-blue) 50%,
+    var(--crystal-blue) 75%,
+    transparent 100%
+  );
+  opacity: 0.1;
+  filter: blur(40px);
+  transform: translateY(-50%);
+  animation: auroraWave 10s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes nebulaShift {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.2;
+  }
+}
+
+@keyframes constellationTwinkle {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes energyFlow {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(100px) translateY(100px);
+  }
+}
+
+@keyframes vortexSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes auroraWave {
+  0%, 100% {
+    transform: translateY(-50%) translateX(0);
+  }
+  50% {
+    transform: translateY(-50%) translateX(-20%);
+  }
+}
+
+/* Optimisation des performances */
+.game-background * {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}

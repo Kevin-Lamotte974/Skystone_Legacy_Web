@@ -1,0 +1,184 @@
+.options-container {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+}
+
+.options-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.options-content {
+  position: relative;
+  z-index: 1;
+  width: 90%;
+  max-width: 800px;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(13, 17, 23, 0.9));
+  border: 1px solid rgba(0, 198, 255, 0.2);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(0, 198, 255, 0.1);
+}
+
+.options-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--crystal-blue);
+  text-shadow: 0 0 10px rgba(0, 198, 255, 0.5);
+}
+
+.options-section {
+  margin-bottom: 2rem;
+}
+
+.options-section h2 {
+  color: var(--crystal-blue);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 198, 255, 0.2);
+  padding-bottom: 0.5rem;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.option-item label {
+  min-width: 150px;
+  color: var(--text-color);
+}
+
+/* Slider styles */
+.slider {
+  flex: 1;
+  height: 4px;
+  background: rgba(0, 198, 255, 0.2);
+  border-radius: 2px;
+  appearance: none;
+  outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--crystal-blue);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 10px var(--crystal-blue);
+}
+
+/* Select box styles */
+.select-box {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 198, 255, 0.1);
+  border: 1px solid rgba(0, 198, 255, 0.3);
+  border-radius: 4px;
+  color: var(--text-color);
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.select-box:hover {
+  background: rgba(0, 198, 255, 0.2);
+}
+
+.select-box option {
+  background: rgba(13, 17, 23, 0.95);
+  color: var(--text-color);
+}
+
+/* Buttons */
+.options-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.option-button {
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, rgba(0, 198, 255, 0.2), rgba(0, 198, 255, 0.1));
+  color: var(--text-color);
+  border: 1px solid rgba(0, 198, 255, 0.3);
+}
+
+.option-button:hover {
+  background: linear-gradient(135deg, rgba(0, 198, 255, 0.3), rgba(0, 198, 255, 0.2));
+  transform: translateY(-2px);
+}
+
+.save-button {
+  background: linear-gradient(135deg, rgba(0, 255, 128, 0.2), rgba(0, 255, 128, 0.1));
+  border-color: rgba(0, 255, 128, 0.3);
+}
+
+.save-button:hover {
+  background: linear-gradient(135deg, rgba(0, 255, 128, 0.3), rgba(0, 255, 128, 0.2));
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .options-content {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .options-title {
+    font-size: 2rem;
+  }
+
+  .option-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .option-item label {
+    min-width: auto;
+  }
+
+  .slider,
+  .select-box {
+    width: 100%;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.options-content {
+  animation: fadeIn 0.5s ease-out;
+}
