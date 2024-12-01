@@ -8,7 +8,7 @@
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: none;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
@@ -20,7 +20,6 @@
 
 .info-button:hover {
   background: rgba(0, 0, 0, 0.8);
-  border-color: rgba(255, 255, 255, 0.4);
   transform: scale(1.05);
 }
 
@@ -32,7 +31,7 @@
   height: 30px;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: none;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
@@ -43,7 +42,6 @@
 
 .close-button:hover {
   background: rgba(0, 0, 0, 0.6);
-  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .button {
@@ -54,38 +52,39 @@
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: linear-gradient(135deg, #6e8efb, #4a6cf7);
-  color: white;
-  box-shadow: 0 4px 15px rgba(74, 108, 247, 0.2);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--text-color);
+  box-shadow: 0 4px 15px rgba(65, 105, 225, 0.2);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(74, 108, 247, 0.3);
+  box-shadow: 0 6px 20px rgba(65, 105, 225, 0.3);
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
 }
 
 .button:active {
   transform: translateY(0);
-  box-shadow: 0 2px 10px rgba(74, 108, 247, 0.2);
+  box-shadow: 0 2px 10px rgba(65, 105, 225, 0.2);
 }
 
 /* Variantes de boutons */
 .button-primary {
-  background: linear-gradient(135deg, #6e8efb, #4a6cf7);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
 }
 
 .button-secondary {
-  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
 }
 
 .button-success {
-  background: linear-gradient(135deg, #34d399, #059669);
+  background: linear-gradient(135deg, var(--success-color), var(--success-color-dark));
 }
 
 .button-danger {
-  background: linear-gradient(135deg, #ef4444, #dc2626);
+  background: linear-gradient(135deg, var(--danger-color), var(--danger-color-dark));
 }
 
 /* Bouton désactivé */
@@ -104,4 +103,77 @@
 .button-large {
   padding: 16px 32px;
   font-size: 1.125rem;
+}
+
+/* Styles pour les boutons du menu */
+.menu-button {
+  background: linear-gradient(90deg, #fff, var(--crystal-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 5px rgba(0, 198, 255, 0.3));
+  font-size: clamp(1rem, 2vw, 2rem);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  width: 100%;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.menu-button:focus {
+  outline: none;
+}
+
+.menu-button:hover {
+  filter: drop-shadow(0 0 8px rgba(0, 198, 255, 0.5));
+  letter-spacing: 3px;
+}
+
+/* Styles spécifiques pour chaque bouton */
+.menu-button[data-action="new-game"] {
+  font-size: clamp(1.2rem, 2.5vw, 2.5rem);
+  background: linear-gradient(90deg, #fff, #00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.menu-button[data-action="continue"] {
+  font-size: clamp(1rem, 2vw, 2rem);
+  background: linear-gradient(90deg, #fff, #4facfe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.menu-button[data-action="options"] {
+  font-size: clamp(0.8rem, 1.5vw, 1.5rem);
+  background: linear-gradient(90deg, #fff, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 768px) {
+  .menu-button {
+    font-size: clamp(0.8rem, 4vw, 1.5rem);
+    letter-spacing: 1px;
+  }
+
+  .menu-button:hover {
+    letter-spacing: 2px;
+  }
+
+  .menu-button[data-action="new-game"] {
+    font-size: clamp(1rem, 5vw, 2rem);
+  }
+
+  .menu-button[data-action="continue"] {
+    font-size: clamp(0.9rem, 4.5vw, 1.8rem);
+  }
+
+  .menu-button[data-action="options"] {
+    font-size: clamp(0.8rem, 4vw, 1.5rem);
+  }
 }
