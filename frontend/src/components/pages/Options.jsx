@@ -125,7 +125,7 @@ function Options() {
           <button className="option-button save-button" onClick={handleSave}>
             Sauvegarder
           </button>
-          <button className="option-button back-button" onClick={() => navigate('/')}>
+          <button className="option-button back-button" onClick={() => navigate('/home')}>
             Retour
           </button>
         </div>

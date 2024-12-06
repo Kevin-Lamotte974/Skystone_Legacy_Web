@@ -1,0 +1,95 @@
+==== GUIDE D'INSTALLATION SKYSTONE LEGACY WEB ====
+
+1. INSTALLATION DES LOGICIELS REQUIS
+===================================
+
+a) Installer XAMPP
+-----------------
+1. Télécharger XAMPP : https://www.apachefriends.org/fr/download.html
+2. Exécuter l'installateur
+3. Pendant l'installation, assurez-vous que Apache et MySQL sont sélectionnés
+4. Terminer l'installation
+
+b) Installer Python
+------------------
+1. Télécharger Python : https://www.python.org/downloads/
+2. Cocher "Add Python to PATH" pendant l'installation
+3. Terminer l'installation
+
+2. VÉRIFICATION DES INSTALLATIONS
+===============================
+Ouvrir un terminal (cmd) et taper :
+python --version
+pip --version
+
+Ces commandes devraient afficher les versions installées.
+
+3. CONFIGURATION DE L'ENVIRONNEMENT PYTHON
+======================================
+Ouvrir un terminal dans le dossier du projet et exécuter :
+
+# Installer les dépendances Python
+pip install mysql-connector-python
+pip install python-dotenv
+
+# Ou utiliser le fichier requirements.txt
+pip install -r requirements.txt
+
+4. CONFIGURATION DE XAMPP
+======================
+1. Ouvrir le panneau de contrôle XAMPP
+2. Démarrer Apache et MySQL (cliquer sur "Start")
+3. Vérifier que les deux services sont en vert
+
+5. CRÉATION DE LA BASE DE DONNÉES
+==============================
+Dans le terminal, à la racine du projet :
+
+# Créer la base de données et les tables
+python backend/database/create_database.py
+
+6. VÉRIFICATION DE L'INSTALLATION
+==============================
+Dans le terminal :
+
+# Tester la connexion à la base de données
+python backend/database/test_db.py
+
+7. ACCÈS À PHPMYADMIN
+===================
+1. Ouvrir un navigateur
+2. Aller à : http://localhost/phpmyadmin
+3. Vérifier que la base de données "skystone_db" est présente
+
+COMMANDES UTILES
+===============
+# Démarrer les services XAMPP via ligne de commande (administrateur requis)
+"C:\xampp\xampp_start.exe"
+
+# Arrêter les services XAMPP via ligne de commande (administrateur requis)
+"C:\xampp\xampp_stop.exe"
+
+# Tester la connexion Python-MySQL
+python backend/database/test_db.py
+
+RÉSOLUTION DES PROBLÈMES COURANTS
+===============================
+1. Si "python" n'est pas reconnu :
+   - Vérifier que Python est bien dans le PATH
+   - Redémarrer le terminal
+
+2. Si la connexion MySQL échoue :
+   - Vérifier que MySQL est bien démarré dans XAMPP
+   - Vérifier que le port 3306 est libre
+   - Vérifier les identifiants dans config.py
+
+3. Si Apache ne démarre pas :
+   - Vérifier que les ports 80 et 443 sont libres
+   - Arrêter IIS ou Skype si nécessaire
+
+NOTES IMPORTANTES
+===============
+- Toujours démarrer XAMPP avant d'utiliser l'application
+- Les fichiers de configuration se trouvent dans backend/database/
+- Le mot de passe root MySQL est vide par défaut
+- Les logs XAMPP se trouvent dans : C:\xampp\logs
