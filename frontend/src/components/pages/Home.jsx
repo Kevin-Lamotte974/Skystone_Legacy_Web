@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAudio } from '../../context/AudioContext';
 import skystone_logo from '../../assets/logo/Crystal_Skystone_Legacy.png';
+import eclaireurImage from '../../assets/class/Éclaireur des Vents.png';
+import cristallomancienImage from '../../assets/class/Cristallomancien.png';
+import negociantImage from '../../assets/class/Négociant des Cieux.png';
+import archeologueImage from '../../assets/class/Archéologue des Ruines.png';
 
 function Home() {
   const [showInfo, setShowInfo] = useState(false);
@@ -248,46 +252,131 @@ function Home() {
               </div>
 
               <div>
-                <label className="block text-purple-200 mb-2">Choisissez votre classe</label>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <label className="block text-purple-200 mb-2 text-xl font-bold">Choisissez votre classe</label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-4">
                   {[
                     {
                       name: "Éclaireur des Vents",
                       description: "Expert en navigation et exploration des îles flottantes. Capable de repérer les routes les plus sûres et de découvrir des passages secrets.",
-                      icon: "🧭"
+                      image: eclaireurImage,
+                      stats: {
+                        exploration: 90,
+                        combat: 60,
+                        diplomatie: 40,
+                        connaissance: 50
+                      }
                     },
                     {
                       name: "Cristallomancien",
                       description: "Maître dans l'art de comprendre et manipuler les cristaux. Possède une connexion unique avec les artefacts anciens.",
-                      icon: "💎"
+                      image: cristallomancienImage,
+                      stats: {
+                        exploration: 50,
+                        combat: 70,
+                        diplomatie: 40,
+                        connaissance: 80
+                      }
                     },
                     {
                       name: "Négociant des Cieux",
                       description: "Expert en négociation et diplomatie. Dispose d'un vaste réseau de contacts et excelle dans les interactions sociales.",
-                      icon: "🤝"
+                      image: negociantImage,
+                      stats: {
+                        exploration: 40,
+                        combat: 30,
+                        diplomatie: 90,
+                        connaissance: 60
+                      }
                     },
                     {
                       name: "Archéologue des Ruines",
                       description: "Spécialiste des civilisations anciennes. Capable de déchiffrer les vestiges et de percer les mystères du passé.",
-                      icon: "📜"
+                      image: archeologueImage,
+                      stats: {
+                        exploration: 70,
+                        combat: 40,
+                        diplomatie: 50,
+                        connaissance: 90
+                      }
                     }
                   ].map((classe) => (
                     <button
                       key={classe.name}
                       onClick={() => setFormData(prev => ({ ...prev, classe: classe.name }))}
-                      className={`p-4 rounded-lg border transition-all duration-300 text-left group
-                        ${formData.classe === classe.name 
-                          ? 'border-purple-500 bg-purple-500/10' 
-                          : 'border-purple-500/30 hover:border-purple-500/60 hover:bg-purple-500/5'}`}
+                      className={`relative group perspective-1000 transform transition-transform duration-500 hover:scale-105 ${
+                        formData.classe === classe.name ? 'ring-4 ring-purple-500/50' : ''
+                      }`}
                     >
-                      <div className="flex items-start gap-3">
-                        <span className="text-2xl group-hover:scale-110 transition-transform">
-                          {classe.icon}
-                        </span>
-                        <div>
-                          <h3 className="text-purple-300 font-semibold mb-1">{classe.name}</h3>
-                          <p className="text-sm text-gray-400 line-clamp-3">{classe.description}</p>
+                      {/* Carte */}
+                      <div className={`relative w-full aspect-[3/4] rounded-xl overflow-hidden transform transition-transform duration-500
+                        ${formData.classe === classe.name ? 'shadow-xl shadow-purple-500/30' : 'shadow-lg shadow-black/20'}
+                        group-hover:shadow-xl group-hover:shadow-purple-500/20`}>
+                        
+                        {/* Bordure animée */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        
+                        {/* Fond avec motif */}
+                        <div className="absolute inset-0 bg-[#1a1a1a] border-2 border-purple-500/30">
+                          {/* Motif géométrique */}
+                          <div className="absolute inset-0 opacity-10 bg-repeat"
+                               style={{
+                                 backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l30 30-30 30L0 30z' fill='%239C27B0' fill-opacity='0.4'/%3E%3C/svg%3E")`
+                               }} />
                         </div>
+
+                        {/* Image de la classe */}
+                        <div className="absolute inset-0">
+                          <img
+                            src={classe.image}
+                            alt={classe.name}
+                            className="w-full h-full object-cover opacity-80 group-hover:opacity-90 transition-opacity duration-300"
+                          />
+                          {/* Overlay dégradé */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+                        </div>
+
+                        {/* Contenu */}
+                        <div className="absolute inset-0 p-4 flex flex-col justify-between">
+                          {/* En-tête */}
+                          <div className="space-y-1">
+                            <h3 className="text-xl font-bold text-white text-center py-2 px-3 bg-black/50 rounded-lg backdrop-blur-sm inline-block">
+                              {classe.name}
+                            </h3>
+                          </div>
+
+                          {/* Stats et description */}
+                          <div className="space-y-4 bg-black/70 backdrop-blur-sm p-3 rounded-lg">
+                            {/* Stats en barres */}
+                            <div className="grid grid-cols-2 gap-2 text-xs">
+                              {Object.entries(classe.stats).map(([stat, value]) => (
+                                <div key={stat} className="space-y-1">
+                                  <div className="flex justify-between text-gray-300 capitalize">
+                                    <span>{stat}</span>
+                                    <span>{value}%</span>
+                                  </div>
+                                  <div className="h-1 bg-gray-700 rounded-full overflow-hidden">
+                                    <div
+                                      className="h-full bg-gradient-to-r from-purple-500 to-blue-500 transition-all duration-300"
+                                      style={{ width: `${value}%` }}
+                                    />
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+
+                            {/* Description */}
+                            <p className="text-xs text-gray-300 line-clamp-3">
+                              {classe.description}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Effet de sélection */}
+                        {formData.classe === classe.name && (
+                          <div className="absolute inset-0 border-4 border-purple-500 rounded-xl">
+                            <div className="absolute inset-0 bg-purple-500/10 animate-pulse" />
+                          </div>
+                        )}
                       </div>
                     </button>
                   ))}
