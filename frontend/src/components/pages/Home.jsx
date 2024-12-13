@@ -10,9 +10,19 @@ function Home() {
   const navigate = useNavigate();
   const { playMusic } = useAudio();
 
+  const [formData, setFormData] = useState({
+    pseudo: '',
+    classe: '',
+    difficulty: ''
+  });
+
   const handleLogout = () => {
     // Ici vous pouvez ajouter la logique de déconnexion (clear token, etc.)
     navigate('/auth');
+  };
+
+  const handleInputChange = (e) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   useEffect(() => {
@@ -221,7 +231,7 @@ function Home() {
       {/* Modal Nouvelle Partie */}
       {showNewGame && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-[#1a1a1a] rounded-xl p-8 max-w-lg w-full border border-purple-500/20">
+          <div className="bg-[#1a1a1a] rounded-xl p-8 max-w-3xl w-full border border-purple-500/20">
             <h2 className="text-2xl font-bold text-purple-300 mb-4">Nouvelle Partie</h2>
             
             <div className="space-y-6 mb-6">
@@ -229,19 +239,59 @@ function Home() {
                 <label className="block text-purple-200 mb-2">Nom du personnage</label>
                 <input
                   type="text"
-                  className="w-full bg-[#2a2a2a] border border-purple-500/30 rounded-lg px-4 py-2 text-gray-300 focus:border-purple-500 focus:outline-none"
+                  name="pseudo"
+                  value={formData.pseudo}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 rounded-lg bg-black/50 border border-purple-500/30 text-gray-300 focus:border-purple-500 focus:outline-none"
                   placeholder="Entrez le nom de votre héros"
                 />
               </div>
 
               <div>
-                <label className="block text-purple-200 mb-2">Classe</label>
-                <select className="w-full bg-[#2a2a2a] border border-purple-500/30 rounded-lg px-4 py-2 text-gray-300">
-                  <option>Guerrier</option>
-                  <option>Mage</option>
-                  <option>Archer</option>
-                  <option>Assassin</option>
-                </select>
+                <label className="block text-purple-200 mb-2">Choisissez votre classe</label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {[
+                    {
+                      name: "Éclaireur des Vents",
+                      description: "Expert en navigation et exploration des îles flottantes. Capable de repérer les routes les plus sûres et de découvrir des passages secrets.",
+                      icon: "🧭"
+                    },
+                    {
+                      name: "Cristallomancien",
+                      description: "Maître dans l'art de comprendre et manipuler les cristaux. Possède une connexion unique avec les artefacts anciens.",
+                      icon: "💎"
+                    },
+                    {
+                      name: "Négociant des Cieux",
+                      description: "Expert en négociation et diplomatie. Dispose d'un vaste réseau de contacts et excelle dans les interactions sociales.",
+                      icon: "🤝"
+                    },
+                    {
+                      name: "Archéologue des Ruines",
+                      description: "Spécialiste des civilisations anciennes. Capable de déchiffrer les vestiges et de percer les mystères du passé.",
+                      icon: "📜"
+                    }
+                  ].map((classe) => (
+                    <button
+                      key={classe.name}
+                      onClick={() => setFormData(prev => ({ ...prev, classe: classe.name }))}
+                      className={`p-4 rounded-lg border transition-all duration-300 text-left group
+                        ${formData.classe === classe.name 
+                          ? 'border-purple-500 bg-purple-500/10' 
+                          : 'border-purple-500/30 hover:border-purple-500/60 hover:bg-purple-500/5'}`}
+                    >
+                      <div className="flex items-start gap-3">
+                        <span className="text-2xl group-hover:scale-110 transition-transform">
+                          {classe.icon}
+                        </span>
+                        <div>
+                          <h3 className="text-purple-300 font-semibold mb-1">{classe.name}</h3>
+                          <p className="text-sm text-gray-400 line-clamp-3">{classe.description}</p>
+                        </div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
               </div>
 
               <div>
@@ -250,7 +300,11 @@ function Home() {
                   {['Normal', 'Difficile', 'Expert'].map((diff) => (
                     <button
                       key={diff}
-                      className="px-4 py-2 border border-purple-500/30 rounded-lg text-gray-300 hover:bg-purple-500/10 transition-colors"
+                      onClick={() => setFormData(prev => ({ ...prev, difficulty: diff }))}
+                      className={`px-4 py-2 border rounded-lg transition-all duration-300
+                        ${formData.difficulty === diff
+                          ? 'border-purple-500 bg-purple-500/10 text-purple-300'
+                          : 'border-purple-500/30 text-gray-300 hover:border-purple-500/60 hover:bg-purple-500/5'}`}
                     >
                       {diff}
                     </button>
@@ -267,6 +321,13 @@ function Home() {
                 Annuler
               </button>
               <button
+                onClick={() => {
+                  if (!formData.pseudo || !formData.classe || !formData.difficulty) {
+                    // Ajouter une notification d'erreur ici
+                    return;
+                  }
+                  // Logique pour démarrer la partie
+                }}
                 className="flex-1 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg hover:from-purple-500 hover:to-blue-500 transition-colors"
               >
                 Commencer l'aventure
