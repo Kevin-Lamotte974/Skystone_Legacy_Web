@@ -5,6 +5,7 @@ import skystone_logo from '../../assets/logo/Crystal_Skystone_Legacy.png';
 const Auth = () => {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
+  const [isAnimating, setIsAnimating] = useState(false);
   const [formData, setFormData] = useState({
     pseudo: '',
     email: '',
@@ -25,14 +26,19 @@ const Auth = () => {
     }));
   };
 
-  const toggleForm = () => {
-    setIsLogin(!isLogin);
-    setFormData({
-      pseudo: '',
-      email: '',
-      motDePasse: '',
-      confirmerMotDePasse: ''
-    });
+  const toggleForm = (newState) => {
+    if (newState === isLogin) return;
+    setIsAnimating(true);
+    setTimeout(() => {
+      setIsLogin(newState);
+      setFormData({
+        pseudo: '',
+        email: '',
+        motDePasse: '',
+        confirmerMotDePasse: ''
+      });
+      setTimeout(() => setIsAnimating(false), 50);
+    }, 300);
   };
 
   return (
@@ -82,33 +88,42 @@ const Auth = () => {
         </div>
 
         {/* Formulaire */}
-        <div className="bg-black/30 backdrop-blur-md rounded-xl p-8 border border-purple-500/20">
+        <div className="bg-black/30 backdrop-blur-md rounded-xl p-8 border border-purple-500/20 relative">
           <div className="flex justify-center space-x-4 mb-8">
             <button
-              onClick={() => setIsLogin(true)}
-              className={`px-4 py-2 rounded-lg transition-all ${
+              onClick={() => toggleForm(true)}
+              className={`px-6 py-2 rounded-lg transition-all duration-300 relative ${
                 isLogin
                   ? 'bg-purple-600 text-white'
                   : 'text-purple-400 hover:bg-purple-600/10'
               }`}
             >
               Connexion
+              {isLogin && (
+                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-purple-400 to-blue-500 transform scale-x-100 transition-transform duration-300" />
+              )}
             </button>
             <button
-              onClick={() => setIsLogin(false)}
-              className={`px-4 py-2 rounded-lg transition-all ${
+              onClick={() => toggleForm(false)}
+              className={`px-6 py-2 rounded-lg transition-all duration-300 relative ${
                 !isLogin
                   ? 'bg-purple-600 text-white'
                   : 'text-purple-400 hover:bg-purple-600/10'
               }`}
             >
               Inscription
+              {!isLogin && (
+                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-purple-400 to-blue-500 transform scale-x-100 transition-transform duration-300" />
+              )}
             </button>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} 
+                className={`space-y-4 transition-all duration-300 transform ${
+                  isAnimating ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
+                }`}>
             {!isLogin && (
-              <div>
+              <div className="transform transition-all duration-300 ease-out">
                 <label className="block text-purple-300 mb-1">Pseudo</label>
                 <input
                   type="text"
@@ -146,7 +161,7 @@ const Auth = () => {
             </div>
 
             {!isLogin && (
-              <div>
+              <div className="transform transition-all duration-300 ease-out">
                 <label className="block text-purple-300 mb-1">Confirmer le mot de passe</label>
                 <input
                   type="password"
@@ -162,12 +177,18 @@ const Auth = () => {
             <button
               type="submit"
               className="w-full py-3 px-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg font-medium
-                       hover:from-purple-500 hover:to-blue-500 transform hover:scale-[1.02] transition-all
+                       hover:from-purple-500 hover:to-blue-500 transform hover:scale-[1.02] transition-all duration-300
                        focus:ring-2 focus:ring-purple-500/20"
             >
               {isLogin ? 'Se connecter' : "S'inscrire"}
             </button>
           </form>
+
+          {/* Indicateur de progression */}
+          <div className="absolute bottom-0 left-0 w-full h-1 bg-purple-500/10 rounded-b-xl overflow-hidden">
+            <div className={`h-full bg-gradient-to-r from-purple-500 to-blue-500 transition-all duration-300 ease-out
+                          ${isLogin ? 'w-1/2 translate-x-0' : 'w-1/2 translate-x-full'}`} />
+          </div>
         </div>
       </div>
     </div>
