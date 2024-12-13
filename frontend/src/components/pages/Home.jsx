@@ -92,8 +92,8 @@ function Home() {
         <div className="container mx-auto px-4 py-16 flex flex-col items-center justify-center min-h-screen">
           {/* Section héros */}
           <div className="text-center mb-16">
-            <div className="relative mb-8 group logo-container">
-              <div className="logo-glow"></div>
+            <div className="relative mb-8 group">
+              <div className="absolute -inset-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition duration-1000"></div>
               <img
                 src={skystone_logo}
                 alt="Skystone Legacy"
@@ -102,17 +102,15 @@ function Home() {
             </div>
             
             <h1 className="text-6xl md:text-7xl font-bold mb-6">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-blue-500 to-purple-400 animate-text-shine">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-blue-500 to-purple-400">
                 Skystone Legacy
               </span>
             </h1>
             
-            <div className="typewriter-container">
-              <p className="typewriter-text text-xl text-gray-300 max-w-2xl mx-auto mb-12 leading-relaxed">
-                Plongez dans un univers mystique où les îles flottantes abritent des secrets millénaires. 
-                Devenez le héros d'une légende où chaque cristal raconte une histoire.
-              </p>
-            </div>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-12 leading-relaxed">
+              Plongez dans un univers mystique où les îles flottantes abritent des secrets millénaires. 
+              Devenez le héros d'une légende où chaque cristal raconte une histoire.
+            </p>
           </div>
 
           {/* Grille des fonctionnalités */}
