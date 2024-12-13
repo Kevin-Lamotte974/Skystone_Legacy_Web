@@ -1,0 +1,98 @@
+/* Styles pour le logo */
+.logo-container {
+  position: relative;
+  transition: transform 0.5s ease;
+}
+
+.logo-container:hover {
+  transform: scale(1.1);
+}
+
+.logo-glow {
+  position: absolute;
+  inset: -0.5rem;
+  background: linear-gradient(to right, #9333ea, #3b82f6);
+  border-radius: 9999px;
+  filter: blur(1rem);
+  opacity: 0.75;
+  transition: opacity 1s;
+}
+
+.logo-glow:hover {
+  opacity: 1;
+}
+
+/* Styles pour le texte animé */
+.typewriter-container {
+  overflow: hidden;
+  max-width: 2xl;
+  margin: 0 auto;
+}
+
+.typewriter-text {
+  overflow: hidden;
+  border-right: 2px solid #a855f7;
+  white-space: pre-wrap;
+  margin: 0 auto;
+  animation: typing 4s steps(100, end),
+           blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+  from { max-width: 0 }
+  to { max-width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #a855f7 }
+}
+
+/* Animation du titre */
+@keyframes text-shine {
+  from {
+    background-position: 200% center;
+  }
+  to {
+    background-position: -200% center;
+  }
+}
+
+.animate-text-shine {
+  animation: text-shine 3s linear infinite;
+  background-size: 200% auto;
+}
+
+/* Styles pour les cartes de classe */
+.class-card {
+  transition: all 0.3s ease-in-out;
+}
+
+.class-card:hover {
+  transform: scale(1.05);
+}
+
+.class-card-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+}
+
+/* Styles spécifiques à la page d'accueil */
+.home-container {
+  min-height: 100vh;
+  background-color: #0B0B0F;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}

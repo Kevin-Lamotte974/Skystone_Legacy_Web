@@ -1,0 +1,68 @@
+/* Styles pour le logo */
+.logo-container {
+  position: relative;
+  transition: transform 0.5s ease;
+}
+
+.logo-container:hover {
+  transform: scale(1.1);
+}
+
+.logo-glow {
+  position: absolute;
+  inset: -0.5rem;
+  background: linear-gradient(to right, #9333ea, #3b82f6);
+  border-radius: 9999px;
+  filter: blur(1rem);
+  opacity: 0.75;
+  transition: opacity 1s;
+}
+
+.logo-glow:hover {
+  opacity: 1;
+}
+
+/* Styles pour le texte */
+.home-text {
+  text-align: center;
+  max-width: 2xl;
+  margin: 0 auto;
+  color: #D1D5DB;
+  line-height: 1.75;
+}
+
+/* Animation du titre */
+@keyframes text-shine {
+  from {
+    background-position: 200% center;
+  }
+  to {
+    background-position: -200% center;
+  }
+}
+
+.animate-text-shine {
+  animation: text-shine 3s linear infinite;
+  background-size: 200% auto;
+}
+
+/* Styles spécifiques à la page d'accueil */
+.home-container {
+  min-height: 100vh;
+  background-color: #0B0B0F;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}

@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAudio } from '../../context/AudioContext';
 import skystone_logo from '../../assets/logo/Crystal_Skystone_Legacy.png';
 import eclaireurImage from '../../assets/class/Éclaireur des Vents.png';
 import cristallomancienImage from '../../assets/class/Cristallomancien.png';
 import negociantImage from '../../assets/class/Négociant des Cieux.png';
 import archeologueImage from '../../assets/class/Archéologue des Ruines.png';
+import { useAudio } from '../../context/AudioContext';
+import '../../styles/Home.css';
 
 function Home() {
   const [showInfo, setShowInfo] = useState(false);
@@ -91,8 +92,8 @@ function Home() {
         <div className="container mx-auto px-4 py-16 flex flex-col items-center justify-center min-h-screen">
           {/* Section héros */}
           <div className="text-center mb-16">
-            <div className="relative mb-8 group">
-              <div className="absolute -inset-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition duration-1000"></div>
+            <div className="relative mb-8 group logo-container">
+              <div className="logo-glow"></div>
               <img
                 src={skystone_logo}
                 alt="Skystone Legacy"
@@ -106,10 +107,12 @@ function Home() {
               </span>
             </h1>
             
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-12 leading-relaxed">
-              Plongez dans un univers mystique où les îles flottantes abritent des secrets millénaires. 
-              Devenez le héros d'une légende où chaque cristal raconte une histoire.
-            </p>
+            <div className="typewriter-container">
+              <p className="typewriter-text text-xl text-gray-300 max-w-2xl mx-auto mb-12 leading-relaxed">
+                Plongez dans un univers mystique où les îles flottantes abritent des secrets millénaires. 
+                Devenez le héros d'une légende où chaque cristal raconte une histoire.
+              </p>
+            </div>
           </div>
 
           {/* Grille des fonctionnalités */}

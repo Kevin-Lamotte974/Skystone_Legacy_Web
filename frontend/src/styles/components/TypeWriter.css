@@ -1,0 +1,25 @@
+/* Styles pour le texte animé */
+.typewriter-container {
+  overflow: hidden;
+  max-width: 2xl;
+  margin: 0 auto;
+}
+
+.typewriter-text {
+  overflow: hidden;
+  border-right: 2px solid #a855f7;
+  white-space: pre-wrap;
+  margin: 0 auto;
+  animation: typing 4s steps(100, end),
+           blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+  from { max-width: 0 }
+  to { max-width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #a855f7 }
+}
