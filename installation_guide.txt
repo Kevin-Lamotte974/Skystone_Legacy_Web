@@ -1,0 +1,113 @@
+Guide d'installation Next.js et Django
+=====================================
+
+PARTIE 1 : Installation de Next.js
+--------------------------------
+
+1. Créer l'application Next.js :
+   ```bash
+   npx create-next-app@latest frontend --typescript --tailwind --eslint
+   ```
+
+2. Répondre aux questions de configuration :
+   - Would you like to use TypeScript? → Yes
+   - Would you like to use ESLint? → Yes
+   - Would you like to use Tailwind CSS? → Yes
+   - Would you like to use src/ directory? → Yes
+   - Would you like to use App Router? → Yes
+   - Would you like to customize the default import alias? → No
+
+3. Naviguer dans le dossier frontend :
+   ```bash
+   cd frontend
+   ```
+
+4. Lancer le serveur de développement :
+   ```bash
+   npm run dev
+   ```
+   Le site sera accessible sur : http://localhost:3000
+
+
+PARTIE 2 : Installation de Django
+-------------------------------
+
+1. Créer l'environnement virtuel Python :
+   ```bash
+   python -m venv backend/venv
+   ```
+
+2. Activer l'environnement virtuel :
+   - Sur Windows (PowerShell) :
+     ```bash
+     .\backend\venv\Scripts\Activate.ps1
+     ```
+   - Sur Windows (CMD) :
+     ```bash
+     backend\venv\Scripts\activate.bat
+     ```
+
+3. Installer Django et les dépendances :
+   ```bash
+   pip install django djangorestframework django-cors-headers
+   ```
+
+4. Créer le projet Django :
+   ```bash
+   python -m django startproject backend_api backend
+   ```
+
+5. Créer l'application API :
+   ```bash
+   cd backend
+   python manage.py startapp api
+   ```
+
+6. Appliquer les migrations :
+   ```bash
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
+
+7. Lancer le serveur Django :
+   ```bash
+   python manage.py runserver
+   ```
+   L'API sera accessible sur : http://localhost:8000
+
+
+Configuration supplémentaire recommandée
+-------------------------------------
+
+1. Dans backend/backend_api/settings.py, ajouter :
+   ```python
+   INSTALLED_APPS = [
+       ...
+       'rest_framework',
+       'corsheaders',
+       'api',
+   ]
+
+   MIDDLEWARE = [
+       'corsheaders.middleware.CorsMiddleware',
+       ...
+   ]
+
+   CORS_ALLOWED_ORIGINS = [
+       "http://localhost:3000",  # Frontend Next.js
+   ]
+   ```
+
+2. Créer un fichier requirements.txt pour le backend :
+   ```bash
+   pip freeze > requirements.txt
+   ```
+
+Notes importantes
+---------------
+- Toujours activer l'environnement virtuel avant de travailler sur le backend
+- Le frontend (Next.js) tourne sur le port 3000
+- Le backend (Django) tourne sur le port 8000
+- Pour une nouvelle installation, installer les dépendances avec :
+  - Frontend : npm install
+  - Backend : pip install -r requirements.txt
