@@ -163,7 +163,7 @@ function Home() {
             </button>
             
             <button
-              onClick={() => setShowOptions(true)}
+              onClick={() => navigate('/options')}
               className="px-8 py-4 border-2 border-purple-500 text-purple-400 rounded-lg font-bold
                        hover:bg-purple-500/10 transition-all duration-300 backdrop-blur-sm"
             >
@@ -181,76 +181,22 @@ function Home() {
         </div>
       </main>
 
-      {/* Modal Options */}
-      {showOptions && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-[#1a1a1a] rounded-xl p-8 max-w-lg w-full border border-purple-500/20">
-            <h2 className="text-2xl font-bold text-purple-300 mb-4">Options</h2>
-            
-            {/* Options de jeu */}
-            <div className="space-y-6 mb-6">
-              <div>
-                <h3 className="text-lg font-semibold text-purple-200 mb-3">Audio</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-300">Musique</span>
-                    <input type="range" className="w-48 accent-purple-500" />
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-300">Effets sonores</span>
-                    <input type="range" className="w-48 accent-purple-500" />
-                  </div>
-                </div>
-              </div>
-              
-              <div>
-                <h3 className="text-lg font-semibold text-purple-200 mb-3">Graphismes</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-300">Qualité des effets</span>
-                    <select className="bg-[#2a2a2a] border border-purple-500/30 rounded-lg px-4 py-2 text-gray-300">
-                      <option>Basse</option>
-                      <option>Moyenne</option>
-                      <option>Haute</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <button
-                onClick={() => setShowOptions(false)}
-                className="flex-1 px-6 py-3 border border-purple-500 text-purple-400 rounded-lg hover:bg-purple-500/10 transition-colors"
-              >
-                Fermer
-              </button>
-              <button
-                className="flex-1 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-500 transition-colors"
-              >
-                Sauvegarder
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Modal Nouvelle Partie */}
       {showNewGame && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-[#1a1a1a] rounded-xl p-8 max-w-3xl w-full border border-purple-500/20">
-            <h2 className="text-2xl font-bold text-purple-300 mb-4">Nouvelle Partie</h2>
+          <div className="bg-[#1a1a1a] rounded-xl p-8 max-w-4xl w-full border border-purple-500/20 overflow-y-auto max-h-[90vh]">
+            <h2 className="text-2xl font-bold text-purple-300 mb-6">Nouvelle Partie</h2>
             
-            <div className="space-y-6 mb-6">
+            <div className="space-y-8">
               <div>
-                <label className="block text-purple-200 mb-2">Nom du personnage</label>
+                <label className="block text-purple-200 mb-2">Pseudo</label>
                 <input
                   type="text"
                   name="pseudo"
                   value={formData.pseudo}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 rounded-lg bg-black/50 border border-purple-500/30 text-gray-300 focus:border-purple-500 focus:outline-none"
-                  placeholder="Entrez le nom de votre héros"
+                  className="w-full bg-[#2a2a2a] border border-purple-500/30 rounded-lg px-4 py-2 text-white focus:border-purple-500 focus:outline-none"
+                  placeholder="Entrez votre pseudo..."
                 />
               </div>
 
@@ -388,7 +334,7 @@ function Home() {
 
               <div>
                 <label className="block text-purple-200 mb-2">Difficulté</label>
-                <div className="grid grid-cols-3 gap-4">
+                <div className="flex gap-4">
                   {['Normal', 'Difficile', 'Expert'].map((diff) => (
                     <button
                       key={diff}
@@ -405,7 +351,7 @@ function Home() {
               </div>
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex gap-4 mt-8">
               <button
                 onClick={() => setShowNewGame(false)}
                 className="flex-1 px-6 py-3 border border-purple-500 text-purple-400 rounded-lg hover:bg-purple-500/10 transition-colors"
@@ -413,16 +359,14 @@ function Home() {
                 Annuler
               </button>
               <button
+                className="flex-1 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-500 transition-colors"
                 onClick={() => {
-                  if (!formData.pseudo || !formData.classe || !formData.difficulty) {
-                    // Ajouter une notification d'erreur ici
-                    return;
-                  }
-                  // Logique pour démarrer la partie
+                  // Ici, vous pouvez ajouter la logique pour démarrer une nouvelle partie
+                  console.log('Nouvelle partie :', formData);
+                  setShowNewGame(false);
                 }}
-                className="flex-1 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg hover:from-purple-500 hover:to-blue-500 transition-colors"
               >
-                Commencer l'aventure
+                Commencer
               </button>
             </div>
           </div>
