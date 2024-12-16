@@ -5,6 +5,7 @@ import Auth from './components/pages/Auth';
 import Login from './components/Login';
 import Register from './components/Register';
 import './App.css';
+import CardList from './components/pages/CardList';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Navigate to="/auth" />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/cards" element={<CardList />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>

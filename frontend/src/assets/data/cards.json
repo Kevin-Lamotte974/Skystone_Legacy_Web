@@ -1,0 +1,143 @@
+{
+    "cards": [
+      {
+        "name": "Vent de Guérison",
+        "description": "Une brise apaisante qui soigne les blessures.",
+        "energy_cost": 2,
+        "stats": {
+          "exploration": 30,
+          "combat": 0,
+          "diplomacy": 10,
+          "knowledge": 20
+        },
+        "class_association": "Éclaireur des Vents",
+        "rarity": "Rare",
+        "damage_base": -10,
+        "damage_bonus": {
+          "type": "multiplication",
+          "stat": "knowledge",
+          "value": 0.2
+        },
+        "applicability": "all allies",
+        "image": "https://picsum.photos/500/500?random=1",
+        "special_effect": "Double l'effet si votre énergie est supérieure à 5.",
+        "level_requirement": 3
+      },
+      {
+        "name": "Cristallisation Destructive",
+        "description": "Canalise une énergie cristalline pour des dégâts massifs.",
+        "energy_cost": 5,
+        "stats": {
+          "exploration": 0,
+          "combat": 90,
+          "diplomacy": 0,
+          "knowledge": 40
+        },
+        "class_association": "Cristallomancien",
+        "rarity": "Épique",
+        "damage_base": 30,
+        "damage_bonus": {
+          "type": "addition",
+          "stat": "combat",
+          "value": 10
+        },
+        "applicability": "single enemy",
+        "image": "https://picsum.photos/500/500?random=2",
+        "special_effect": "Inflige 15 dégâts supplémentaires si votre connaissance est supérieure à 50%.",
+        "level_requirement": 4
+      },
+      {
+        "name": "Traité de Paix",
+        "description": "Une diplomatie exemplaire pour apaiser les conflits.",
+        "energy_cost": 3,
+        "stats": {
+          "exploration": 0,
+          "combat": 0,
+          "diplomacy": 90,
+          "knowledge": 20
+        },
+        "class_association": "Négociant des Cieux",
+        "rarity": "Commune",
+        "damage_base": -15,
+        "damage_bonus": {
+          "type": "multiplication",
+          "stat": "diplomacy",
+          "value": 0.1
+        },
+        "applicability": "single ally",
+        "image": "https://picsum.photos/500/500?random=3",
+        "special_effect": "Soigne un allié et réduit de moitié les dégâts reçus pendant un tour.",
+        "level_requirement": 2
+      },
+      {
+        "name": "Frappe Cristalline",
+        "description": "Une attaque concentrée pour un impact dévastateur.",
+        "energy_cost": 4,
+        "stats": {
+          "exploration": 0,
+          "combat": 80,
+          "diplomacy": 0,
+          "knowledge": 20
+        },
+        "class_association": "Cristallomancien",
+        "rarity": "Légendaire",
+        "damage_base": 50,
+        "damage_bonus": {
+          "type": "addition",
+          "stat": "knowledge",
+          "value": 5
+        },
+        "applicability": "all enemies",
+        "image": "https://picsum.photos/500/500?random=4",
+        "special_effect": "Inflige 20 dégâts supplémentaires si utilisée après une autre carte de Cristallomancien.",
+        "level_requirement": 5
+      },
+      {
+        "name": "Sagesse des Ruines",
+        "description": "Un ancien savoir qui renforce vos capacités.",
+        "energy_cost": 2,
+        "stats": {
+          "exploration": 10,
+          "combat": 0,
+          "diplomacy": 0,
+          "knowledge": 70
+        },
+        "class_association": "Archéologue des Ruines",
+        "rarity": "Rare",
+        "damage_base": 0,
+        "damage_bonus": {
+          "type": "multiplication",
+          "stat": "knowledge",
+          "value": 0.3
+        },
+        "applicability": "self",
+        "image": "https://picsum.photos/500/500?random=5",
+        "special_effect": "Augmente toutes vos stats de 20% pour deux tours.",
+        "level_requirement": 3
+      },
+      {
+        "name": "Éclat de Vent Tranchant",
+        "description": "Un vent acéré qui coupe tout sur son passage.",
+        "energy_cost": 3,
+        "stats": {
+          "exploration": 40,
+          "combat": 60,
+          "diplomacy": 0,
+          "knowledge": 0
+        },
+        "class_association": "Éclaireur des Vents",
+        "rarity": "Commune",
+        "damage_base": 20,
+        "damage_bonus": {
+          "type": "multiplication",
+          "stat": "exploration",
+          "value": 0.15
+        },
+        "applicability": "single enemy",
+        "image": "https://picsum.photos/500/500?random=6",
+        "special_effect": "Réduit de 10% la stat de combat de l'ennemi touché.",
+        "level_requirement": 2
+      }
+    ]
+  }
+  

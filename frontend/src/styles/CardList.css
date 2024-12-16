@@ -1,0 +1,786 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #2c1810;
+    font-family: 'Cinzel', serif;
+    background: radial-gradient(circle, #462b1e 0%, #1a0f0a 100%);
+    gap: 50px;
+    padding: 40px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 320px;
+    height: 480px;
+    position: relative;
+    transition: transform 0.3s ease;
+    transform-style: preserve-3d;
+    margin: 20px;
+    z-index: 1;
+    animation: bronzeFloat 5s infinite ease-in-out;
+    overflow: visible;
+}
+
+@keyframes bronzeFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-7px) rotate(0.5deg);
+    }
+}
+
+.card .card-frame {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    padding: 15px;
+    background: linear-gradient(135deg, #8B4513, #654321);
+    border: 3px solid #CD7F32;
+    box-shadow: 
+        0 0 15px rgba(205, 127, 50, 0.4),
+        0 0 30px rgba(139, 69, 19, 0.3),
+        inset 0 0 15px rgba(205, 127, 50, 0.3);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.card .card-frame::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, 
+        rgba(205, 127, 50, 0.1) 0%,
+        transparent 70%);
+    animation: bronzeGlow 8s infinite linear;
+}
+
+@keyframes bronzeGlow {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.card .card-image-container {
+    position: relative;
+    width: 100%;
+    border-radius: 15px 15px 5px 5px;
+    overflow: hidden;
+    border: 2px solid #CD7F32;
+    box-shadow: 
+        0 0 10px rgba(205, 127, 50, 0.4),
+        inset 0 0 10px rgba(205, 127, 50, 0.4);
+    margin-bottom: 10px;
+}
+
+.card .card-image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(205, 127, 50, 0.3),
+        transparent
+    );
+    transform: skewX(-25deg);
+    animation: bronzeShimmer 3s infinite;
+}
+
+@keyframes bronzeShimmer {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 200%;
+    }
+}
+
+.card .card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 13px 13px 3px 3px;
+}
+
+.card .card-name {
+    color: #CD7F32;
+    font-size: 1.3em;
+    font-weight: 700;
+    text-align: center;
+    margin: 8px 0;
+    text-shadow: 
+        2px 2px 2px #000,
+        0 0 10px rgba(205, 127, 50, 0.5);
+    letter-spacing: 1px;
+    padding: 0 10px;
+    line-height: 1.2;
+    animation: bronzePulse 3s infinite;
+}
+
+@keyframes bronzePulse {
+    0%, 100% {
+        text-shadow: 
+            2px 2px 2px #000,
+            0 0 10px rgba(205, 127, 50, 0.5);
+    }
+    50% {
+        text-shadow: 
+            2px 2px 2px #000,
+            0 0 15px rgba(205, 127, 50, 0.7),
+            0 0 30px rgba(205, 127, 50, 0.4);
+    }
+}
+
+.card .card-type {
+    color: #DEB887;
+    font-size: 1.1em;
+    text-align: center;
+    margin-bottom: 12px;
+    text-shadow: 1px 1px 2px #000;
+    padding: 0 10px;
+    line-height: 1.2;
+}
+
+.card .card-stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 5px 15px;
+    margin: 15px 0;
+    background: linear-gradient(to right, transparent, rgba(205, 127, 50, 0.1), transparent);
+}
+
+.card .stat {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle at center, #8B4513, #654321);
+    border: 2px solid #CD7F32;
+    border-radius: 50%;
+    color: #CD7F32;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-shadow: 1px 1px 2px #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        0 0 10px rgba(205, 127, 50, 0.3),
+        inset 0 0 5px rgba(205, 127, 50, 0.3);
+    animation: statGlowBronze 3s infinite ease-in-out;
+}
+
+@keyframes statGlowBronze {
+    0%, 100% {
+        box-shadow: 
+            0 0 10px rgba(205, 127, 50, 0.3),
+            inset 0 0 5px rgba(205, 127, 50, 0.3);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 
+            0 0 15px rgba(205, 127, 50, 0.5),
+            inset 0 0 10px rgba(205, 127, 50, 0.5);
+        transform: scale(1.05);
+    }
+}
+
+.card .card-description {
+    color: #DEB887;
+    font-size: 1em;
+    padding: 12px;
+    text-align: center;
+    margin: 10px;
+    background: rgba(139, 69, 19, 0.1);
+    border-radius: 10px;
+    border: 1px solid #CD7F32;
+    text-shadow: 1px 1px 1px #000;
+    line-height: 1.4;
+    box-shadow: 
+        0 0 10px rgba(205, 127, 50, 0.2),
+        inset 0 0 5px rgba(205, 127, 50, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.card .card-description::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(205, 127, 50, 0.1),
+        transparent
+    );
+    animation: bronzeDescriptionShine 4s infinite;
+}
+
+@keyframes bronzeDescriptionShine {
+    0% {
+        left: -100%;
+    }
+    50% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Styles pour la carte légendaire */
+.legendary-card {
+    position: relative;
+    overflow: visible;
+    transform-style: preserve-3d;
+    animation: legendaryFloat 6s infinite ease-in-out;
+}
+
+@keyframes legendaryFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(1deg);
+    }
+}
+
+.legendary-card .card-frame {
+    border: 4px solid #ffd700;
+    background: linear-gradient(135deg, #2c1810, #1a0f0a);
+    box-shadow: 
+        0 0 20px rgba(255, 215, 0, 0.4),
+        0 0 40px rgba(255, 165, 0, 0.3),
+        inset 0 0 20px rgba(255, 215, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.legendary-card .card-frame::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, 
+        rgba(255, 215, 0, 0.1) 0%,
+        transparent 50%);
+    animation: mysticalGlow 4s infinite linear;
+}
+
+@keyframes mysticalGlow {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.legendary-card .card-image-container {
+    border: 3px solid #ffd700;
+    box-shadow: 
+        0 0 15px rgba(255, 215, 0, 0.5),
+        inset 0 0 15px rgba(255, 215, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.legendary-card .card-image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transform: skewX(-25deg);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 200%;
+    }
+}
+
+.legendary-card .card-name {
+    color: #ffd700;
+    font-size: 1.5em;
+    text-align: center;
+    margin: 10px 0;
+    text-shadow: 
+        2px 2px 2px #000,
+        0 0 10px #ffd700,
+        0 0 20px #ffa500,
+        0 0 30px #ff8c00;
+    animation: textPulse 2s infinite;
+}
+
+@keyframes textPulse {
+    0%, 100% {
+        text-shadow: 
+            2px 2px 2px #000,
+            0 0 10px #ffd700,
+            0 0 20px #ffa500;
+    }
+    50% {
+        text-shadow: 
+            2px 2px 2px #000,
+            0 0 15px #ffd700,
+            0 0 30px #ffa500,
+            0 0 45px #ff8c00;
+    }
+}
+
+.legendary-card .card-type {
+    color: #ffd700;
+    text-align: center;
+    font-size: 1.2em;
+    margin: 5px 0;
+    text-shadow: 
+        1px 1px 2px #000,
+        0 0 8px #ffd700;
+    opacity: 0.9;
+}
+
+.legendary-card .card-stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 15px 0;
+}
+
+.legendary-card .stat {
+    background: rgba(255, 215, 0, 0.1);
+    border: 2px solid #ffd700;
+    color: #ffd700;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2em;
+    box-shadow: 
+        0 0 10px rgba(255, 215, 0, 0.3),
+        inset 0 0 10px rgba(255, 215, 0, 0.3);
+    animation: statPulse 3s infinite ease-in-out;
+}
+
+@keyframes statPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 
+            0 0 10px rgba(255, 215, 0, 0.3),
+            inset 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 
+            0 0 20px rgba(255, 215, 0, 0.5),
+            inset 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+}
+
+.legendary-card .card-description {
+    color: #ffd700;
+    padding: 12px;
+    margin: 10px;
+    border-radius: 10px;
+    border: 1px solid #ffd700;
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 
+        0 0 15px rgba(255, 215, 0, 0.2),
+        inset 0 0 10px rgba(255, 215, 0, 0.2);
+    font-style: italic;
+    line-height: 1.4;
+    position: relative;
+    overflow: hidden;
+}
+
+.legendary-card .card-description::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 215, 0, 0.1),
+        transparent
+    );
+    animation: descriptionShine 4s infinite;
+}
+
+@keyframes descriptionShine {
+    0% {
+        left: -100%;
+    }
+    50% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.legendary-card .star {
+    position: absolute;
+    color: #ffd700;
+    font-size: 20px;
+    text-shadow: 
+        0 0 15px #ffd700,
+        0 0 30px #ffa500,
+        0 0 45px #ff8c00;
+    animation: starFloat 4s infinite ease-in-out;
+    z-index: 3;
+    opacity: 0.8;
+}
+
+.legendary-card .star:hover {
+    animation: starBurst 1s forwards;
+}
+
+@keyframes starBurst {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* Styles améliorés pour la carte épique */
+.epic-card {
+    position: relative;
+    overflow: visible;
+    transform-style: preserve-3d;
+    animation: epicFloat 4s infinite ease-in-out;
+}
+
+@keyframes epicFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.epic-card .card-frame {
+    border: 3px solid #4a90e2;
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+    box-shadow: 
+        0 0 15px rgba(74, 144, 226, 0.4),
+        0 0 30px rgba(74, 144, 226, 0.3),
+        inset 0 0 15px rgba(74, 144, 226, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.epic-card .card-frame::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, 
+        rgba(74, 144, 226, 0.1) 0%,
+        transparent 70%);
+    animation: epicGlow 8s infinite linear;
+}
+
+@keyframes epicGlow {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.epic-card .crystal {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle at center, #4a90e2, #2171cd);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    z-index: 3;
+    animation: crystalGlow 3s infinite ease-in-out;
+}
+
+.epic-card .crystal::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: rgba(255, 255, 255, 0.3);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.epic-card .crystal-tl { top: -15px; left: -15px; }
+.epic-card .crystal-tr { top: -15px; right: -15px; }
+.epic-card .crystal-bl { bottom: -15px; left: -15px; }
+.epic-card .crystal-br { bottom: -15px; right: -15px; }
+
+.epic-card .card-image-container {
+    border: 2px solid #4a90e2;
+    box-shadow: 
+        0 0 10px rgba(74, 144, 226, 0.4),
+        inset 0 0 10px rgba(74, 144, 226, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.epic-card .card-image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(74, 144, 226, 0.3),
+        transparent
+    );
+    transform: skewX(-25deg);
+    animation: epicShimmer 3s infinite;
+}
+
+@keyframes epicShimmer {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 200%;
+    }
+}
+
+.epic-card .card-name {
+    color: #4a90e2;
+    font-size: 1.4em;
+    text-align: center;
+    margin: 10px 0;
+    text-shadow: 
+        0 0 10px rgba(74, 144, 226, 0.5),
+        0 0 20px rgba(74, 144, 226, 0.3);
+    animation: epicPulse 2s infinite;
+}
+
+@keyframes epicPulse {
+    0%, 100% {
+        text-shadow: 
+            0 0 10px rgba(74, 144, 226, 0.5),
+            0 0 20px rgba(74, 144, 226, 0.3);
+    }
+    50% {
+        text-shadow: 
+            0 0 15px rgba(74, 144, 226, 0.7),
+            0 0 30px rgba(74, 144, 226, 0.5);
+    }
+}
+
+.epic-card .card-type {
+    color: #5a9fe2;
+    font-size: 1.1em;
+    text-align: center;
+    margin: 5px 0;
+    text-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
+    letter-spacing: 1px;
+}
+
+.epic-card .card-stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 15px 0;
+}
+
+.epic-card .stat {
+    background: rgba(74, 144, 226, 0.1);
+    border: 2px solid #4a90e2;
+    color: #4a90e2;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        0 0 10px rgba(74, 144, 226, 0.3),
+        inset 0 0 5px rgba(74, 144, 226, 0.3);
+    animation: statGlow 3s infinite ease-in-out;
+}
+
+@keyframes statGlow {
+    0%, 100% {
+        box-shadow: 
+            0 0 10px rgba(74, 144, 226, 0.3),
+            inset 0 0 5px rgba(74, 144, 226, 0.3);
+    }
+    50% {
+        box-shadow: 
+            0 0 15px rgba(74, 144, 226, 0.5),
+            inset 0 0 10px rgba(74, 144, 226, 0.5);
+    }
+}
+
+.epic-card .card-description {
+    color: #4a90e2;
+    padding: 12px;
+    margin: 10px;
+    border-radius: 10px;
+    border: 1px solid #4a90e2;
+    background: rgba(74, 144, 226, 0.05);
+    box-shadow: 
+        0 0 10px rgba(74, 144, 226, 0.2),
+        inset 0 0 5px rgba(74, 144, 226, 0.2);
+    font-style: italic;
+    line-height: 1.4;
+    position: relative;
+    overflow: hidden;
+}
+
+.epic-card .card-description::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(74, 144, 226, 0.1),
+        transparent
+    );
+    animation: epicDescriptionShine 4s infinite;
+}
+
+@keyframes epicDescriptionShine {
+    0% {
+        left: -100%;
+    }
+    50% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes crystalGlow {
+    0%, 100% {
+        box-shadow: 
+            0 0 15px rgba(74, 144, 226, 0.5),
+            0 0 30px rgba(74, 144, 226, 0.3),
+            inset 0 0 15px rgba(74, 144, 226, 0.3);
+        transform: scale(1) rotate(0deg);
+    }
+    50% {
+        box-shadow: 
+            0 0 25px rgba(74, 144, 226, 0.7),
+            0 0 50px rgba(74, 144, 226, 0.5),
+            inset 0 0 25px rgba(74, 144, 226, 0.5);
+        transform: scale(1.1) rotate(180deg);
+    }
+}
+
+/* Animations */
+@keyframes starFloat {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    25% { transform: translate(5px, -5px) rotate(90deg) scale(1.2); }
+    50% { transform: translate(0, -10px) rotate(180deg) scale(1); }
+    75% { transform: translate(-5px, -5px) rotate(270deg) scale(1.2); }
+    100% { transform: translate(0, 0) rotate(360deg) scale(1); }
+}
+
+@keyframes starGlow {
+    0%, 100% { 
+        opacity: 0.8; 
+        transform: scale(1);
+        text-shadow: 
+            0 0 10px #ffd700,
+            0 0 20px #ffd700,
+            0 0 30px #ffa500;
+    }
+    50% { 
+        opacity: 1; 
+        transform: scale(1.3);
+        text-shadow: 
+            0 0 15px #ffd700,
+            0 0 30px #ffd700,
+            0 0 45px #ffa500,
+            0 0 60px #ff8c00;
+    }
+}
+
+@keyframes starShoot {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(200%) translateY(200%) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+@keyframes crystalGlow {
+    0%, 100% {
+        box-shadow: 
+            0 0 15px rgba(74, 144, 226, 0.5),
+            0 0 30px rgba(74, 144, 226, 0.3),
+            inset 0 0 15px rgba(74, 144, 226, 0.3);
+        transform: scale(1) rotate(0deg);
+    }
+    50% {
+        box-shadow: 
+            0 0 25px rgba(74, 144, 226, 0.7),
+            0 0 50px rgba(74, 144, 226, 0.5),
+            inset 0 0 25px rgba(74, 144, 226, 0.5);
+        transform: scale(1.1) rotate(180deg);
+    }
+}
