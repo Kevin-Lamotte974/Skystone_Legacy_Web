@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import skystone_logo from '../../assets/logo/Crystal_Skystone_Legacy.png';
 
 const Auth = () => {
@@ -43,6 +43,7 @@ const Auth = () => {
 
   return (
     <div className="min-h-screen bg-[#0B0B0F] flex items-center justify-center relative overflow-hidden px-4">
+      
       {/* Effets d'arrière-plan */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-black/50"></div>
