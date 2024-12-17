@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import skystone_logo from '../../assets/logo/Crystal_Skystone_Legacy.png';
-import eclaireurImage from '../../assets/class/Éclaireur des Vents.png';
+import eclaireurImage from '../../assets/class/Eclaireur.png';
 import cristallomancienImage from '../../assets/class/Cristallomancien.png';
 import negociantImage from '../../assets/class/Négociant des Cieux.png';
 import archeologueImage from '../../assets/class/Archéologue des Ruines.png';
@@ -92,8 +92,8 @@ function Home() {
         <div className="container mx-auto px-4 py-16 flex flex-col items-center justify-center min-h-screen">
           {/* Section héros */}
           <div className="text-center mb-16">
-            <div className="relative mb-8 group logo-container">
-              <div className="logo-glow"></div>
+            <div className="relative mb-8 group">
+              <div className="absolute -inset-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition duration-1000"></div>
               <img
                 src={skystone_logo}
                 alt="Skystone Legacy"
@@ -102,17 +102,15 @@ function Home() {
             </div>
             
             <h1 className="text-6xl md:text-7xl font-bold mb-6">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-blue-500 to-purple-400 animate-text-shine">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-blue-500 to-purple-400">
                 Skystone Legacy
               </span>
             </h1>
             
-            <div className="typewriter-container">
-              <p className="typewriter-text text-xl text-gray-300 max-w-2xl mx-auto mb-12 leading-relaxed">
-                Plongez dans un univers mystique où les îles flottantes abritent des secrets millénaires. 
-                Devenez le héros d'une légende où chaque cristal raconte une histoire.
-              </p>
-            </div>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-12 leading-relaxed">
+              Plongez dans un univers mystique où les îles flottantes abritent des secrets millénaires. 
+              Devenez le héros d'une légende où chaque cristal raconte une histoire.
+            </p>
           </div>
 
           {/* Grille des fonctionnalités */}
@@ -252,80 +250,44 @@ function Home() {
                     <button
                       key={classe.name}
                       onClick={() => setFormData(prev => ({ ...prev, classe: classe.name }))}
-                      className={`relative group perspective-1000 transform transition-transform duration-500 hover:scale-105 ${
-                        formData.classe === classe.name ? 'ring-4 ring-purple-500/50' : ''
+                      className={`class-card relative ${
+                        formData.classe === classe.name ? 'selected' : ''
                       }`}
                     >
-                      {/* Carte */}
-                      <div className={`relative w-full aspect-[3/4] rounded-xl overflow-hidden transform transition-transform duration-500
-                        ${formData.classe === classe.name ? 'shadow-xl shadow-purple-500/30' : 'shadow-lg shadow-black/20'}
-                        group-hover:shadow-xl group-hover:shadow-purple-500/20`}>
-                        
-                        {/* Bordure animée */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        
-                        {/* Fond avec motif */}
-                        <div className="absolute inset-0 bg-[#1a1a1a] border-2 border-purple-500/30">
-                          {/* Motif géométrique */}
-                          <div className="absolute inset-0 opacity-10 bg-repeat"
-                               style={{
-                                 backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l30 30-30 30L0 30z' fill='%239C27B0' fill-opacity='0.4'/%3E%3C/svg%3E")`
-                               }} />
-                        </div>
-
+                      <div className="relative w-full aspect-[3/4] rounded-xl overflow-hidden bg-[#1E1E2E]">
                         {/* Image de la classe */}
                         <div className="absolute inset-0">
                           <img
                             src={classe.image}
                             alt={classe.name}
-                            className="w-full h-full object-cover opacity-80 group-hover:opacity-90 transition-opacity duration-300"
+                            className="w-full h-full object-contain"
                           />
-                          {/* Overlay dégradé */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
                         </div>
 
-                        {/* Contenu */}
-                        <div className="absolute inset-0 p-4 flex flex-col justify-between">
-                          {/* En-tête */}
-                          <div className="space-y-1">
-                            <h3 className="text-xl font-bold text-white text-center py-2 px-3 bg-black/50 rounded-lg backdrop-blur-sm inline-block">
-                              {classe.name}
-                            </h3>
-                          </div>
+                        {/* Titre en haut */}
+                        <div className="absolute top-0 left-0 right-0 p-2 bg-black/70 backdrop-blur-sm">
+                          <h3 className="text-lg font-bold text-white text-center">
+                            {classe.name}
+                          </h3>
+                        </div>
 
-                          {/* Stats et description */}
-                          <div className="space-y-4 bg-black/70 backdrop-blur-sm p-3 rounded-lg">
-                            {/* Stats en barres */}
-                            <div className="grid grid-cols-2 gap-2 text-xs">
-                              {Object.entries(classe.stats).map(([stat, value]) => (
-                                <div key={stat} className="space-y-1">
-                                  <div className="flex justify-between text-gray-300 capitalize">
-                                    <span>{stat}</span>
-                                    <span>{value}%</span>
-                                  </div>
-                                  <div className="h-1 bg-gray-700 rounded-full overflow-hidden">
-                                    <div
-                                      className="h-full bg-gradient-to-r from-purple-500 to-blue-500 transition-all duration-300"
-                                      style={{ width: `${value}%` }}
-                                    />
-                                  </div>
+                        {/* Stats en bas */}
+                        <div className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-sm p-3">
+                          <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
+                            {Object.entries(classe.stats).map(([stat, value]) => (
+                              <div key={stat} className="flex justify-between items-center">
+                                <span className="text-gray-300 capitalize">{stat}</span>
+                                <div className="flex-1 mx-2 h-1 bg-gray-700 rounded-full overflow-hidden">
+                                  <div
+                                    className="h-full bg-cyan-400"
+                                    style={{ width: `${value}%` }}
+                                  />
                                 </div>
-                              ))}
-                            </div>
-
-                            {/* Description */}
-                            <p className="text-xs text-gray-300 line-clamp-3">
-                              {classe.description}
-                            </p>
+                                <span className="text-cyan-400 w-8 text-right">{value}%</span>
+                              </div>
+                            ))}
                           </div>
                         </div>
-
-                        {/* Effet de sélection */}
-                        {formData.classe === classe.name && (
-                          <div className="absolute inset-0 border-4 border-purple-500 rounded-xl">
-                            <div className="absolute inset-0 bg-purple-500/10 animate-pulse" />
-                          </div>
-                        )}
                       </div>
                     </button>
                   ))}
