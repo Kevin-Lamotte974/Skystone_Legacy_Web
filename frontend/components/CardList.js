@@ -1,165 +1,255 @@
-import { React, useState, useEffect } from 'react';
-import { FaBook, FaHandRock, FaHandshake, FaMapMarkedAlt } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import {
+    FaInternetExplorer,
+    FaBalanceScale,
+} from 'react-icons/fa';
+import { GiBroadsword, GiClassicalKnowledge } from "react-icons/gi";
+import CardDetail from './CardDetail';
+import Image from 'next/image';
 
 function getCardRarityStyles(rarity) {
-  switch (rarity.toLowerCase()) {
-      case 'commune':
-          return 'bg-gray-300 text-gray-700 border-gray-400';
-      case 'rare':
-          return 'bg-blue-500 text-white border-blue-600';
-      case 'légendaire':
-          return 'bg-orange-500 text-white border-orange-600';
-      case 'épique':
-          return 'bg-purple-700 text-white border-purple-800';
-      default:
-          return 'bg-gray-200 text-gray-600 border-gray-300';
-  }
+    switch (rarity.toLowerCase()) {
+        case 'commune':
+            return 'bg-gray-300 text-gray-700 border-gray-400';
+        case 'rare':
+            return 'bg-blue-500 text-white border-blue-600';
+        case 'légendaire':
+            return 'bg-orange-500 text-white border-orange-600';
+        case 'épique':
+            return 'bg-purple-700 text-white border-purple-800';
+        default:
+            return 'bg-gray-200 text-gray-600 border-gray-300';
+    }
 }
 
 function getCardRarity(rarity) {
-  switch (rarity.toLowerCase()) {
-      case 'commune':
-          return 'common-card';
-      case 'rare':
-          return 'rare-card';
-      case 'légendaire':
-          return 'legendary-card';
-      case 'épique':
-          return 'epic-card';
-      default:
-          return 'bg-gray-200 text-gray-600 border-gray-300';
-  }
+    switch (rarity.toLowerCase()) {
+        case 'commune':
+            return 'common-card';
+        case 'rare':
+            return 'rare-card';
+        case 'légendaire':
+            return 'legendary-card';
+        case 'épique':
+            return 'epic-card';
+        default:
+            return 'bg-gray-200 text-gray-600 border-gray-300';
+    }
 }
 
-const cards = "/assets/data/cards.json";
+const CostDamageIndicator = ({ cost, damage }) => {
+    const isHealing = damage < 0;
 
+    return (
+        <div className="absolute -top-4 left-0 w-full flex justify-between px-2" style={{ zIndex: 50 }}>
+            <div className="stat-orb cost-orb relative" style={{ transform: 'translateY(0)' }}>
+                <div className="stat-inner">
+                    <span className="stat-value">{cost}</span>
+                </div>
+            </div>
+
+            <div className={`stat-orb ${isHealing ? 'heal-orb' : 'damage-orb'} relative`} style={{ transform: 'translateY(0)' }}>
+                <div className="stat-inner">
+                    <span className="stat-value">{Math.abs(damage)}</span>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 function CardList() {
-  const [cards, setCards] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+    const [cards, setCards] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [filterRarity, setFilterRarity] = useState('');
+    const [filterClass, setFilterClass] = useState('');
+    const [sortOption, setSortOption] = useState('');
+    const [selectedCard, setSelectedCard] = useState(null);
 
-  useEffect(() => {
-    async function fetchCards() {
-      try {
-        const response = await fetch('/assets/data/cards.json');
-        const data = await response.json();
-        setCards(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchCards();
-  }, []);
+    useEffect(() => {
+        async function fetchCards() {
+            try {
+                const response = await fetch('/assets/data/cards.json');
+                const data = await response.json();
+                setCards(data.cards);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchCards();
+    }, []);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+    const handleFilterRarity = (event) => {
+        setFilterRarity(event.target.value);
+    };
 
-  return (
-      <div className="container mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {cards.cards.map((card, index) => (
-                  <>
-                      <div
-                          key={index}
-                          className={`relative w-[320px] h-[480px] rounded-xl card ${getCardRarity(card.rarity)}`}
-                      >
-                          <div className="absolute top-4 right-4 flex items-center z-20">
-                              <span className="text-sm bg-gray-700/80 text-white px-2 py-1 rounded-md uppercase font-bold">
-                                  {card.class_association}
-                              </span>
-                              {/* <span className="text-sm font-bold">Lvl {card.level_requirement}</span> */}
-                          </div>
-                          {/* Rareté spécifique */}
-                          {card.rarity.toLowerCase() === 'légendaire' && (
-                              <div className="star-container">
-                                  <span className="star star-small" style={{ top: '-2%', left: '5%' }}>✦</span>
-                                  <span className="star star-medium" style={{ top: '4%', left: '2%' }}>✧</span>
-                                  <span className="star star-large" style={{ bottom: '5%', left: '-4%' }}>✦</span>
-                                  <span className="star star-small" style={{ bottom: '-2%', right: '5%' }}>✧</span>
-                                  <span className="star star-sparkle" style={{ bottom: '2%', right: '0%' }}>✦</span>
-                                  <span className="star shooting-star" style={{ top: '0%', right: '4%' }}>✧</span>
-                                  <span className="star star-pulse" style={{ bottom: '-5%', left: '3%' }}>✦</span>
-                              </div>
-                          )}
-                          {card.rarity.toLowerCase() === 'épique' && (
-                              <div>
-                                  <div className="crystal crystal-tl"></div>
-                                  <div className="crystal crystal-tr"></div>
-                                  <div className="crystal crystal-bl"></div>
-                                  <div className="crystal crystal-br"></div>
-                              </div>
-                          )}
+    const handleFilterClass = (event) => {
+        setFilterClass(event.target.value);
+    };
 
-                          <div className='card-frame'>
+    const handleSortOption = (event) => {
+        setSortOption(event.target.value);
+    };
 
-                              {/* Image centrale */}
-                              <div className="card-image-container h-1/2">
-                                  <img
-                                      src={card.image}
-                                      alt={card.name}
-                                  />
-                              </div>
+    const filteredCards = cards
+        .filter(card => (filterRarity ? card.rarity.toLowerCase() === filterRarity.toLowerCase() : true))
+        .filter(card => (filterClass ? card.class_association === filterClass : true))
+        .sort((a, b) => {
+            if (sortOption === 'rarity') {
+                const rarityOrder = ['commune', 'rare', 'épique', 'légendaire'];
+                return rarityOrder.indexOf(a.rarity.toLowerCase()) - rarityOrder.indexOf(b.rarity.toLowerCase());
+            } else if (sortOption === 'class') {
+                return (a.class_association || '').localeCompare(b.class_association || '');
+            }
+            return 0;
+        });
 
-                              {/* Infos principales */}
-                              <div className=" bottom-4 left-4 right-4 text-center h-1/2">
-                                  <div className='h-2/3'>
-                                      <h2 className="card-name">{card.name}</h2>
-                                      {/* <h2 className="card-description">{card.description}</h2> */}
-                                      <h2 className="card-description">{card.special_effect}</h2>
-                                  </div>
-                                  <div className="w-full h-1/3 flex justify-around items-center text-xl mb-4">
-                                      {card.stats.exploration > 0 && (
-                                          <div className="text-green-500 flex flex-col items-center">
-                                              <FaMapMarkedAlt />
-                                              <span>{card.stats.exploration}</span>
-                                          </div>
-                                      )}
-                                      {card.stats.combat > 0 && (
-                                          <div className="text-red-500 flex flex-col items-center">
-                                              <FaHandRock />
-                                              <span>{card.stats.combat}</span>
-                                          </div>
-                                      )}
-                                      {card.stats.diplomacy > 0 && (
-                                          <div className="text-purple-500 flex flex-col items-center">
-                                              <FaHandshake />
-                                              <span>{card.stats.diplomacy}</span>
-                                          </div>
-                                      )}
-                                      {card.stats.knowledge > 0 && (
-                                          <div className="text-blue-500 flex flex-col items-center">
-                                              <FaBook />
-                                              <span>{card.stats.knowledge}</span>
-                                          </div>
-                                      )}
-                                  </div>
-                                  <div className="absolute top-[40%] left-0 flex w-full">
-                                      <div className='absolute left-10'>
-                                          <div className='bg-black/80 w-10 h-10 rounded-full flex justify-center items-center'>
-                                              <span className='text-blue-500 font-bold'>{card.energy_cost}</span>
-                                          </div>
-                                      </div>
-                                      <div className='absolute right-10'>
-                                          <div className='bg-black/80 w-10 h-10 rounded-full flex justify-center items-center'>
-                                              <span className={`${card.damage_base < 0 ? 'text-green-500' : 'text-red-400'} font-bold`}>{Math.abs(card.damage_base)}</span>
-                                          </div>
-                                      </div>
-                                      {/* <div>
-                                          <span className="block font-bold">Bonus</span>
-                                          <span>{card.damage_bonus.value}</span>
-                                      </div> */}
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>Error: {error}</div>;
 
-                  </>))}
-          </div>
-      </div>
-  );
+    return (
+        <div className="container mx-auto px-4 py-8">
+            <div className="flex justify-between mb-4">
+                <div>
+                    <label htmlFor="rarity-filter" className="mr-2">Filter by Rarity:</label>
+                    <select id="rarity-filter" value={filterRarity} onChange={handleFilterRarity} className="mr-4">
+                        <option value="">All</option>
+                        <option value="commune">Commune</option>
+                        <option value="rare">Rare</option>
+                        <option value="épique">Épique</option>
+                        <option value="légendaire">Légendaire</option>
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="class-filter" className="mr-2">Filter by Class:</label>
+                    <select id="class-filter" value={filterClass} onChange={handleFilterClass} className="mr-4">
+                        <option value="">All</option>
+                        <option value="Éclaireur des Vents">Éclaireur des Vents</option>
+                        <option value="Cristallomancien">Cristallomancien</option>
+                        <option value="Négociant des Cieux">Négociant des Cieux</option>
+                        <option value="Archéologue des Ruines">Archéologue des Ruines</option>
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="sort-option" className="mr-2">Sort by:</label>
+                    <select id="sort-option" value={sortOption} onChange={handleSortOption}>
+                        <option value="">None</option>
+                        <option value="rarity">Rarity</option>
+                        <option value="class">Class</option>
+                    </select>
+                </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+                {filteredCards.map((card) => (
+                    <div
+                        key={card.id}
+                        className={`relative w-full pb-[150%] rounded-xl card ${getCardRarity(card.rarity)} cursor-pointer hover:scale-105 transition-transform duration-200`}
+                        onClick={() => setSelectedCard(card)}
+                    >
+                        <div className="absolute inset-0">
+                            <CostDamageIndicator cost={card.energy_cost} damage={card.damage_base} />
+
+                            <div className="absolute top-4 left-1/2 transform -translate-x-1/2 flex items-center z-20">
+                                {card.class_association && (
+                                    <span className="text-sm bg-gray-900/90 text-white px-3 py-1 rounded-full uppercase font-bold text-center">
+                                        {card.class_association}
+                                    </span>
+                                )}
+                            </div>
+
+                            {card.rarity.toLowerCase() === 'légendaire' && (
+                                <div className="star-container">
+                                    <span className="star star-small" style={{ top: '-2%', left: '5%' }}>✦</span>
+                                    <span className="star star-medium" style={{ top: '4%', left: '2%' }}>✧</span>
+                                    <span className="star star-large" style={{ bottom: '5%', left: '-4%' }}>✦</span>
+                                    <span className="star star-small" style={{ bottom: '-2%', right: '5%' }}>✧</span>
+                                    <span className="star star-sparkle" style={{ bottom: '2%', right: '0%' }}>✦</span>
+                                    <span className="star shooting-star" style={{ top: '0%', right: '4%' }}>✧</span>
+                                    <span className="star star-pulse" style={{ bottom: '-5%', left: '3%' }}>✦</span>
+                                </div>
+                            )}
+                            {card.rarity.toLowerCase() === 'épique' && (
+                                <div>
+                                    <div className="crystal crystal-tl"></div>
+                                    <div className="crystal crystal-tr"></div>
+                                    <div className="crystal crystal-bl"></div>
+                                    <div className="crystal crystal-br"></div>
+                                </div>
+                            )}
+                            <div className='card-frame'>
+                                <div className="card-image-container h-1/2">
+                                    <Image
+                                        src={card.image}
+                                        alt={card.name}
+                                        fill
+                                        style={{ objectFit: 'cover' }}
+                                        priority
+                                        onError={(e) => {
+                                            console.error('Error loading image:', card.image);
+                                        }}
+                                        onLoadingComplete={(result) => {
+                                            console.log('Image loaded successfully:', card.image);
+                                        }}
+                                    />
+                                </div>
+                                <div className="bottom-4 left-4 right-4 text-center h-1/2">
+                                    <div className='h-2/3'>
+                                        <h2 className={card.rarity.toLowerCase() + '-card card-name'}>{card.name}</h2>
+                                        <h2 className="card-description hidden">{card.special_effect}</h2>
+                                    </div>
+                                    <div className="flex mt-2">
+                                        {card.stats.exploration > 0 && (
+                                            <div className="stat-circle exploration-stat">
+                                                <div className="stat-inner">
+                                                    <FaInternetExplorer className="stat-icon text-emerald-400" />
+                                                    <span className="stat-number">{card.stats.exploration}</span>
+                                                </div>
+                                            </div>
+                                        )}
+                                        {card.stats.combat > 0 && (
+                                            <div className="stat-circle combat-stat">
+                                                <div className="stat-inner">
+                                                    <GiBroadsword className="stat-icon text-red-400" />
+                                                    <span className="stat-number">{card.stats.combat}</span>
+                                                </div>
+                                            </div>
+                                        )}
+                                        {card.stats.diplomacy > 0 && (
+                                            <div className="stat-circle diplomacy-stat">
+                                                <div className="stat-inner">
+                                                    <FaBalanceScale className="stat-icon text-purple-400" />
+                                                    <span className="stat-number">{card.stats.diplomacy}</span>
+                                                </div>
+                                            </div>
+                                        )}
+                                        {card.stats.knowledge > 0 && (
+                                            <div className="stat-circle knowledge-stat">
+                                                <div className="stat-inner">
+                                                    <GiClassicalKnowledge className="stat-icon text-blue-400" />
+                                                    <span className="stat-number">{card.stats.knowledge}</span>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            {selectedCard && (
+                <div className="fixed inset-0 z-50">
+                    <CardDetail
+                        card={selectedCard}
+                        onClose={() => setSelectedCard(null)}
+                    />
+                </div>
+            )}
+        </div>
+    );
 }
 
 export default CardList;

@@ -5,7 +5,6 @@ import Layout from '../components/Layout';
 const CardsPage = () => {
   return (
     <Layout>
-      <h1>Cards</h1>
       <CardList />
     </Layout>
   );
