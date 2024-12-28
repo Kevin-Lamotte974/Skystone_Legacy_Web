@@ -197,9 +197,9 @@ function CardList() {
                                 <div className="bottom-4 left-4 right-4 text-center h-1/2">
                                     <div className='h-2/3'>
                                         <h2 className={card.rarity.toLowerCase() + '-card card-name'}>{card.name}</h2>
-                                        <h2 className="card-description hidden">{card.special_effect}</h2>
+                                        <h2 className="card-description sm:block md:block lg:block xl:hidden">{card.special_effect}</h2>
                                     </div>
-                                    <div className="flex mt-2">
+                                    <div className="grid grid-cols-4 gap-1 px-2">
                                         {card.stats.exploration > 0 && (
                                             <div className="stat-circle exploration-stat">
                                                 <div className="stat-inner">
