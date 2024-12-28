@@ -385,30 +385,6 @@
       "level_requirement": 1
     },
     {
-      "id": 17,
-      "name": "Position Défensive",
-      "description": "Adopte une position stable qui augmente la défense",
-      "energy_cost": 2,
-      "stats": {
-        "exploration": 0,
-        "combat": 30,
-        "diplomacy": 0,
-        "knowledge": 0
-      },
-      "class_association": null,
-      "rarity": "Commune",
-      "damage_base": -4,
-      "damage_bonus": {
-        "type": "reduction",
-        "stat": "combat",
-        "value": 0.25
-      },
-      "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=13",
-      "special_effect": "Augmente la défense de 25% pendant 2 tours",
-      "level_requirement": 2
-    },
-    {
       "id": 18,
       "name": "Repos Rapide",
       "description": "Un bref moment de repos qui restaure les forces",
@@ -550,30 +526,6 @@
       "applicability": "single_target",
       "image": "https://picsum.photos/500/500?random=12",
       "special_effect": "25% de chance de frapper à nouveau",
-      "level_requirement": 3
-    },
-    {
-      "id": 24,
-      "name": "Bouclier de Fer",
-      "description": "Crée un bouclier de fer protecteur",
-      "energy_cost": 3,
-      "stats": {
-        "exploration": 0,
-        "combat": 40,
-        "diplomacy": 0,
-        "knowledge": 10
-      },
-      "class_association": null,
-      "rarity": "Rare",
-      "damage_base": -6,
-      "damage_bonus": {
-        "type": "shield",
-        "stat": "combat",
-        "value": 15
-      },
-      "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=77",
-      "special_effect": "Crée un bouclier absorbant 15 points de dégâts",
       "level_requirement": 3
     },
     {
@@ -769,30 +721,6 @@
       "level_requirement": 5
     },
     {
-      "id": 33,
-      "name": "Fureur Déchaînée",
-      "description": "Entre dans un état de rage incontrôlable",
-      "energy_cost": 5,
-      "stats": {
-        "exploration": 0,
-        "combat": 80,
-        "diplomacy": 0,
-        "knowledge": 0
-      },
-      "class_association": null,
-      "rarity": "Épique",
-      "damage_base": 0,
-      "damage_bonus": {
-        "type": "berserk",
-        "stat": "combat",
-        "value": 2
-      },
-      "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=29",
-      "special_effect": "Double les dégâts infligés mais reçoit 50% de dégâts supplémentaires",
-      "level_requirement": 5
-    },
-    {
       "id": 34,
       "name": "Préparation Tactique",
       "description": "Analyse la situation pour préparer sa prochaine action",
@@ -861,7 +789,7 @@
       },
       "applicability": "self",
       "image": "https://picsum.photos/500/500?random=94",
-      "special_effect": "Augmente les dégâts contre les constructions de 20%",
+      "special_effect": "Augmente les dégâts de 20%",
       "level_requirement": 1
     },
     {
@@ -909,7 +837,7 @@
       },
       "applicability": "self",
       "image": "https://picsum.photos/500/500?random=99",
-      "special_effect": "Augmente la précision de 30% contre les constructions",
+      "special_effect": "Augmente la précision de 30%",
       "level_requirement": 1
     },
     {
@@ -1317,7 +1245,7 @@
       },
       "applicability": "area_effect",
       "image": "https://picsum.photos/500/500?random=47",
-      "special_effect": "Réduit la vitesse d'attaque des ennemis de 20% pendant 2 tours",
+      "special_effect": "20% que l'adversaire ne pioche pas de carte pendant 1 tour",
       "level_requirement": 2
     },
     {
@@ -1389,7 +1317,7 @@
       },
       "applicability": "area_effect",
       "image": "https://picsum.photos/500/500?random=52",
-      "special_effect": "Inflige des dégâts continus pendant 2 tours",
+      "special_effect": "Inflige des dégâts continus pendant 1 tour",
       "level_requirement": 3
     },
     {
@@ -1437,7 +1365,7 @@
       },
       "applicability": "area_effect",
       "image": "https://picsum.photos/500/500?random=54",
-      "special_effect": "Étourdit les ennemis au centre de l'explosion",
+      "special_effect": "Étourdit les ennemis pendant 1 tour",
       "level_requirement": 4
     },
     {
@@ -1453,7 +1381,7 @@
       },
       "class_association": "Cristallomancien",
       "rarity": "Rare",
-      "damage_base": 12,
+      "damage_base": 0,
       "damage_bonus": {
         "type": "weapon",
         "stat": "combat",
@@ -1461,7 +1389,7 @@
       },
       "applicability": "self",
       "image": "https://picsum.photos/500/500?random=55",
-      "special_effect": "Augmente les dégâts d'attaque de 80%",
+      "special_effect": "Augmente les dégâts d'attaque de 80% pendant 1 tour",
       "level_requirement": 5
     },
     {
@@ -1485,7 +1413,7 @@
       },
       "applicability": "single_target",
       "image": "https://picsum.photos/500/500?random=98",
-      "special_effect": "Augmente les dégâts de 70% si la cible est étourdie",
+      "special_effect": "Augmente les dégâts de 75% si la cible est étourdie",
       "level_requirement": 5
     },
     {
@@ -1677,7 +1605,7 @@
       },
       "applicability": "self",
       "image": "https://picsum.photos/500/500?random=34",
-      "special_effect": "Augmente la vitesse d'attaque de 20% pendant 2 tours",
+      "special_effect": "20% de chance de doubler les dégâts de la prochaine carte",
       "level_requirement": 1
     },
     {
@@ -1765,7 +1693,7 @@
       },
       "class_association": "Éclaireur des Vents",
       "rarity": "Commune",
-      "damage_base": -8,
+      "damage_base": 0,
       "damage_bonus": {
         "type": "regeneration",
         "stat": "knowledge",
@@ -1797,7 +1725,7 @@
       },
       "applicability": "self",
       "image": "https://picsum.photos/500/500?random=37",
-      "special_effect": "Augmente la vitesse d'attaque de 30% pendant 2 tours",
+      "special_effect": "30% de chance d'appliquer un effet 2 fois sur la prochaine carte",
       "level_requirement": 2
     },
     {
@@ -1845,7 +1773,7 @@
       },
       "applicability": "self",
       "image": "https://picsum.photos/500/500?random=42",
-      "special_effect": "Double le nombre d'actions par tour",
+      "special_effect": "Double le nombre de carte pioché pendant 2 tours",
       "level_requirement": 5
     },
     {
@@ -1885,7 +1813,7 @@
       },
       "class_association": "Éclaireur des Vents",
       "rarity": "Rare",
-      "damage_base": -10,
+      "damage_base": -15,
       "damage_bonus": {
         "type": "heal",
         "stat": "knowledge",
@@ -1900,7 +1828,7 @@
       "id": 80,
       "name": "Marchandage Astucieux",
       "description": "Négocie un échange avantageux",
-      "energy_cost": 2,
+      "energy_cost": 0,
       "stats": {
         "exploration": 0,
         "combat": 0,
@@ -1972,7 +1900,7 @@
       "id": 83,
       "name": "Influence Marchande",
       "description": "Utilise son réseau pour gagner de l'influence",
-      "energy_cost": 2,
+      "energy_cost": 0,
       "stats": {
         "exploration": 10,
         "combat": 0,
@@ -2044,7 +1972,7 @@
       "id": 86,
       "name": "Troc Avantageux",
       "description": "Échange des ressources de manière profitable",
-      "energy_cost": 2,
+      "energy_cost": 1,
       "stats": {
         "exploration": 0,
         "combat": 0,
@@ -2061,7 +1989,7 @@
       },
       "applicability": "self",
       "image": "https://picsum.photos/500/500?random=65",
-      "special_effect": "Gagne 2 points d'énergie",
+      "special_effect": "Pioche 1 carte",
       "level_requirement": 2
     },
     {
@@ -2212,7 +2140,7 @@
       "id": 93,
       "name": "Investissement Sage",
       "description": "Réalise un investissement stratégique majeur",
-      "energy_cost": 6,
+      "energy_cost": 2,
       "stats": {
         "exploration": 10,
         "combat": 0,
@@ -2253,7 +2181,7 @@
       },
       "applicability": "all_allies",
       "image": "https://picsum.photos/500/500?random=73",
-      "special_effect": "Énergie illimitée pendant 3 tours",
+      "special_effect": "Énergie illimitée pendant 1 tour, poiche 5 cartes et défausse toutes les cartes à la fin du tour",
       "level_requirement": 8
     }
   ]
