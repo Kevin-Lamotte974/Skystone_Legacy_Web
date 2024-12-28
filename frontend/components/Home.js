@@ -268,7 +268,7 @@ function Home() {
                     {
                       name: "Éclaireur des Vents",
                       description: "Expert en navigation et exploration des îles flottantes. Capable de repérer les routes les plus sûres et de découvrir des passages secrets.",
-                      image: eclaireurImage,
+                      image: "/assets/images/classes/eclaireur.png",
                       stats: {
                         exploration: 90,
                         combat: 60,
@@ -279,7 +279,7 @@ function Home() {
                     {
                       name: "Cristallomancien",
                       description: "Maître dans l'art de comprendre et manipuler les cristaux. Possède une connexion unique avec les artefacts anciens.",
-                      image: cristallomancienImage,
+                      image: "/assets/images/classes/cristallomancien.png",
                       stats: {
                         exploration: 50,
                         combat: 70,
@@ -290,7 +290,7 @@ function Home() {
                     {
                       name: "Négociant des Cieux",
                       description: "Expert en négociation et diplomatie. Dispose d'un vaste réseau de contacts et excelle dans les interactions sociales.",
-                      image: negociantImage,
+                      image: "/assets/images/classes/negociant.png",
                       stats: {
                         exploration: 40,
                         combat: 30,
@@ -301,7 +301,7 @@ function Home() {
                     {
                       name: "Archéologue des Ruines",
                       description: "Spécialiste des civilisations anciennes. Capable de déchiffrer les vestiges et de percer les mystères du passé.",
-                      image: archeologueImage,
+                      image: "/assets/images/classes/archeologue.png",
                       stats: {
                         exploration: 70,
                         combat: 40,

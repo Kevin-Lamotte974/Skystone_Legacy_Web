@@ -270,10 +270,10 @@
       "description": "L'attaque la plus puissante jamais vue",
       "energy_cost": 8,
       "stats": {
-        "exploration": 0,
+        "exploration": 100,
         "combat": 100,
-        "diplomacy": 0,
-        "knowledge": 0
+        "diplomacy": 100,
+        "knowledge": 100
       },
       "class_association": null,
       "rarity": "Légendaire",
@@ -285,7 +285,7 @@
       },
       "applicability": "single_target",
       "image": "/assets/images/cards/frappe_ultime.png",
-      "special_effect": "Ignore toute défense et effets protecteurs",
+      "special_effect": "Ignore toute défense et effets protecteurs (Il faut 100 de stat minimum 1 stat pour l'utiliser et 50 sur une autre)", 
       "level_requirement": 8
     },
     {
@@ -333,7 +333,7 @@
       },
       "applicability": "self",
       "image": "/assets/images/cards/garde_defensive.png",
-      "special_effect": "Réduit les dégâts reçus de 20%",
+      "special_effect": "Réduit les dégâts reçus de 20% pendant 1 tour",
       "level_requirement": 1
     },
     {
@@ -342,10 +342,10 @@
       "description": "Se concentre pour restaurer son énergie",
       "energy_cost": 0,
       "stats": {
-        "exploration": 10,
-        "combat": 10,
-        "diplomacy": 10,
-        "knowledge": 10
+        "exploration": 30,
+        "combat": 30,
+        "diplomacy": 30,
+        "knowledge": 30
       },
       "class_association": null,
       "rarity": "Commune",
@@ -412,7 +412,7 @@
       "id": 19,
       "name": "Résilience",
       "description": "Refuse d'abandonner malgré les blessures",
-      "energy_cost": 2,
+      "energy_cost": 4,
       "stats": {
         "exploration": 0,
         "combat": 40,
@@ -453,13 +453,13 @@
       },
       "applicability": "self",
       "image": "https://picsum.photos/500/500?random=14",
-      "special_effect": "Réduit tous les types de dégâts de 15%",
+      "special_effect": "Réduit tous les types de dégâts de 15% pendant 1 tour",
       "level_requirement": 1
     },
     {
       "id": 21,
       "name": "Second Souffle",
-      "description": "Puise dans ses réserves d'énergie pour un regain de vitalité",
+      "description": "Puise dans ses vitalités pour un regain de réserves d'énergie",
       "energy_cost": 0,
       "stats": {
         "exploration": 20,
@@ -486,10 +486,10 @@
       "description": "Déchaîne une tempête de feu sur les ennemis",
       "energy_cost": 8,
       "stats": {
-        "exploration": 0,
+        "exploration": 100,
         "combat": 100,
-        "diplomacy": 0,
-        "knowledge": 50
+        "diplomacy": 100,
+        "knowledge": 100
       },
       "class_association": null,
       "rarity": "Légendaire",
@@ -501,7 +501,7 @@
       },
       "applicability": "area_effect",
       "image": "https://picsum.photos/500/500?random=79",
-      "special_effect": "Inflige des dégâts massifs à tous les ennemis",
+      "special_effect": "Inflige des dégâts massifs à tous les ennemis (Il faut 100 de stat minimum 1 stat pour l'utiliser et 50 sur une autre)",
       "level_requirement": 8
     },
     {
@@ -532,7 +532,7 @@
       "id": 25,
       "name": "Bouclier de Force",
       "description": "Crée une barrière protectrice puissante",
-      "energy_cost": 3,
+      "energy_cost": 4,
       "stats": {
         "exploration": 0,
         "combat": 40,
@@ -580,7 +580,7 @@
       "id": 27,
       "name": "Posture du Roc",
       "description": "Devient temporairement presque invulnérable",
-      "energy_cost": 4,
+      "energy_cost": 5,
       "stats": {
         "exploration": 0,
         "combat": 60,
@@ -606,10 +606,10 @@
       "description": "Atteint un état de défense parfaite",
       "energy_cost": 6,
       "stats": {
-        "exploration": 20,
-        "combat": 80,
-        "diplomacy": 0,
-        "knowledge": 30
+        "exploration": 100,
+        "combat": 100,
+        "diplomacy": 100,
+        "knowledge": 100
       },
       "class_association": null,
       "rarity": "Légendaire",
@@ -621,14 +621,14 @@
       },
       "applicability": "self",
       "image": "https://picsum.photos/500/500?random=18",
-      "special_effect": "Invulnérable pendant 1 tour",
+      "special_effect": "Invulnérable pendant 1 tour (Il faut 100 de stat minimum 1 stat pour l'utiliser et 50 sur une autre)",
       "level_requirement": 8
     },
     {
       "id": 29,
       "name": "Inspiration Soudaine",
       "description": "Une révélation qui permet d'accomplir l'impossible",
-      "energy_cost": 3,
+      "energy_cost": 4,
       "stats": {
         "exploration": 50,
         "combat": 50,
@@ -654,10 +654,10 @@
       "description": "Rassemble toute sa puissance pour un coup final",
       "energy_cost": 8,
       "stats": {
-        "exploration": 50,
+        "exploration": 100,
         "combat": 100,
-        "diplomacy": 50,
-        "knowledge": 50
+        "diplomacy": 100,
+        "knowledge": 100
       },
       "class_association": null,
       "rarity": "Légendaire",
@@ -669,7 +669,7 @@
       },
       "applicability": "self_and_area",
       "image": "https://picsum.photos/500/500?random=30",
-      "special_effect": "Triple tous les effets de carte et restaure toute l'énergie, mais termine le combat après 3 tours",
+      "special_effect": "Triple tous les effets de carte et restaure toute l'énergie, mais termine le combat après 3 tours (Il faut 100 de stat minimum 1 stat pour l'utiliser et 50 sur toutes les autres)",
       "level_requirement": 8
     },
     {
@@ -981,7 +981,7 @@
       },
       "applicability": "area_effect",
       "image": "https://picsum.photos/500/500?random=106",
-      "special_effect": "Applique Faiblesse à tous les ennemis",
+      "special_effect": "Applique Faiblesse à tous les ennemis pendant 1 tour",
       "level_requirement": 3
     },
     {
@@ -1012,7 +1012,7 @@
       "id": 46,
       "name": "Maîtrise des Runes",
       "description": "Active plusieurs runes de pouvoir",
-      "energy_cost": 3,
+      "energy_cost": 5,
       "stats": {
         "exploration": 40,
         "combat": 20,
@@ -1021,7 +1021,7 @@
       },
       "class_association": "Archéologue des Ruines",
       "rarity": "Rare",
-      "damage_base": 15,
+      "damage_base": 6,
       "damage_bonus": {
         "type": "rune",
         "stat": "knowledge",
@@ -1069,7 +1069,7 @@
       },
       "class_association": "Archéologue des Ruines",
       "rarity": "Épique",
-      "damage_base": 20,
+      "damage_base": 0,
       "damage_bonus": {
         "type": "curse",
         "stat": "knowledge",
@@ -1125,7 +1125,7 @@
       },
       "applicability": "all_enemies",
       "image": "https://picsum.photos/500/500?random=112",
-      "special_effect": "Inflige des dégâts massifs et étourdit tous les ennemis",
+      "special_effect": "Inflige des dégâts massifs et étourdit tous les ennemis pendant 1 tour",
       "level_requirement": 8
     },
     {
@@ -1629,7 +1629,7 @@
       },
       "applicability": "self",
       "image": "https://picsum.photos/500/500?random=44",
-      "special_effect": "Devient invulnérable pendant 1 tour",
+      "special_effect": "Devient invulnérable pendant 1 tour, puis régénère 50% des PV max",
       "level_requirement": 8
     },
     {
@@ -1756,7 +1756,7 @@
       "id": 77,
       "name": "Agilité du Zéphyr",
       "description": "Atteint une vitesse légendaire",
-      "energy_cost": 3,
+      "energy_cost": 4,
       "stats": {
         "exploration": 60,
         "combat": 20,
@@ -2181,7 +2181,7 @@
       },
       "applicability": "all_allies",
       "image": "https://picsum.photos/500/500?random=73",
-      "special_effect": "Énergie illimitée pendant 1 tour, poiche 5 cartes et défausse toutes les cartes à la fin du tour",
+      "special_effect": "Énergie illimitée pendant 1 tour, baisse toutes les stats de 20, pioche 5 cartes et défausse toutes les cartes à la fin du tour",
       "level_requirement": 8
     }
   ]
