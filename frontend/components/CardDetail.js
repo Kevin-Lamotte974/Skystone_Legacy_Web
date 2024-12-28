@@ -114,6 +114,15 @@ const CardDetail = ({ card, onClose }) => {
           </div>
         </div>
       </div>
+
+      <div className="bg-gray-900 p-6 rounded-lg max-w-2xl w-full">
+        <h2 className="text-2xl font-bold mb-4">{card.name}</h2>
+        <div className="card-detail-effect mb-4">
+          <h3 className="text-lg font-semibold mb-2">Effet spécial:</h3>
+          <p className="text-gray-300">{card.special_effect}</p>
+        </div>
+      </div>
+
     </div>
   );
 };
