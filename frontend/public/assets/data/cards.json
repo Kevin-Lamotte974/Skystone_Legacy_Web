@@ -6,17 +6,17 @@
       "description": "Une attaque véloce difficile à esquiver",
       "energy_cost": 1,
       "stats": {
-        "exploration": 10,
-        "combat": 30,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 10,
+        "force": 30,
+        "charisme": 0,
+        "intelligence": 0
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Commune",
       "damage_base": 4,
       "damage_bonus": {
         "type": "addition",
-        "stat": "combat",
+        "stat": "force",
         "value": 2
       },
       "applicability": "single_target",
@@ -30,17 +30,17 @@
       "description": "Une attaque circulaire touchant plusieurs ennemis",
       "energy_cost": 2,
       "stats": {
-        "exploration": 0,
-        "combat": 35,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 0,
+        "force": 35,
+        "charisme": 0,
+        "intelligence": 0
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Commune",
       "damage_base": 6,
       "damage_bonus": {
         "type": "addition",
-        "stat": "combat",
+        "stat": "force",
         "value": 1.5
       },
       "applicability": "area_effect",
@@ -52,25 +52,25 @@
       "id": 3,
       "name": "Charge Puissante",
       "description": "Une charge qui inflige des dégâts importants",
-      "energy_cost": 3,
+      "energy_cost": 2,
       "stats": {
-        "exploration": 0,
-        "combat": 50,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 0,
+        "force": 50,
+        "charisme": 0,
+        "intelligence": 0
       },
-      "class_association": null,
-      "rarity": "Rare",
-      "damage_base": 10,
+      "class_association": "all",
+      "rarity": "Commune",
+      "damage_base": 5,
       "damage_bonus": {
         "type": "multiplication",
-        "stat": "combat",
+        "stat": "force",
         "value": 1.3
       },
       "applicability": "single_target",
       "image": "/assets/images/cards/charge_puissante.png",
       "special_effect": "25% de chance d'étourdir l'ennemi",
-      "level_requirement": 3
+      "level_requirement": 1
     },
     {
       "id": 4,
@@ -78,12 +78,12 @@
       "description": "Améliore temporairement toutes les statistiques",
       "energy_cost": 2,
       "stats": {
-        "exploration": 20,
-        "combat": 20,
-        "diplomacy": 20,
-        "knowledge": 20
+        "agilite": 20,
+        "force": 20,
+        "charisme": 20,
+        "intelligence": 20
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
@@ -102,17 +102,17 @@
       "description": "Frappe deux fois l'adversaire",
       "energy_cost": 2,
       "stats": {
-        "exploration": 0,
-        "combat": 25,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 0,
+        "force": 25,
+        "charisme": 0,
+        "intelligence": 0
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Commune",
       "damage_base": 3,
       "damage_bonus": {
         "type": "multiplication",
-        "stat": "combat",
+        "stat": "force",
         "value": 2
       },
       "applicability": "single_target",
@@ -126,23 +126,23 @@
       "description": "Une attaque lourde qui étourdit l'adversaire",
       "energy_cost": 3,
       "stats": {
-        "exploration": 0,
-        "combat": 40,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 0,
+        "force": 40,
+        "charisme": 0,
+        "intelligence": 0
       },
-      "class_association": null,
-      "rarity": "Commune",
+      "class_association": "all",
+      "rarity": "Rare",
       "damage_base": 8,
       "damage_bonus": {
         "type": "addition",
-        "stat": "combat",
+        "stat": "force",
         "value": 3
       },
       "applicability": "single_target",
       "image": "/assets/images/cards/coup_puissant.png",
       "special_effect": "Étourdit la cible pendant 1 tour",
-      "level_requirement": 2
+      "level_requirement": 3
     },
     {
       "id": 7,
@@ -150,17 +150,17 @@
       "description": "Renforce la défense pour un court moment",
       "energy_cost": 2,
       "stats": {
-        "exploration": 0,
-        "combat": 30,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 0,
+        "force": 30,
+        "charisme": 0,
+        "intelligence": 0
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Commune",
-      "damage_base": -4,
+      "damage_base": 0,
       "damage_bonus": {
         "type": "reduction",
-        "stat": "combat",
+        "stat": "force",
         "value": 0.25
       },
       "applicability": "self",
@@ -174,12 +174,12 @@
       "description": "Puise dans sa volonté pour surmonter l'adversité",
       "energy_cost": 2,
       "stats": {
-        "exploration": 20,
-        "combat": 30,
-        "diplomacy": 20,
-        "knowledge": 20
+        "agilite": 20,
+        "force": 30,
+        "charisme": 20,
+        "intelligence": 20
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
@@ -198,17 +198,17 @@
       "description": "Une attaque simple mais efficace",
       "energy_cost": 1,
       "stats": {
-        "exploration": 0,
-        "combat": 20,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 0,
+        "force": 20,
+        "charisme": 0,
+        "intelligence": 0
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Commune",
-      "damage_base": 5,
+      "damage_base": 3,
       "damage_bonus": {
         "type": "addition",
-        "stat": "combat",
+        "stat": "force",
         "value": 1
       },
       "applicability": "single_target",
@@ -222,17 +222,17 @@
       "description": "Une attaque bénie par les dieux",
       "energy_cost": 5,
       "stats": {
-        "exploration": 0,
-        "combat": 80,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 0,
+        "force": 80,
+        "charisme": 0,
+        "intelligence": 0
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Épique",
       "damage_base": 15,
       "damage_bonus": {
         "type": "multiplication",
-        "stat": "combat",
+        "stat": "force",
         "value": 2
       },
       "applicability": "single_target",
@@ -246,17 +246,17 @@
       "description": "Une attaque ciblant les points faibles",
       "energy_cost": 2,
       "stats": {
-        "exploration": 10,
-        "combat": 45,
-        "diplomacy": 0,
-        "knowledge": 10
+        "agilite": 10,
+        "force": 45,
+        "charisme": 0,
+        "intelligence": 10
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Rare",
       "damage_base": 7,
       "damage_bonus": {
         "type": "multiplication",
-        "stat": "combat",
+        "stat": "force",
         "value": 1.5
       },
       "applicability": "single_target",
@@ -270,17 +270,17 @@
       "description": "L'attaque la plus puissante jamais vue",
       "energy_cost": 8,
       "stats": {
-        "exploration": 100,
-        "combat": 100,
-        "diplomacy": 100,
-        "knowledge": 100
+        "agilite": 100,
+        "force": 100,
+        "charisme": 100,
+        "intelligence": 100
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Légendaire",
       "damage_base": 25,
       "damage_bonus": {
         "type": "multiplication",
-        "stat": "combat",
+        "stat": "force",
         "value": 3
       },
       "applicability": "single_target",
@@ -294,22 +294,22 @@
       "description": "Une attaque rapide et précise",
       "energy_cost": 1,
       "stats": {
-        "exploration": 0,
-        "combat": 20,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 0,
+        "force": 20,
+        "charisme": 0,
+        "intelligence": 0
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Commune",
       "damage_base": 5,
       "damage_bonus": {
         "type": "addition",
-        "stat": "combat",
+        "stat": "force",
         "value": 1
       },
       "applicability": "single_target",
       "image": "/assets/images/cards/frappe_eclair.png",
-      "special_effect": "Augmente la précision de 10% pendant 1 tour",
+      "special_effect": "10% de chance d'enclancher un coup critique pendant 1 tour",
       "level_requirement": 1
     },
     {
@@ -318,17 +318,17 @@
       "description": "Une posture basique qui améliore la défense",
       "energy_cost": 1,
       "stats": {
-        "exploration": 0,
-        "combat": 20,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 0,
+        "force": 20,
+        "charisme": 0,
+        "intelligence": 0
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Commune",
-      "damage_base": -3,
+      "damage_base": 0,
       "damage_bonus": {
         "type": "reduction",
-        "stat": "combat",
+        "stat": "force",
         "value": 0.2
       },
       "applicability": "self",
@@ -342,17 +342,17 @@
       "description": "Se concentre pour restaurer son énergie",
       "energy_cost": 0,
       "stats": {
-        "exploration": 30,
-        "combat": 30,
-        "diplomacy": 30,
-        "knowledge": 30
+        "agilite": 30,
+        "force": 30,
+        "charisme": 30,
+        "intelligence": 30
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
         "type": "energy_gain",
-        "stat": "knowledge",
+        "stat": "intelligence",
         "value": 2
       },
       "applicability": "self",
@@ -366,17 +366,17 @@
       "description": "Esquive rapidement la prochaine attaque",
       "energy_cost": 2,
       "stats": {
-        "exploration": 20,
-        "combat": 15,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 20,
+        "force": 15,
+        "charisme": 0,
+        "intelligence": 0
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Commune",
-      "damage_base": -2,
+      "damage_base": 0,
       "damage_bonus": {
         "type": "evasion",
-        "stat": "exploration",
+        "stat": "agilite",
         "value": 0.3
       },
       "applicability": "self",
@@ -390,17 +390,17 @@
       "description": "Un bref moment de repos qui restaure les forces",
       "energy_cost": 1,
       "stats": {
-        "exploration": 0,
-        "combat": 15,
-        "diplomacy": 0,
-        "knowledge": 15
+        "agilite": 0,
+        "force": 15,
+        "charisme": 0,
+        "intelligence": 15
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
         "type": "heal",
-        "stat": "knowledge",
+        "stat": "intelligence",
         "value": 5
       },
       "applicability": "self",
@@ -412,19 +412,19 @@
       "id": 19,
       "name": "Résilience",
       "description": "Refuse d'abandonner malgré les blessures",
-      "energy_cost": 4,
+      "energy_cost": 3,
       "stats": {
-        "exploration": 0,
-        "combat": 40,
-        "diplomacy": 0,
-        "knowledge": 20
+        "agilite": 0,
+        "force": 40,
+        "charisme": 0,
+        "intelligence": 20
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
         "type": "survival",
-        "stat": "combat",
+        "stat": "force",
         "value": 1
       },
       "applicability": "self",
@@ -438,17 +438,17 @@
       "description": "Renforce temporairement la résistance aux dégâts",
       "energy_cost": 1,
       "stats": {
-        "exploration": 0,
-        "combat": 25,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 0,
+        "force": 25,
+        "charisme": 0,
+        "intelligence": 0
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Commune",
-      "damage_base": -3,
+      "damage_base": 0,
       "damage_bonus": {
         "type": "reduction",
-        "stat": "combat",
+        "stat": "force",
         "value": 0.15
       },
       "applicability": "self",
@@ -462,17 +462,17 @@
       "description": "Puise dans ses vitalités pour un regain de réserves d'énergie",
       "energy_cost": 0,
       "stats": {
-        "exploration": 20,
-        "combat": 40,
-        "diplomacy": 0,
-        "knowledge": 20
+        "agilite": 20,
+        "force": 40,
+        "charisme": 0,
+        "intelligence": 20
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Rare",
       "damage_base": 0,
       "damage_bonus": {
         "type": "energy_conversion",
-        "stat": "combat",
+        "stat": "force",
         "value": 3
       },
       "applicability": "self",
@@ -486,17 +486,17 @@
       "description": "Déchaîne une tempête de feu sur les ennemis",
       "energy_cost": 8,
       "stats": {
-        "exploration": 100,
-        "combat": 100,
-        "diplomacy": 100,
-        "knowledge": 100
+        "agilite": 100,
+        "force": 100,
+        "charisme": 100,
+        "intelligence": 100
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Légendaire",
       "damage_base": 25,
       "damage_bonus": {
         "type": "ultimate",
-        "stat": "combat",
+        "stat": "force",
         "value": 3
       },
       "applicability": "area_effect",
@@ -508,19 +508,19 @@
       "id": 23,
       "name": "Assaut Brutal",
       "description": "Une série de coups violents",
-      "energy_cost": 3,
+      "energy_cost": 4,
       "stats": {
-        "exploration": 0,
-        "combat": 50,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 0,
+        "force": 50,
+        "charisme": 0,
+        "intelligence": 0
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Rare",
       "damage_base": 10,
       "damage_bonus": {
         "type": "multiplication",
-        "stat": "combat",
+        "stat": "force",
         "value": 1.3
       },
       "applicability": "single_target",
@@ -532,19 +532,19 @@
       "id": 25,
       "name": "Bouclier de Force",
       "description": "Crée une barrière protectrice puissante",
-      "energy_cost": 4,
+      "energy_cost": 3,
       "stats": {
-        "exploration": 0,
-        "combat": 40,
-        "diplomacy": 0,
-        "knowledge": 10
+        "agilite": 0,
+        "force": 40,
+        "charisme": 0,
+        "intelligence": 10
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Rare",
-      "damage_base": -6,
+      "damage_base": 0,
       "damage_bonus": {
         "type": "shield",
-        "stat": "combat",
+        "stat": "force",
         "value": 15
       },
       "applicability": "self",
@@ -556,19 +556,19 @@
       "id": 26,
       "name": "Protection Renforcée",
       "description": "Augmente considérablement la défense et la résistance",
-      "energy_cost": 3,
+      "energy_cost": 4,
       "stats": {
-        "exploration": 0,
-        "combat": 45,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 0,
+        "force": 45,
+        "charisme": 0,
+        "intelligence": 0
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Rare",
-      "damage_base": -5,
+      "damage_base": 0,
       "damage_bonus": {
         "type": "reduction",
-        "stat": "combat",
+        "stat": "force",
         "value": 0.4
       },
       "applicability": "self",
@@ -582,17 +582,17 @@
       "description": "Devient temporairement presque invulnérable",
       "energy_cost": 5,
       "stats": {
-        "exploration": 0,
-        "combat": 60,
-        "diplomacy": 0,
-        "knowledge": 20
+        "agilite": 0,
+        "force": 60,
+        "charisme": 0,
+        "intelligence": 20
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Épique",
-      "damage_base": -8,
+      "damage_base": 0,
       "damage_bonus": {
         "type": "reduction",
-        "stat": "combat",
+        "stat": "force",
         "value": 0.7
       },
       "applicability": "self",
@@ -606,17 +606,17 @@
       "description": "Atteint un état de défense parfaite",
       "energy_cost": 6,
       "stats": {
-        "exploration": 100,
-        "combat": 100,
-        "diplomacy": 100,
-        "knowledge": 100
+        "agilite": 100,
+        "force": 100,
+        "charisme": 100,
+        "intelligence": 100
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Légendaire",
-      "damage_base": -10,
+      "damage_base": 0,
       "damage_bonus": {
         "type": "invulnerability",
-        "stat": "combat",
+        "stat": "force",
         "value": 1
       },
       "applicability": "self",
@@ -630,12 +630,12 @@
       "description": "Une révélation qui permet d'accomplir l'impossible",
       "energy_cost": 4,
       "stats": {
-        "exploration": 50,
-        "combat": 50,
-        "diplomacy": 50,
-        "knowledge": 50
+        "agilite": 50,
+        "force": 50,
+        "charisme": 50,
+        "intelligence": 50
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Épique",
       "damage_base": 0,
       "damage_bonus": {
@@ -654,12 +654,12 @@
       "description": "Rassemble toute sa puissance pour un coup final",
       "energy_cost": 8,
       "stats": {
-        "exploration": 100,
-        "combat": 100,
-        "diplomacy": 100,
-        "knowledge": 100
+        "agilite": 100,
+        "force": 100,
+        "charisme": 100,
+        "intelligence": 100
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Légendaire",
       "damage_base": 0,
       "damage_bonus": {
@@ -669,21 +669,21 @@
       },
       "applicability": "self_and_area",
       "image": "https://picsum.photos/500/500?random=30",
-      "special_effect": "Triple tous les effets de carte et restaure toute l'énergie, mais termine le combat après 3 tours (Il faut 100 de stat minimum 1 stat pour l'utiliser et 50 sur toutes les autres)",
+      "special_effect": "Double tous les effets de carte (sauf légandaire) et restaure toute l'énergie, mais termine le force après 3 tours (Il faut 100 de stat minimum 1 stat pour l'utiliser et 50 sur toutes les autres)",
       "level_requirement": 8
     },
     {
       "id": 31,
       "name": "Éveil du Pouvoir",
       "description": "Libère une puissance intérieure cachée",
-      "energy_cost": 4,
+      "energy_cost": 3,
       "stats": {
-        "exploration": 30,
-        "combat": 50,
-        "diplomacy": 30,
-        "knowledge": 30
+        "agilite": 30,
+        "force": 50,
+        "charisme": 30,
+        "intelligence": 30
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Rare",
       "damage_base": 0,
       "damage_bonus": {
@@ -702,17 +702,17 @@
       "description": "Libère une puissance destructrice incontrôlable",
       "energy_cost": 5,
       "stats": {
-        "exploration": 0,
-        "combat": 80,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 0,
+        "force": 80,
+        "charisme": 0,
+        "intelligence": 0
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Épique",
       "damage_base": 15,
       "damage_bonus": {
         "type": "multiplication",
-        "stat": "combat",
+        "stat": "force",
         "value": 2
       },
       "applicability": "area_effect",
@@ -726,17 +726,17 @@
       "description": "Analyse la situation pour préparer sa prochaine action",
       "energy_cost": 2,
       "stats": {
-        "exploration": 30,
-        "combat": 30,
-        "diplomacy": 30,
-        "knowledge": 30
+        "agilite": 30,
+        "force": 30,
+        "charisme": 30,
+        "intelligence": 30
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Rare",
       "damage_base": 0,
       "damage_bonus": {
         "type": "card_draw",
-        "stat": "knowledge",
+        "stat": "intelligence",
         "value": 2
       },
       "applicability": "self",
@@ -750,17 +750,17 @@
       "description": "Permet de voir à travers les illusions et les pièges",
       "energy_cost": 1,
       "stats": {
-        "exploration": 30,
-        "combat": 0,
-        "diplomacy": 0,
-        "knowledge": 30
+        "agilite": 30,
+        "force": 0,
+        "charisme": 0,
+        "intelligence": 30
       },
-      "class_association": null,
+      "class_association": "all",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
         "type": "reveal",
-        "stat": "knowledge",
+        "stat": "intelligence",
         "value": 1
       },
       "applicability": "area_effect",
@@ -774,17 +774,17 @@
       "description": "Étudie les structures anciennes",
       "energy_cost": 1,
       "stats": {
-        "exploration": 30,
-        "combat": 0,
-        "diplomacy": 0,
-        "knowledge": 30
+        "agilite": 30,
+        "force": 0,
+        "charisme": 0,
+        "intelligence": 30
       },
       "class_association": "Archéologue des Ruines",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
         "type": "analysis",
-        "stat": "knowledge",
+        "stat": "intelligence",
         "value": 2
       },
       "applicability": "self",
@@ -798,17 +798,17 @@
       "description": "Met au jour un artéfact puissant",
       "energy_cost": 2,
       "stats": {
-        "exploration": 40,
-        "combat": 0,
-        "diplomacy": 0,
-        "knowledge": 20
+        "agilite": 40,
+        "force": 0,
+        "charisme": 0,
+        "intelligence": 20
       },
       "class_association": "Archéologue des Ruines",
       "rarity": "Commune",
       "damage_base": 5,
       "damage_bonus": {
         "type": "artifact",
-        "stat": "exploration",
+        "stat": "agilite",
         "value": 1.5
       },
       "applicability": "self",
@@ -822,17 +822,17 @@
       "description": "Révèle les secrets des ruines",
       "energy_cost": 1,
       "stats": {
-        "exploration": 25,
-        "combat": 0,
-        "diplomacy": 0,
-        "knowledge": 35
+        "agilite": 25,
+        "force": 0,
+        "charisme": 0,
+        "intelligence": 35
       },
       "class_association": "Archéologue des Ruines",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
         "type": "analyze",
-        "stat": "knowledge",
+        "stat": "intelligence",
         "value": 1.5
       },
       "applicability": "self",
@@ -846,17 +846,17 @@
       "description": "Analyse rapidement les inscriptions anciennes",
       "energy_cost": 1,
       "stats": {
-        "exploration": 25,
-        "combat": 0,
-        "diplomacy": 0,
-        "knowledge": 35
+        "agilite": 25,
+        "force": 0,
+        "charisme": 0,
+        "intelligence": 35
       },
       "class_association": "Archéologue des Ruines",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
         "type": "analyze",
-        "stat": "knowledge",
+        "stat": "intelligence",
         "value": 1.2
       },
       "applicability": "self",
@@ -870,17 +870,17 @@
       "description": "Utilise sa connaissance approfondie des ruines",
       "energy_cost": 1,
       "stats": {
-        "exploration": 30,
-        "combat": 0,
-        "diplomacy": 0,
-        "knowledge": 30
+        "agilite": 30,
+        "force": 0,
+        "charisme": 0,
+        "intelligence": 30
       },
       "class_association": "Archéologue des Ruines",
       "rarity": "Commune",
       "damage_base": 4,
       "damage_bonus": {
         "type": "weakness",
-        "stat": "knowledge",
+        "stat": "intelligence",
         "value": 1.5
       },
       "applicability": "single_target",
@@ -894,17 +894,17 @@
       "description": "Examine minutieusement les décombres",
       "energy_cost": 1,
       "stats": {
-        "exploration": 35,
-        "combat": 0,
-        "diplomacy": 0,
-        "knowledge": 25
+        "agilite": 35,
+        "force": 0,
+        "charisme": 0,
+        "intelligence": 25
       },
       "class_association": "Archéologue des Ruines",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
         "type": "search",
-        "stat": "exploration",
+        "stat": "agilite",
         "value": 2
       },
       "applicability": "self",
@@ -918,17 +918,17 @@
       "description": "Utilise un ancien mécanisme de défense",
       "energy_cost": 2,
       "stats": {
-        "exploration": 30,
-        "combat": 20,
-        "diplomacy": 0,
-        "knowledge": 10
+        "agilite": 30,
+        "force": 20,
+        "charisme": 0,
+        "intelligence": 10
       },
       "class_association": "Archéologue des Ruines",
       "rarity": "Commune",
       "damage_base": 6,
       "damage_bonus": {
         "type": "trap",
-        "stat": "exploration",
+        "stat": "agilite",
         "value": 1.3
       },
       "applicability": "single_target",
@@ -942,17 +942,17 @@
       "description": "Active un ancien mécanisme de défense",
       "energy_cost": 2,
       "stats": {
-        "exploration": 20,
-        "combat": 0,
-        "diplomacy": 0,
-        "knowledge": 40
+        "agilite": 20,
+        "force": 0,
+        "charisme": 0,
+        "intelligence": 40
       },
       "class_association": "Archéologue des Ruines",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
         "type": "shield",
-        "stat": "knowledge",
+        "stat": "intelligence",
         "value": 8
       },
       "applicability": "self",
@@ -966,17 +966,17 @@
       "description": "Active un ancien système de défense",
       "energy_cost": 2,
       "stats": {
-        "exploration": 45,
-        "combat": 15,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 45,
+        "force": 15,
+        "charisme": 0,
+        "intelligence": 0
       },
       "class_association": "Archéologue des Ruines",
       "rarity": "Rare",
       "damage_base": 12,
       "damage_bonus": {
         "type": "trap",
-        "stat": "exploration",
+        "stat": "agilite",
         "value": 1.5
       },
       "applicability": "area_effect",
@@ -990,17 +990,17 @@
       "description": "Révèle des connaissances anciennes puissantes",
       "energy_cost": 2,
       "stats": {
-        "exploration": 30,
-        "combat": 0,
-        "diplomacy": 0,
-        "knowledge": 50
+        "agilite": 30,
+        "force": 0,
+        "charisme": 0,
+        "intelligence": 50
       },
       "class_association": "Archéologue des Ruines",
       "rarity": "Rare",
       "damage_base": 0,
       "damage_bonus": {
         "type": "power",
-        "stat": "knowledge",
+        "stat": "intelligence",
         "value": 2
       },
       "applicability": "self",
@@ -1014,17 +1014,17 @@
       "description": "Active plusieurs runes de pouvoir",
       "energy_cost": 5,
       "stats": {
-        "exploration": 40,
-        "combat": 20,
-        "diplomacy": 0,
-        "knowledge": 40
+        "agilite": 40,
+        "force": 20,
+        "charisme": 0,
+        "intelligence": 40
       },
       "class_association": "Archéologue des Ruines",
       "rarity": "Rare",
       "damage_base": 6,
       "damage_bonus": {
         "type": "rune",
-        "stat": "knowledge",
+        "stat": "intelligence",
         "value": 1.8
       },
       "applicability": "single_target",
@@ -1038,17 +1038,17 @@
       "description": "Invoque un ancien gardien mécanique",
       "energy_cost": 3,
       "stats": {
-        "exploration": 35,
-        "combat": 35,
-        "diplomacy": 0,
-        "knowledge": 30
+        "agilite": 35,
+        "force": 35,
+        "charisme": 0,
+        "intelligence": 30
       },
       "class_association": "Archéologue des Ruines",
       "rarity": "Rare",
       "damage_base": 0,
       "damage_bonus": {
         "type": "summon",
-        "stat": "knowledge",
+        "stat": "intelligence",
         "value": 15
       },
       "applicability": "self",
@@ -1062,17 +1062,17 @@
       "description": "Libère une puissante malédiction ancienne",
       "energy_cost": 3,
       "stats": {
-        "exploration": 30,
-        "combat": 0,
-        "diplomacy": 0,
-        "knowledge": 60
+        "agilite": 30,
+        "force": 0,
+        "charisme": 0,
+        "intelligence": 60
       },
       "class_association": "Archéologue des Ruines",
       "rarity": "Épique",
       "damage_base": 0,
       "damage_bonus": {
         "type": "curse",
-        "stat": "knowledge",
+        "stat": "intelligence",
         "value": 2
       },
       "applicability": "all_enemies",
@@ -1086,17 +1086,17 @@
       "description": "Canalise l'énergie de civilisations anciennes",
       "energy_cost": 4,
       "stats": {
-        "exploration": 50,
-        "combat": 0,
-        "diplomacy": 0,
-        "knowledge": 50
+        "agilite": 50,
+        "force": 0,
+        "charisme": 0,
+        "intelligence": 50
       },
       "class_association": "Archéologue des Ruines",
       "rarity": "Épique",
       "damage_base": 0,
       "damage_bonus": {
         "type": "ancient_power",
-        "stat": "knowledge",
+        "stat": "intelligence",
         "value": 3
       },
       "applicability": "self",
@@ -1110,17 +1110,17 @@
       "description": "Réveille une cité antique entière",
       "energy_cost": 8,
       "stats": {
-        "exploration": 80,
-        "combat": 0,
-        "diplomacy": 0,
-        "knowledge": 80
+        "agilite": 80,
+        "force": 0,
+        "charisme": 0,
+        "intelligence": 80
       },
       "class_association": "Archéologue des Ruines",
       "rarity": "Légendaire",
       "damage_base": 40,
       "damage_bonus": {
         "type": "ultimate",
-        "stat": "knowledge",
+        "stat": "intelligence",
         "value": 4
       },
       "applicability": "all_enemies",
@@ -1134,17 +1134,17 @@
       "description": "Crée une barrière de cristaux protecteurs",
       "energy_cost": 3,
       "stats": {
-        "exploration": 0,
-        "combat": 20,
-        "diplomacy": 0,
-        "knowledge": 40
+        "agilite": 0,
+        "force": 20,
+        "charisme": 0,
+        "intelligence": 40
       },
       "class_association": "Cristallomancien",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
         "type": "shield",
-        "stat": "knowledge",
+        "stat": "intelligence",
         "value": 15
       },
       "applicability": "self_and_adjacent",
@@ -1158,17 +1158,17 @@
       "description": "Projette des fragments de cristaux acérés",
       "energy_cost": 2,
       "stats": {
-        "exploration": 0,
-        "combat": 30,
-        "diplomacy": 0,
-        "knowledge": 20
+        "agilite": 0,
+        "force": 30,
+        "charisme": 0,
+        "intelligence": 20
       },
       "class_association": "Cristallomancien",
       "rarity": "Commune",
       "damage_base": 6,
       "damage_bonus": {
         "type": "piercing",
-        "stat": "combat",
+        "stat": "force",
         "value": 1.2
       },
       "applicability": "area_effect",
@@ -1182,17 +1182,17 @@
       "description": "Fait exploser un cristal pour des dégâts concentrés",
       "energy_cost": 2,
       "stats": {
-        "exploration": 0,
-        "combat": 35,
-        "diplomacy": 0,
-        "knowledge": 25
+        "agilite": 0,
+        "force": 35,
+        "charisme": 0,
+        "intelligence": 25
       },
       "class_association": "Cristallomancien",
       "rarity": "Commune",
       "damage_base": 10,
       "damage_bonus": {
         "type": "explosion",
-        "stat": "combat",
+        "stat": "force",
         "value": 1.3
       },
       "applicability": "single_target",
@@ -1206,17 +1206,17 @@
       "description": "Concentre l'énergie d'un diamant en un rayon",
       "energy_cost": 2,
       "stats": {
-        "exploration": 0,
-        "combat": 45,
-        "diplomacy": 0,
-        "knowledge": 15
+        "agilite": 0,
+        "force": 45,
+        "charisme": 0,
+        "intelligence": 15
       },
       "class_association": "Cristallomancien",
       "rarity": "Commune",
       "damage_base": 7,
       "damage_bonus": {
         "type": "piercing",
-        "stat": "combat",
+        "stat": "force",
         "value": 1.5
       },
       "applicability": "single_target",
@@ -1230,17 +1230,17 @@
       "description": "Fait pleuvoir des cristaux sur la zone",
       "energy_cost": 3,
       "stats": {
-        "exploration": 0,
-        "combat": 40,
-        "diplomacy": 0,
-        "knowledge": 20
+        "agilite": 0,
+        "force": 40,
+        "charisme": 0,
+        "intelligence": 20
       },
       "class_association": "Cristallomancien",
       "rarity": "Commune",
       "damage_base": 8,
       "damage_bonus": {
         "type": "area_damage",
-        "stat": "combat",
+        "stat": "force",
         "value": 1
       },
       "applicability": "area_effect",
@@ -1254,17 +1254,17 @@
       "description": "Fait vibrer les cristaux pour désorienter",
       "energy_cost": 2,
       "stats": {
-        "exploration": 0,
-        "combat": 25,
-        "diplomacy": 0,
-        "knowledge": 35
+        "agilite": 0,
+        "force": 25,
+        "charisme": 0,
+        "intelligence": 35
       },
       "class_association": "Cristallomancien",
       "rarity": "Commune",
       "damage_base": 4,
       "damage_bonus": {
         "type": "stun",
-        "stat": "knowledge",
+        "stat": "intelligence",
         "value": 0.4
       },
       "applicability": "area_effect",
@@ -1278,17 +1278,17 @@
       "description": "Crée une armure de cristaux bleus protecteurs",
       "energy_cost": 3,
       "stats": {
-        "exploration": 0,
-        "combat": 30,
-        "diplomacy": 0,
-        "knowledge": 30
+        "agilite": 0,
+        "force": 30,
+        "charisme": 0,
+        "intelligence": 30
       },
       "class_association": "Cristallomancien",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
         "type": "armor",
-        "stat": "knowledge",
+        "stat": "intelligence",
         "value": 20
       },
       "applicability": "self",
@@ -1302,17 +1302,17 @@
       "description": "Déchaîne une tempête de cristaux tranchants",
       "energy_cost": 3,
       "stats": {
-        "exploration": 0,
-        "combat": 50,
-        "diplomacy": 0,
-        "knowledge": 10
+        "agilite": 0,
+        "force": 50,
+        "charisme": 0,
+        "intelligence": 10
       },
       "class_association": "Cristallomancien",
       "rarity": "Commune",
       "damage_base": 12,
       "damage_bonus": {
         "type": "area_damage",
-        "stat": "combat",
+        "stat": "force",
         "value": 1.2
       },
       "applicability": "area_effect",
@@ -1326,17 +1326,17 @@
       "description": "Emprisonne l'ennemi dans une cage de cristal",
       "energy_cost": 4,
       "stats": {
-        "exploration": 0,
-        "combat": 40,
-        "diplomacy": 0,
-        "knowledge": 40
+        "agilite": 0,
+        "force": 40,
+        "charisme": 0,
+        "intelligence": 40
       },
       "class_association": "Cristallomancien",
       "rarity": "Rare",
       "damage_base": 5,
       "damage_bonus": {
         "type": "imprisonment",
-        "stat": "knowledge",
+        "stat": "intelligence",
         "value": 2
       },
       "applicability": "single_target",
@@ -1350,17 +1350,17 @@
       "description": "Provoque une explosion de cristaux violets",
       "energy_cost": 4,
       "stats": {
-        "exploration": 0,
-        "combat": 60,
-        "diplomacy": 0,
-        "knowledge": 20
+        "agilite": 0,
+        "force": 60,
+        "charisme": 0,
+        "intelligence": 20
       },
       "class_association": "Cristallomancien",
       "rarity": "Rare",
       "damage_base": 15,
       "damage_bonus": {
         "type": "burst",
-        "stat": "combat",
+        "stat": "force",
         "value": 1.6
       },
       "applicability": "area_effect",
@@ -1374,17 +1374,17 @@
       "description": "Forge une épée de pur cristal",
       "energy_cost": 3,
       "stats": {
-        "exploration": 0,
-        "combat": 55,
-        "diplomacy": 0,
-        "knowledge": 25
+        "agilite": 0,
+        "force": 55,
+        "charisme": 0,
+        "intelligence": 25
       },
       "class_association": "Cristallomancien",
       "rarity": "Rare",
       "damage_base": 0,
       "damage_bonus": {
         "type": "weapon",
-        "stat": "combat",
+        "stat": "force",
         "value": 1.8
       },
       "applicability": "self",
@@ -1398,17 +1398,17 @@
       "description": "Concentre la puissance de tous les cristaux",
       "energy_cost": 4,
       "stats": {
-        "exploration": 0,
-        "combat": 65,
-        "diplomacy": 0,
-        "knowledge": 35
+        "agilite": 0,
+        "force": 65,
+        "charisme": 0,
+        "intelligence": 35
       },
       "class_association": "Cristallomancien",
       "rarity": "Rare",
       "damage_base": 14,
       "damage_bonus": {
         "type": "crystal_power",
-        "stat": "combat",
+        "stat": "force",
         "value": 1.7
       },
       "applicability": "single_target",
@@ -1422,17 +1422,17 @@
       "description": "Canalise l'énergie pure d'un rubis",
       "energy_cost": 5,
       "stats": {
-        "exploration": 0,
-        "combat": 70,
-        "diplomacy": 0,
-        "knowledge": 40
+        "agilite": 0,
+        "force": 70,
+        "charisme": 0,
+        "intelligence": 40
       },
       "class_association": "Cristallomancien",
       "rarity": "Épique",
       "damage_base": 18,
       "damage_bonus": {
         "type": "pure_damage",
-        "stat": "combat",
+        "stat": "force",
         "value": 2
       },
       "applicability": "single_target",
@@ -1446,17 +1446,17 @@
       "description": "Crée une aura de régénération cristalline",
       "energy_cost": 5,
       "stats": {
-        "exploration": 0,
-        "combat": 40,
-        "diplomacy": 0,
-        "knowledge": 70
+        "agilite": 0,
+        "force": 40,
+        "charisme": 0,
+        "intelligence": 70
       },
       "class_association": "Cristallomancien",
       "rarity": "Épique",
       "damage_base": 0,
       "damage_bonus": {
         "type": "regeneration",
-        "stat": "knowledge",
+        "stat": "intelligence",
         "value": 5
       },
       "applicability": "self",
@@ -1470,17 +1470,17 @@
       "description": "Libère une explosion dévastatrice d'énergie cristalline pure",
       "energy_cost": 8,
       "stats": {
-        "exploration": 0,
-        "combat": 100,
-        "diplomacy": 0,
-        "knowledge": 50
+        "agilite": 0,
+        "force": 100,
+        "charisme": 0,
+        "intelligence": 50
       },
       "class_association": "Cristallomancien",
       "rarity": "Légendaire",
       "damage_base": 25,
       "damage_bonus": {
         "type": "ultimate",
-        "stat": "combat",
+        "stat": "force",
         "value": 3
       },
       "applicability": "area_effect",
@@ -1494,17 +1494,17 @@
       "description": "Un saut agile permettant d'éviter les dangers",
       "energy_cost": 2,
       "stats": {
-        "exploration": 40,
-        "combat": 10,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 40,
+        "force": 10,
+        "charisme": 0,
+        "intelligence": 0
       },
       "class_association": "Éclaireur des Vents",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
         "type": "evasion",
-        "stat": "exploration",
+        "stat": "agilite",
         "value": 0.4
       },
       "applicability": "self",
@@ -1518,17 +1518,17 @@
       "description": "Une série de mouvements gracieux qui désoriente l'ennemi",
       "energy_cost": 3,
       "stats": {
-        "exploration": 35,
-        "combat": 35,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 35,
+        "force": 35,
+        "charisme": 0,
+        "intelligence": 0
       },
       "class_association": "Éclaireur des Vents",
       "rarity": "Commune",
       "damage_base": 6,
       "damage_bonus": {
         "type": "confusion",
-        "stat": "exploration",
+        "stat": "agilite",
         "value": 0.5
       },
       "applicability": "area_effect",
@@ -1542,17 +1542,17 @@
       "description": "Repère les dangers à l'avance",
       "energy_cost": 1,
       "stats": {
-        "exploration": 35,
-        "combat": 0,
-        "diplomacy": 0,
-        "knowledge": 25
+        "agilite": 35,
+        "force": 0,
+        "charisme": 0,
+        "intelligence": 25
       },
       "class_association": "Éclaireur des Vents",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
         "type": "reveal",
-        "stat": "exploration",
+        "stat": "agilite",
         "value": 1
       },
       "applicability": "area_effect",
@@ -1566,17 +1566,17 @@
       "description": "Guide ses alliés à travers les dangers",
       "energy_cost": 4,
       "stats": {
-        "exploration": 50,
-        "combat": 0,
-        "diplomacy": 30,
-        "knowledge": 30
+        "agilite": 50,
+        "force": 0,
+        "charisme": 30,
+        "intelligence": 30
       },
       "class_association": "Éclaireur des Vents",
       "rarity": "Épique",
       "damage_base": 0,
       "damage_bonus": {
         "type": "protection",
-        "stat": "exploration",
+        "stat": "agilite",
         "value": 0.5
       },
       "applicability": "self",
@@ -1590,17 +1590,17 @@
       "description": "Se déplace avec une agilité surnaturelle",
       "energy_cost": 1,
       "stats": {
-        "exploration": 30,
-        "combat": 20,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 30,
+        "force": 20,
+        "charisme": 0,
+        "intelligence": 0
       },
       "class_association": "Éclaireur des Vents",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
         "type": "mobility",
-        "stat": "exploration",
+        "stat": "agilite",
         "value": 2
       },
       "applicability": "self",
@@ -1614,17 +1614,17 @@
       "description": "Invoque la protection ultime des vents",
       "energy_cost": 6,
       "stats": {
-        "exploration": 70,
-        "combat": 30,
-        "diplomacy": 0,
-        "knowledge": 30
+        "agilite": 70,
+        "force": 30,
+        "charisme": 0,
+        "intelligence": 30
       },
       "class_association": "Éclaireur des Vents",
       "rarity": "Légendaire",
       "damage_base": 0,
       "damage_bonus": {
         "type": "invincibility",
-        "stat": "exploration",
+        "stat": "agilite",
         "value": 1
       },
       "applicability": "self",
@@ -1638,17 +1638,17 @@
       "description": "Crée une barrière de vent protectrice",
       "energy_cost": 2,
       "stats": {
-        "exploration": 25,
-        "combat": 25,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 25,
+        "force": 25,
+        "charisme": 0,
+        "intelligence": 0
       },
       "class_association": "Éclaireur des Vents",
       "rarity": "Commune",
       "damage_base": -5,
       "damage_bonus": {
         "type": "shield",
-        "stat": "exploration",
+        "stat": "agilite",
         "value": 10
       },
       "applicability": "self_and_adjacent",
@@ -1662,17 +1662,17 @@
       "description": "Observe le champ de bataille depuis les airs",
       "energy_cost": 2,
       "stats": {
-        "exploration": 50,
-        "combat": 0,
-        "diplomacy": 0,
-        "knowledge": 20
+        "agilite": 50,
+        "force": 0,
+        "charisme": 0,
+        "intelligence": 20
       },
       "class_association": "Éclaireur des Vents",
       "rarity": "Rare",
       "damage_base": 0,
       "damage_bonus": {
         "type": "tactical",
-        "stat": "exploration",
+        "stat": "agilite",
         "value": 0.3
       },
       "applicability": "self",
@@ -1686,17 +1686,17 @@
       "description": "Insuffle une énergie régénératrice",
       "energy_cost": 3,
       "stats": {
-        "exploration": 20,
-        "combat": 0,
-        "diplomacy": 20,
-        "knowledge": 30
+        "agilite": 20,
+        "force": 0,
+        "charisme": 20,
+        "intelligence": 30
       },
       "class_association": "Éclaireur des Vents",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
         "type": "regeneration",
-        "stat": "knowledge",
+        "stat": "intelligence",
         "value": 3
       },
       "applicability": "single_target",
@@ -1710,17 +1710,17 @@
       "description": "Course rapide portée par le vent",
       "energy_cost": 2,
       "stats": {
-        "exploration": 40,
-        "combat": 20,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 40,
+        "force": 20,
+        "charisme": 0,
+        "intelligence": 0
       },
       "class_association": "Éclaireur des Vents",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
         "type": "mobility",
-        "stat": "exploration",
+        "stat": "agilite",
         "value": 3
       },
       "applicability": "self",
@@ -1734,17 +1734,17 @@
       "description": "Déchaîne une tempête dévastatrice",
       "energy_cost": 3,
       "stats": {
-        "exploration": 50,
-        "combat": 30,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 50,
+        "force": 30,
+        "charisme": 0,
+        "intelligence": 0
       },
       "class_association": "Éclaireur des Vents",
       "rarity": "Rare",
       "damage_base": 10,
       "damage_bonus": {
         "type": "area_damage",
-        "stat": "exploration",
+        "stat": "agilite",
         "value": 1.5
       },
       "applicability": "area_effect",
@@ -1758,17 +1758,17 @@
       "description": "Atteint une vitesse légendaire",
       "energy_cost": 4,
       "stats": {
-        "exploration": 60,
-        "combat": 20,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 60,
+        "force": 20,
+        "charisme": 0,
+        "intelligence": 0
       },
       "class_association": "Éclaireur des Vents",
       "rarity": "Épique",
       "damage_base": 0,
       "damage_bonus": {
         "type": "haste",
-        "stat": "exploration",
+        "stat": "agilite",
         "value": 2
       },
       "applicability": "self",
@@ -1782,17 +1782,17 @@
       "description": "Une puissante rafale qui repousse les ennemis",
       "energy_cost": 4,
       "stats": {
-        "exploration": 40,
-        "combat": 40,
-        "diplomacy": 0,
-        "knowledge": 0
+        "agilite": 40,
+        "force": 40,
+        "charisme": 0,
+        "intelligence": 0
       },
       "class_association": "Éclaireur des Vents",
       "rarity": "Rare",
       "damage_base": 8,
       "damage_bonus": {
         "type": "knockback",
-        "stat": "exploration",
+        "stat": "agilite",
         "value": 2
       },
       "applicability": "area_effect",
@@ -1806,17 +1806,17 @@
       "description": "Une brise apaisante qui soigne les blessures",
       "energy_cost": 3,
       "stats": {
-        "exploration": 30,
-        "combat": 0,
-        "diplomacy": 10,
-        "knowledge": 20
+        "agilite": 30,
+        "force": 0,
+        "charisme": 10,
+        "intelligence": 20
       },
       "class_association": "Éclaireur des Vents",
       "rarity": "Rare",
       "damage_base": -15,
       "damage_bonus": {
         "type": "heal",
-        "stat": "knowledge",
+        "stat": "intelligence",
         "value": 15
       },
       "applicability": "self",
@@ -1830,17 +1830,17 @@
       "description": "Négocie un échange avantageux",
       "energy_cost": 0,
       "stats": {
-        "exploration": 0,
-        "combat": 0,
-        "diplomacy": 40,
-        "knowledge": 20
+        "agilite": 0,
+        "force": 0,
+        "charisme": 40,
+        "intelligence": 20
       },
       "class_association": "Négociant des Cieux",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
         "type": "resource_gain",
-        "stat": "diplomacy",
+        "stat": "charisme",
         "value": 2
       },
       "applicability": "self",
@@ -1854,17 +1854,17 @@
       "description": "Propose un marché que personne ne peut refuser",
       "energy_cost": 3,
       "stats": {
-        "exploration": 0,
-        "combat": 0,
-        "diplomacy": 50,
-        "knowledge": 10
+        "agilite": 0,
+        "force": 0,
+        "charisme": 50,
+        "intelligence": 10
       },
       "class_association": "Négociant des Cieux",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
         "type": "charm",
-        "stat": "diplomacy",
+        "stat": "charisme",
         "value": 0.4
       },
       "applicability": "single_target",
@@ -1878,17 +1878,17 @@
       "description": "Établit un accord commercial bénéfique",
       "energy_cost": 2,
       "stats": {
-        "exploration": 0,
-        "combat": 0,
-        "diplomacy": 35,
-        "knowledge": 25
+        "agilite": 0,
+        "force": 0,
+        "charisme": 35,
+        "intelligence": 25
       },
       "class_association": "Négociant des Cieux",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
         "type": "buff",
-        "stat": "diplomacy",
+        "stat": "charisme",
         "value": 0.2
       },
       "applicability": "all_allies",
@@ -1902,17 +1902,17 @@
       "description": "Utilise son réseau pour gagner de l'influence",
       "energy_cost": 0,
       "stats": {
-        "exploration": 10,
-        "combat": 0,
-        "diplomacy": 45,
-        "knowledge": 5
+        "agilite": 10,
+        "force": 0,
+        "charisme": 45,
+        "intelligence": 5
       },
       "class_association": "Négociant des Cieux",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
         "type": "influence",
-        "stat": "diplomacy",
+        "stat": "charisme",
         "value": 3
       },
       "applicability": "self",
@@ -1926,17 +1926,17 @@
       "description": "Utilise ses talents de négociateur",
       "energy_cost": 2,
       "stats": {
-        "exploration": 0,
-        "combat": 0,
-        "diplomacy": 35,
-        "knowledge": 25
+        "agilite": 0,
+        "force": 0,
+        "charisme": 35,
+        "intelligence": 25
       },
       "class_association": "Négociant des Cieux",
       "rarity": "Commune",
       "damage_base": -5,
       "damage_bonus": {
         "type": "peace",
-        "stat": "diplomacy",
+        "stat": "charisme",
         "value": 0.3
       },
       "applicability": "single_target",
@@ -1950,17 +1950,17 @@
       "description": "Active son réseau de contacts",
       "energy_cost": 3,
       "stats": {
-        "exploration": 0,
-        "combat": 0,
-        "diplomacy": 40,
-        "knowledge": 20
+        "agilite": 0,
+        "force": 0,
+        "charisme": 40,
+        "intelligence": 20
       },
       "class_association": "Négociant des Cieux",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
         "type": "support",
-        "stat": "diplomacy",
+        "stat": "charisme",
         "value": 2
       },
       "applicability": "all_allies",
@@ -1974,17 +1974,17 @@
       "description": "Échange des ressources de manière profitable",
       "energy_cost": 1,
       "stats": {
-        "exploration": 0,
-        "combat": 0,
-        "diplomacy": 30,
-        "knowledge": 30
+        "agilite": 0,
+        "force": 0,
+        "charisme": 30,
+        "intelligence": 30
       },
       "class_association": "Négociant des Cieux",
       "rarity": "Commune",
       "damage_base": 0,
       "damage_bonus": {
         "type": "exchange",
-        "stat": "diplomacy",
+        "stat": "charisme",
         "value": 2
       },
       "applicability": "self",
@@ -1998,17 +1998,17 @@
       "description": "Utilise le commerce pour apaiser les tensions",
       "energy_cost": 3,
       "stats": {
-        "exploration": 0,
-        "combat": 0,
-        "diplomacy": 45,
-        "knowledge": 15
+        "agilite": 0,
+        "force": 0,
+        "charisme": 45,
+        "intelligence": 15
       },
       "class_association": "Négociant des Cieux",
       "rarity": "Commune",
       "damage_base": -8,
       "damage_bonus": {
         "type": "pacify",
-        "stat": "diplomacy",
+        "stat": "charisme",
         "value": 0.4
       },
       "applicability": "area_effect",
@@ -2022,17 +2022,17 @@
       "description": "Active ses contacts les plus précieux",
       "energy_cost": 4,
       "stats": {
-        "exploration": 10,
-        "combat": 0,
-        "diplomacy": 60,
-        "knowledge": 10
+        "agilite": 10,
+        "force": 0,
+        "charisme": 60,
+        "intelligence": 10
       },
       "class_association": "Négociant des Cieux",
       "rarity": "Rare",
       "damage_base": 0,
       "damage_bonus": {
         "type": "elite_support",
-        "stat": "diplomacy",
+        "stat": "charisme",
         "value": 3
       },
       "applicability": "self",
@@ -2046,17 +2046,17 @@
       "description": "Prend le contrôle du marché local",
       "energy_cost": 4,
       "stats": {
-        "exploration": 0,
-        "combat": 0,
-        "diplomacy": 55,
-        "knowledge": 25
+        "agilite": 0,
+        "force": 0,
+        "charisme": 55,
+        "intelligence": 25
       },
       "class_association": "Négociant des Cieux",
       "rarity": "Rare",
       "damage_base": 0,
       "damage_bonus": {
         "type": "control",
-        "stat": "diplomacy",
+        "stat": "charisme",
         "value": 0.5
       },
       "applicability": "area_effect",
@@ -2070,17 +2070,17 @@
       "description": "Saisit une opportunité commerciale unique",
       "energy_cost": 3,
       "stats": {
-        "exploration": 0,
-        "combat": 0,
-        "diplomacy": 50,
-        "knowledge": 30
+        "agilite": 0,
+        "force": 0,
+        "charisme": 50,
+        "intelligence": 30
       },
       "class_association": "Négociant des Cieux",
       "rarity": "Rare",
       "damage_base": 0,
       "damage_bonus": {
         "type": "profit",
-        "stat": "diplomacy",
+        "stat": "charisme",
         "value": 4
       },
       "applicability": "self",
@@ -2094,17 +2094,17 @@
       "description": "Signe un contrat particulièrement avantageux",
       "energy_cost": 4,
       "stats": {
-        "exploration": 0,
-        "combat": 0,
-        "diplomacy": 65,
-        "knowledge": 15
+        "agilite": 0,
+        "force": 0,
+        "charisme": 65,
+        "intelligence": 15
       },
       "class_association": "Négociant des Cieux",
       "rarity": "Rare",
       "damage_base": 0,
       "damage_bonus": {
         "type": "contract",
-        "stat": "diplomacy",
+        "stat": "charisme",
         "value": 5
       },
       "applicability": "all_allies",
@@ -2118,17 +2118,17 @@
       "description": "Propose un échange mutuellement bénéfique",
       "energy_cost": 5,
       "stats": {
-        "exploration": 0,
-        "combat": 0,
-        "diplomacy": 75,
-        "knowledge": 25
+        "agilite": 0,
+        "force": 0,
+        "charisme": 75,
+        "intelligence": 25
       },
       "class_association": "Négociant des Cieux",
       "rarity": "Épique",
       "damage_base": 0,
       "damage_bonus": {
         "type": "alliance",
-        "stat": "diplomacy",
+        "stat": "charisme",
         "value": 1
       },
       "applicability": "single_target",
@@ -2142,17 +2142,17 @@
       "description": "Réalise un investissement stratégique majeur",
       "energy_cost": 2,
       "stats": {
-        "exploration": 10,
-        "combat": 0,
-        "diplomacy": 70,
-        "knowledge": 30
+        "agilite": 10,
+        "force": 0,
+        "charisme": 70,
+        "intelligence": 30
       },
       "class_association": "Négociant des Cieux",
       "rarity": "Épique",
       "damage_base": 0,
       "damage_bonus": {
         "type": "investment",
-        "stat": "diplomacy",
+        "stat": "charisme",
         "value": 10
       },
       "applicability": "self",
@@ -2166,17 +2166,17 @@
       "description": "Atteint le summum de la prospérité commerciale",
       "energy_cost": 8,
       "stats": {
-        "exploration": 20,
-        "combat": 0,
-        "diplomacy": 100,
-        "knowledge": 30
+        "agilite": 20,
+        "force": 0,
+        "charisme": 100,
+        "intelligence": 30
       },
       "class_association": "Négociant des Cieux",
       "rarity": "Légendaire",
       "damage_base": 0,
       "damage_bonus": {
         "type": "prosperity",
-        "stat": "diplomacy",
+        "stat": "charisme",
         "value": 5
       },
       "applicability": "all_allies",

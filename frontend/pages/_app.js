@@ -1,4 +1,5 @@
 import '../styles/globals.css';
+import '../styles/cards.css';
 import { AudioProvider } from '../context/AudioContext';
 import Layout from '../components/Layout';
 
