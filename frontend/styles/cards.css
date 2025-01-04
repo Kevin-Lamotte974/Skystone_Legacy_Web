@@ -1,0 +1,713 @@
+/* ========== 1. IMPORTS ET VARIABLES ========== */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+:root {
+    /* Variables communes à toutes les cartes */
+    --card-border-radius: 50% / 8%;
+    --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    --flag-shadow: 3px 3px 5px rgba(0,0,0,0.5), 0 0 10px rgba(0,0,0,0.3);
+    --text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+    
+    /* Palette commune */
+    --common-primary: #8b4513;
+    --common-secondary: #a0522d;
+    --common-accent: #deb887;
+    --common-bg: linear-gradient(135deg, #4b2103, #4b1800);
+    --common-glow: rgba(139, 69, 19, 0.3);
+
+    /* Palette rare */
+    --rare-primary: #c0c0c0;
+    --rare-secondary: #a0a0a0;
+    --rare-accent: #e0e0e0;
+    --rare-bg: linear-gradient(135deg, #333333, #404040);
+    --rare-glow: rgba(192, 192, 192, 0.3);
+
+    /* Palette épique */
+    --epic-primary: #4a90e2;
+    --epic-secondary: #2171cc;
+    --epic-accent: #6ba5e7;
+    --epic-bg: linear-gradient(135deg, #1a2942, #2a3b56);
+    --epic-glow: rgba(74, 144, 226, 0.4);
+
+    /* Palette légendaire */
+    --legendary-primary: #ffd700;
+    --legendary-secondary: #ff7d0a;
+    --legendary-accent: #ffe566;
+    --legendary-bg: linear-gradient(135deg, #4a2410, #2c1810);
+    --legendary-glow: rgba(255, 215, 0, 0.5);
+}
+
+/* ========== 2. STYLES DE BASE ========== */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #462b1e 0%, #1a0f0a 100%);
+    font-family: 'Cinzel', serif;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+/* ========== 3. STRUCTURE DE BASE DES CARTES ========== */
+.card, .legendary-card, .epic-card, .rare-card {
+    perspective: 1000px;
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 0.55 / 1;
+    position: relative;
+    margin: 20px;
+    z-index: 1;
+    cursor: pointer;
+    overflow: visible;
+    border-radius: var(--card-border-radius);
+    --card-width: 320px; /* Définition de la variable de largeur */
+}
+
+.card-frame {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--card-border-radius);
+    padding: 0;
+    position: relative;
+    z-index: 15;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+}
+
+.inner-frame {
+    position: relative;
+    height: calc(100% - 16px);
+    margin: 8px;
+    border-radius: var(--card-border-radius);
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* ========== 4. ÉLÉMENTS DE CARTE ========== */
+.card-name {
+    position: absolute;
+    bottom: 33%;
+    left: 0;
+    width: 100%;
+    z-index: 30;
+    padding: 15px 0;
+    margin-top: -20px !important;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transform-style: preserve-3d;
+    transform: perspective(600px) rotateX(12deg) rotateZ(0deg);
+    border-radius: 100% 100% 100% 100% / 50% 50% 0% 0%;
+    transform-origin: center -150%;
+    box-shadow: 
+        0 5px 15px rgba(0,0,0,0.4),
+        0 -5px 15px rgba(0,0,0,0.4);
+}
+
+.card-stats {
+    position: absolute;
+    top: 15%;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    z-index: 20;
+}
+
+.card-image-container {
+    position: relative;
+    height: 60%;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* 4. Styles spécifiques par rareté */
+/* Commune */
+.card .inner-frame {
+    border: 2px solid #8b4513;
+    background: #2e2e2e;
+}
+
+.card .card-frame {
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.8),
+        inset 0 0 15px rgba(139, 69, 19, 0.3);
+    background: linear-gradient(135deg, #1a1a1a, #2e2e2e);
+}
+
+.card .card-name {
+    background: linear-gradient(to bottom, 
+        #3d2b1f 0%, 
+        #2a1f16 100%);
+    color: #a0522d;
+    border-top: 2px solid #8b4513;
+    border-bottom: 2px solid #8b4513;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.card .card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+.card .card-type {
+    color: #cccccc;
+    text-align: center;
+    font-weight: bold;
+    padding: 5px;
+    background: #333333;
+    /* border: 2px solid #666666; */ /* Bordure retirée */
+    border-radius: 10px;
+    margin-top: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.card .card-description {
+    color: #cccccc;
+    padding: 10px;
+    background: #333333;
+    /* border: 2px solid #666666; */ /* Bordure retirée */
+    border-radius: 10px;
+}
+
+.card .details-btn {
+    background: #666666;
+    color: white;
+    border: 2px solid #777777;
+}
+
+.card .details-btn:hover {
+    background: #777777;
+}
+
+.card .crystal {
+    filter: grayscale(100%) brightness(60%) sepia(20%);
+}
+
+.card .special-effect {
+    background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(160, 82, 45, 0.1));
+    border-color: var(--common-primary);
+    color: var(--common-accent);
+}
+
+.card .inner-frame {
+    border-color: var(--common-primary);
+    background: var(--common-bg);
+    box-shadow: inset 0 0 20px var(--common-glow);
+}
+
+.card .card-name {
+    background: var(--common-bg);
+    color: var(--common-accent);
+    border-color: var(--common-primary);
+}
+
+.card .stat {
+    background: var(--common-bg);
+    color: var(--common-accent);
+    border-color: var(--common-primary);
+}
+
+.card .damage-container.attack {
+    background: var(--common-bg);
+}
+
+/* Rare */
+.rare-card .inner-frame {
+    border: 2px solid #c0c0c0;
+    background: #2a2a2a;
+    box-shadow: inset 0 0 20px rgba(192, 192, 192, 0.3);
+}
+
+.rare-card .card-frame {
+    width: 100%;
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.8),
+        inset 0 0 20px rgba(192, 192, 192, 0.3);
+    background: linear-gradient(135deg, #333333, #404040);
+}
+
+.rare-card .card-name {
+    background: linear-gradient(to bottom,
+        #404040 0%,
+        #333333 100%);
+    color: #c0c0c0;
+    border-top: 2px solid #c0c0c0;
+    border-bottom: 2px solid #c0c0c0;
+    background: #1a1a1a;
+    color: #4a90e2;
+    border: 2px solid #4a90e2;
+}
+
+/* Styles communs pour les cristaux */
+.crystal-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.crystal {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    transform-origin: center;
+}
+
+/* Position des cristaux */
+.crystal-tl { top: 30px; left: 0px; }
+.crystal-tr { top: 30px; right: 0px; }
+.crystal-bl { bottom: 30px; left: 0px; }
+.crystal-br { bottom: 30px; right: 0px; }
+
+/* Cristaux pour carte commune */
+.card .crystal {
+    filter: grayscale(100%) brightness(60%) sepia(20%);
+}
+
+/* Cristaux pour carte épique */
+.epic-card .crystal {
+    filter: sepia(100%) saturate(300%) brightness(100%) hue-rotate(170deg);
+}
+
+/* Cristaux pour carte légendaire */
+.legendary-card .crystal {
+    filter: sepia(100%) saturate(200%) brightness(150%) hue-rotate(5deg);
+}
+
+/* Cristaux pour carte rare */
+.rare-card .crystal {
+    filter: brightness(150%) saturate(0.5);
+}
+
+/* Carte Épique - Style high-tech futuriste */
+.epic-card .card-frame {
+    /* border: 4px solid #4a90e2; */ /* Bordure retirée */
+    background: #1d003d;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    position: relative;
+    overflow: hidden;
+    border-radius: 50% / 8%;
+}
+
+.epic-card .card-image-container {
+    /* border: 2px solid #4a90e2; */ /* Bordure retirée */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    position: relative;
+    overflow: hidden;
+}
+
+.epic-card .card-description {
+    color: #4a90e2;
+    padding: 12px;
+    margin: 10px;
+    border-radius: 10px;
+    /* border: 1px solid #4a90e2; */ /* Bordure retirée */
+    background: #1a1a1a;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    font-style: italic;
+    line-height: 1.4;
+    position: relative;
+    overflow: hidden;
+}
+.legendary-card .card-image-container {
+    /* border: 2px solid #ff7d0a; */ /* Bordure retirée */
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    margin-bottom: 10px;
+}
+
+.legendary-card .card-description {
+    color: #ff9b4d;
+    padding: 12px;
+    background: #2c1810;
+    position: relative;
+    font-style: italic;
+    line-height: 1.4;
+    border-radius: 10px;
+    /* border: 1px solid #ff7d0a; */ /* Bordure retirée */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Styles pour le coût en cristaux */
+.cost-container {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    width: 45px;
+    height: 45px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.cost-value {
+    position: relative;
+    z-index: 6;
+    color: white;
+    font-weight: bold;
+    font-size: 1.4em;
+    text-shadow: 
+        2px 2px 2px rgba(0, 0, 0, 0.8),
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+}
+
+/* Modification de l'encoche d'énergie en drapeau de troubadour */
+.energy-notch, .damage-container {
+    position: absolute;
+    top: 15%;
+    left: -10px;
+    transform: perspective(500px) rotateY(15deg);
+    background: linear-gradient(135deg, #2c1810, #4a2410);
+    padding: 8px 25px 8px 15px;
+    border-radius: 0 8px 8px 0;
+    z-index: 20; /* Z-index augmenté pour être au-dessus de tout */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        3px 3px 5px rgba(0,0,0,0.5),
+        0 0 10px rgba(0,0,0,0.3);
+    transform-style: preserve-3d;
+    border-left: none;
+}
+
+.energy-notch::after,
+.damage-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -8px;
+    width: 16px;
+    height: 100%;
+    background: inherit;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.energy-value {
+    color: #4a90e2;
+    font-size: 1.2em;
+    text-shadow: 
+        0 0 5px rgba(74, 144, 226, 0.5),
+        2px 2px 2px rgba(0,0,0,0.7);
+}
+
+.energy-crystal {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.5));
+}
+
+/* Styles pour les dégâts et soins */
+
+.damage-container.attack, .damage-container.heal {
+    top: calc(15% + 50px);
+    min-width: 65px;
+    padding: 5px;
+}
+
+.damage-value {
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+    transform: translateY(2px);
+}
+
+.damage-container.attack .damage-value {
+    color: #ff4444;
+    padding-left: 5px;
+    position: relative;
+}
+
+.damage-container.heal .damage-value {
+    color: #44ff44;
+    padding-left: 5px;
+    position: relative;
+}
+
+/* Style commun pour tous les drapeaux */
+.energy-notch, .damage-container, .stat {
+    position: absolute;
+    padding: 5px 15px 5px 5px;
+    border-radius: 0 8px 8px 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        3px 3px 5px rgba(0,0,0,0.5),
+        0 0 10px rgba(0,0,0,0.3);
+    transform-style: preserve-3d;
+    border-left: none;
+    background: linear-gradient(135deg, #2c1810, #4a2410);
+}
+
+/* Positionnement des drapeaux */
+.energy-notch {
+    top: 15%;
+    transform: perspective(500px) rotateY(15deg);
+}
+
+.stat {
+    position: relative;
+    transform: perspective(500px) rotateY(-15deg);
+    right: -5px;
+    border-radius: 8px 0 0 8px;
+    padding: 5px 10px 5px 12px;
+    margin: 0;
+    width: auto;
+    background: linear-gradient(135deg, #2c1810, #4a2410);
+    color: #ffffff;
+}
+
+.stat::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background: inherit;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+/* Ajustement des flèches pour les stats (côté droit) */
+.stat::before {
+    left: auto;
+    right: 0;
+    bottom: -10px;
+    transform: rotate(-45deg);
+    transform-origin: top right;
+}
+
+.stat::after {
+    right: auto;
+    left: -8px;
+    width: 16px;
+    clip-path: polygon(100% 0, 0 50%, 100% 100%);
+}
+
+/* Style pour l'emblème rare en drapeau */
+.rare-emblem {
+    position: absolute;
+    bottom: -10px;
+    left: calc(50% - 40px);
+    z-index: 25;
+    padding: 15px;
+    border-radius: 50px 50px 0 0;
+    background: linear-gradient(135deg, #a0a0a0, #c0c0c0);
+    box-shadow: 
+        3px 3px 5px rgba(0,0,0,0.5);
+    transform-style: preserve-3d;
+    border-left: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rare-emblem .emblem-frame {
+    width: 50px;
+    height: 50px;
+}
+
+.rare-emblem .emblem-image {
+    width: 100%;
+    height: 100%;
+    filter: brightness(150%) saturate(0.5);
+}
+
+/* Style pour l'effet spécial */
+.special-effect {
+    position: relative;
+    margin: 20% 15px;
+    padding: 10px;
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(255, 100, 0, 0.2));
+    border-radius: 8px;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    color: #ff6b6b;
+    /* Utilisation d'une unité relative à la taille de la carte */
+    font-size: calc(0.035 * var(--card-width, 320px)); /* 6% de la largeur de la carte */
+    text-align: center;
+    box-shadow: 
+        inset 0 0 10px rgba(255, 0, 0, 0.2),
+        0 0 5px rgba(255, 0, 0, 0.3);
+}
+
+/* Application des couleurs pour toutes les raretés */
+
+/* Pour les cartes communes */
+.card .inner-frame,
+.card .card-name,
+.card .stat,
+.card .damage-container.attack,
+.card .damage-container.heal,
+.card .energy-notch {
+    background: var(--common-bg);
+    border: 2px solid var(--common-accent);
+    color: var(--common-accent);
+    
+}
+
+/* Pour les cartes rares */
+.rare-card .inner-frame,
+.rare-card .card-name,
+.rare-card .stat,
+.rare-card .damage-container.attack,
+.rare-card .damage-container.heal,
+.rare-card .energy-notch {
+    background: var(--rare-bg);
+    border: 2px solid var(--rare-accent);
+    color: var(--rare-accent);
+}
+
+/* Pour les cartes épiques */
+.epic-card .inner-frame,
+.epic-card .card-name,
+.epic-card .stat,
+.epic-card .damage-container.attack,
+.epic-card .damage-container.heal,
+.epic-card .energy-notch {
+    background: var(--epic-bg);
+    border: 2px solid var(--epic-accent);
+    color: var(--epic-accent);
+}
+
+/* Pour les cartes légendaires */
+.legendary-card .inner-frame,
+.legendary-card .card-name,
+.legendary-card .stat,
+.legendary-card .damage-container.attack,
+.legendary-card .damage-container.heal,
+.legendary-card .energy-notch {
+    background: var(--legendary-bg);
+    border: 2px solid var(--legendary-accent);
+    color: var(--legendary-accent);
+}
+
+/* Effets spéciaux harmonisés */
+.special-effect {
+    background: var(--legendary-bg);
+    border-color: var(--legendary-primary);
+    color: var(--legendary-accent);
+}
+
+.legendary-card .special-effect {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 125, 10, 0.1));
+    border-color: var(--legendary-primary);
+    color: var(--legendary-accent);
+}
+
+.epic-card .special-effect {
+    background: linear-gradient(135deg, rgba(74, 144, 226, 0.1), rgba(33, 113, 204, 0.1));
+    border-color: var(--epic-primary);
+    color: var(--epic-primary);
+}
+
+.rare-card .special-effect {
+    background: linear-gradient(135deg, rgba(192, 192, 192, 0.1), rgba(160, 160, 160, 0.1));
+    border-color: var(--rare-primary);
+    color: var(--rare-primary);
+}
+
+.card .special-effect {
+    background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(160, 82, 45, 0.1));
+    border-color: var(--common-primary);
+    color: var(--common-accent);
+}
+
+/* Ajustement des couleurs des drapeaux pour toutes les raretés */
+.energy-notch {
+    background: var(--common-bg);
+}
+
+.legendary-card .energy-notch {
+    background: var(--legendary-bg);
+}
+
+.epic-card .energy-notch {
+    background: var(--epic-bg);
+}
+
+.rare-card .energy-notch {
+    background: var(--rare-bg);
+}
+
+/* Drapeaux de dégâts/soins */
+.damage-container {
+    background: var(--common-bg);
+}
+
+.legendary-card .damage-container {
+    background: var(--legendary-bg);
+}
+
+.epic-card .damage-container {
+    background: var(--epic-bg);
+}
+
+.rare-card .damage-container {
+    background: var(--rare-bg);
+}
+
+/* Stats côté droit */
+.stat {
+    background: var(--common-bg);
+}
+
+.legendary-card .stat {
+    background: var(--legendary-bg);
+}
+
+.epic-card .stat {
+    background: var(--epic-bg);
+}
+
+.rare-card .stat {
+    background: var(--rare-bg);
+}
+
+/* S'assurer que les éléments before/after héritent des bonnes couleurs */
+.energy-notch::before,
+.damage-container::before,
+.stat::before,
+.energy-notch::after,
+.damage-container::after,
+.stat::after {
+    background: inherit;
+}
+
+/* Styles des emblèmes selon la rareté */
+.rare-emblem {
+    background: var(--common-accent);
+}
+
+.legendary-card .rare-emblem {
+    background: var(--legendary-accent);
+}
+
+.epic-card .rare-emblem {
+    background: var(--epic-accent);
+}
+
+.rare-card .rare-emblem {
+    background: var(--rare-accent);
+}
