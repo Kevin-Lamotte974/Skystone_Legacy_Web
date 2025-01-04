@@ -38,7 +38,7 @@
 }
 
 /* ========== 2. STYLES DE BASE ========== */
-body {
+.cardlist {
     min-height: 100vh;
     display: flex;
     justify-content: center;
