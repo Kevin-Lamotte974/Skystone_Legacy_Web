@@ -397,14 +397,14 @@
       },
       "class_association": "all",
       "rarity": "Commune",
-      "damage_base": 0,
+      "damage_base": -5,
       "damage_bonus": {
         "type": "heal",
         "stat": "intelligence",
         "value": 5
       },
       "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=20",
+      "image": "/assets/images/cards/repos_rapide.png",
       "special_effect": "Restaure 5 PV",
       "level_requirement": 1
     },
@@ -428,7 +428,7 @@
         "value": 1
       },
       "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=27",
+      "image": "/assets/images/cards/resilience.png",
       "special_effect": "Survit à une attaque mortelle avec 1 PV",
       "level_requirement": 2
     },
@@ -452,7 +452,7 @@
         "value": 0.15
       },
       "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=14",
+      "image": "/assets/images/cards/resistance_accrue.png",
       "special_effect": "Réduit tous les types de dégâts de 15% pendant 1 tour",
       "level_requirement": 1
     },
@@ -476,7 +476,7 @@
         "value": 3
       },
       "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=23",
+      "image": "/assets/images/cards/second_souffle.png",
       "special_effect": "Sacrifie 5 PV pour gagner 3 points d'énergie",
       "level_requirement": 3
     },
@@ -500,7 +500,7 @@
         "value": 3
       },
       "applicability": "area_effect",
-      "image": "https://picsum.photos/500/500?random=79",
+      "image": "/assets/images/cards/tempete_de_feu.png",
       "special_effect": "Inflige des dégâts massifs à tous les ennemis (Il faut 100 de stat minimum 1 stat pour l'utiliser et 50 sur une autre)",
       "level_requirement": 8
     },
@@ -524,7 +524,7 @@
         "value": 1.3
       },
       "applicability": "single_target",
-      "image": "https://picsum.photos/500/500?random=12",
+      "image": "/assets/images/cards/assaut_brutal.png",
       "special_effect": "25% de chance de frapper à nouveau",
       "level_requirement": 3
     },
@@ -548,7 +548,7 @@
         "value": 15
       },
       "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=15",
+      "image": "/assets/images/cards/bouclier_de_force.png",
       "special_effect": "Crée un bouclier absorbant 15 points de dégâts",
       "level_requirement": 3
     },

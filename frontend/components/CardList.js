@@ -11,6 +11,7 @@ import {
 } from "react-icons/gi";
 import CardDetail from './CardDetail';
 import Image from 'next/image';
+import StarEffect from '../utils/starEffect';
 
 function getCardRarity(rarity) {
     switch (rarity.toLowerCase()) {
@@ -50,6 +51,27 @@ function CardList() {
         }
         fetchCards();
     }, []);
+
+    useEffect(() => {
+        // Initialiser l'effet d'étoiles pour les cartes légendaires
+        const legendaryCards = document.querySelectorAll('.legendary-card .card-frame');
+        legendaryCards.forEach(card => {
+            const canvas = document.createElement('canvas');
+            canvas.classList.add('star-effect');
+            card.appendChild(canvas);
+            
+            // Ajuster la taille du canvas à la carte
+            const resizeCanvas = () => {
+                canvas.width = card.offsetWidth;
+                canvas.height = card.offsetHeight;
+            };
+            
+            resizeCanvas();
+            new StarEffect(canvas, 400);
+            
+            window.addEventListener('resize', resizeCanvas);
+        });
+    }, [cards]);
 
     const handleFilterRarity = (event) => {
         setFilterRarity(event.target.value);
