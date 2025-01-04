@@ -1,5 +1,7 @@
 import { React, useState } from 'react';
 import { useRouter } from 'next/router';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Auth = () => {
   const router = useRouter();
@@ -12,9 +14,92 @@ const Auth = () => {
     confirmerMotDePasse: ''
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate('/home');
+    try {
+      const endpoint = isLogin ? 'login' : 'register';
+      const response = await fetch(`http://localhost:8000/api/auth/${endpoint}/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.motDePasse,
+          ...(isLogin ? {} : { pseudo: formData.pseudo })
+        })
+      });
+
+      const data = await response.json();
+      
+      if (response.ok) {
+        if (isLogin) {
+          toast.success('Connexion réussie !');
+          localStorage.setItem('token', data.access);
+          router.push('/');
+        } else {
+          toast.success('Inscription réussie ! Vous pouvez maintenant vous connecter.');
+          setIsLogin(true);
+          setFormData({
+            pseudo: '',
+            email: '',
+            motDePasse: '',
+            confirmerMotDePasse: ''
+          });
+        }
+      } else {
+        // Gérer les différents types d'erreurs
+        if (data.email) {
+          const emailError = data.email[0].toLowerCase();
+          if (emailError.includes('already exists')) {
+            toast.error('Cette adresse email est déjà utilisée');
+          } else if (emailError.includes('valid email')) {
+            toast.error('Veuillez entrer une adresse email valide');
+          } else if (emailError.includes('required')) {
+            toast.error('L\'adresse email est requise');
+          } else {
+            toast.error('Erreur avec l\'adresse email');
+          }
+        }
+        if (data.pseudo) {
+          const pseudoError = data.pseudo[0].toLowerCase();
+          if (pseudoError.includes('already exists')) {
+            toast.error('Ce pseudo est déjà utilisé');
+          } else if (pseudoError.includes('required')) {
+            toast.error('Le pseudo est requis');
+          } else {
+            toast.error('Erreur avec le pseudo');
+          }
+        }
+        if (data.password) {
+          const passwordError = data.password[0].toLowerCase();
+          if (passwordError.includes('too common')) {
+            toast.error('Le mot de passe est trop simple');
+          } else if (passwordError.includes('too short')) {
+            toast.error('Le mot de passe doit contenir au moins 8 caractères');
+          } else if (passwordError.includes('numeric')) {
+            toast.error('Le mot de passe ne peut pas être uniquement numérique');
+          } else if (passwordError.includes('required')) {
+            toast.error('Le mot de passe est requis');
+          } else {
+            toast.error('Le mot de passe n\'est pas assez sécurisé');
+          }
+        }
+        if (data.detail) {
+          if (data.detail.includes('No active account') || data.detail.includes('Invalid credentials')) {
+            toast.error('Email ou mot de passe incorrect');
+          } else {
+            toast.error('Une erreur est survenue avec vos identifiants');
+          }
+        }
+        if (!data.email && !data.pseudo && !data.password && !data.detail) {
+          toast.error('Une erreur est survenue. Veuillez réessayer.');
+        }
+      }
+    } catch (error) {
+      toast.error('Erreur de connexion au serveur');
+      console.error('Erreur:', error);
+    }
   };
 
   const handleInputChange = (e) => {
@@ -41,7 +126,22 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0B0F] flex items-center justify-center relative overflow-hidden px-4">
+    <>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        toastClassName="bg-black/80 backdrop-blur-sm border border-purple-500/20 rounded-xl"
+        progressClassName="bg-gradient-to-r from-purple-500 to-blue-500"
+      />
+      <div className="min-h-screen bg-[#0B0B0F] flex items-center justify-center relative overflow-hidden px-4">
       
       {/* Effets d'arrière-plan */}
       <div className="absolute inset-0">
@@ -192,7 +292,8 @@ const Auth = () => {
         </div>
       </div>
     </div>
-  );
+  </>
+);
 };
 
 export default Auth;
