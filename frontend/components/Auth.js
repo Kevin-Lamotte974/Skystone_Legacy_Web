@@ -18,7 +18,7 @@ const Auth = () => {
     e.preventDefault();
     try {
       const endpoint = isLogin ? 'login' : 'register';
-      const response = await fetch(`http://localhost:8000/api/auth/${endpoint}/`, {
+      const response = await fetch(`https://slapi.kevinlamotte.fr/api/auth/${endpoint}/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
