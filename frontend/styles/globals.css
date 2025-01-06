@@ -10,6 +10,49 @@ html, body {
   color: #333;
 }
 
+
+/* Styles pour les éléments de jeu */
+.game-resource {
+  @apply flex items-center space-x-2 bg-black/70 backdrop-blur-sm px-4 py-2 rounded-full text-white hover:bg-black/80 transition-all duration-300;
+}
+
+.game-menu-item {
+  @apply flex items-center space-x-3 px-4 py-3 rounded-md text-gray-200 hover:text-white hover:bg-[#4a90e2]/20 transition-all duration-200 cursor-pointer w-full;
+}
+
+.game-menu-item.active {
+  @apply bg-[#4a90e2]/30 text-white;
+  text-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+}
+
+.game-menu-item span:first-child {
+  @apply opacity-90;
+}
+
+/* Animation pour le menu */
+@keyframes menuAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.game-menu {
+  animation: menuAppear 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* Ajustement du contenu principal pour la navbar */
+main {
+  /* margin-top: 7rem; */
+}
+
+/* fin de la nav  */
+
 a {
   color: inherit;
   text-decoration: none;
