@@ -14,7 +14,7 @@ const Navbar = () => {
       if (!token) return;
 
       try {
-        const response = await fetch('http://localhost:8000/api/auth/profile/', {
+        const response = await fetch('https://slapi.kevinlamotte.fr/api/auth/profile/', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
