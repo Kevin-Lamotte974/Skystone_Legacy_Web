@@ -45,29 +45,6 @@ function Home() {
 
   return (
     <div className="min-h-screen bg-[#0B0B0F] text-white relative overflow-hidden">
-      {/* Bouton de déconnexion */}
-      <button
-        onClick={handleLogout}
-        className="absolute top-4 right-4 px-4 py-2 bg-gradient-to-r from-purple-600/20 to-blue-600/20 
-                   border border-purple-500/50 rounded-lg text-purple-300 hover:from-purple-600/30 
-                   hover:to-blue-600/30 hover:text-purple-200 transition-all duration-300 
-                   backdrop-blur-sm flex items-center gap-2 z-20 group"
-      >
-        <span>Déconnexion</span>
-        <svg
-          className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-          />
-        </svg>
-      </button>
 
       {/* Effets d'arrière-plan */}
       <div className="absolute inset-0">
