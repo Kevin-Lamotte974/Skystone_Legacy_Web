@@ -1,0 +1,22 @@
+{
+  "enemy_stats": {
+    "health": 10,
+    "maxHealth": 10,
+    "energy": 3,
+    "maxEnergy": 3,
+    "force": 40,
+    "agilite": 40,
+    "intelligence": 40,
+    "charisme": 40
+  },
+  "initial_deck": [
+    "1", "1", "1",
+    "2", "2",
+    "3", "3",
+    "4", "4",
+    "5", "5",
+    "6",
+    "7", "7",
+    "8"
+  ]
+}
