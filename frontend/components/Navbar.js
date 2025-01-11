@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 const openDashboard = (token) => {
-  window.open(`http://localhost:8000/api/auth/admin/?Authorization=Bearer ${token}`, '_blank');
+  window.open(`https://slapi.kevinlamotte.fr/api/auth/admin/?Authorization=Bearer ${token}`, '_blank');
 };
 
 const Navbar = () => {
@@ -17,7 +17,7 @@ const Navbar = () => {
       if (!token) return;
 
       try {
-        const response = await fetch('http://localhost:8000/api/auth/profile/', {
+        const response = await fetch('https://slapi.kevinlamotte.fr/api/auth/profile/', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
