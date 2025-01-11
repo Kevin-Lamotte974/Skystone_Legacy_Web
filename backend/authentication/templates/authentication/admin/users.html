@@ -1,0 +1,52 @@
+{% extends "authentication/admin/base.html" %}
+
+{% block title %}Utilisateurs - Skystone Legacy Admin{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 mb-0">Gestion des Utilisateurs</h1>
+        <button class="btn btn-primary">
+            <i class="bi bi-plus"></i> Ajouter un utilisateur
+        </button>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Pseudo</th>
+                            <th>Date d'inscription</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.pseudo }}</td>
+                            <td>{{ user.date_joined|date:"d/m/Y H:i" }}</td>
+                            <td>
+                                <a href="{% url 'admin_user_edit' user.id %}" class="btn btn-sm btn-primary">
+                                    <i class="bi bi-pencil"></i> Éditer
+                                </a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4" class="text-center py-4">
+                                <i class="bi bi-people text-muted" style="font-size: 2rem;"></i>
+                                <p class="mt-2 text-muted">Aucun utilisateur trouvé</p>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

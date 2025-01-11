@@ -1,0 +1,28 @@
+{% extends "authentication/admin/base.html" %}
+
+{% block title %}Éditer Utilisateur - Skystone Legacy Admin{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h1>Éditer l'utilisateur</h1>
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}">
+            </div>
+            <div class="mb-3">
+                <label for="pseudo" class="form-label">Pseudo</label>
+                <input type="text" class="form-control" id="pseudo" name="pseudo" value="{{ user.pseudo }}">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Nouveau mot de passe (laisser vide pour ne pas changer)</label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+            <a href="{% url 'admin_users_list' %}" class="btn btn-secondary">Annuler</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

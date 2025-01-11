@@ -18,13 +18,27 @@ class UserManager(BaseUserManager):
         extra_fields.setdefault('is_superuser', True)
         return self.create_user(email, password, **extra_fields)
 
+class Role(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    description = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Rôle'
+        verbose_name_plural = 'Rôles'
+
 class User(AbstractUser):
     username = None  # On désactive le champ username
     email = models.EmailField(unique=True)
     pseudo = models.CharField(max_length=50, unique=True)
     date_joined = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
-    level = models.IntegerField(default=1)  # Ajout du champ level
+    level = models.IntegerField(default=1)
+    roles = models.ManyToManyField(Role, related_name='users', blank=True)
 
     objects = UserManager()
 

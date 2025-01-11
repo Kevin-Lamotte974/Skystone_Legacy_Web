@@ -28,6 +28,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Configuration de l'authentification
+LOGIN_URL = '/api/auth/login/'
+LOGIN_REDIRECT_URL = '/api/auth/admin/'
 
 # Application definition
 
@@ -60,7 +63,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'authentication' / 'templates'],  # Changement du chemin des templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

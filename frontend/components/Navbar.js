@@ -89,6 +89,13 @@ const Navbar = () => {
                 <span className="text-lg">Collections</span>
               </div>
             </Link>
+            <Link href="http://localhost:8000/api/auth/admin/">
+              <div className={`game-menu-item ${activeLink === '/admin' ? 'active' : ''}`}
+                   onClick={() => setActiveLink('/admin')}>
+                <span className="text-xl">📊</span>
+                <span className="text-lg">Tableau de bord</span>
+              </div>
+            </Link>
             <div className="h-px bg-[#4a90e2]/20"></div>
             <button 
               onClick={handleLogout}

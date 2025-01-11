@@ -6,6 +6,11 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import UserSerializer
+from django.contrib.admin.views.decorators import staff_member_required
+from django.shortcuts import render, redirect
+from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
 
 # Create your views here.
 
@@ -55,3 +60,45 @@ def profile(request):
         'email': user.email,
         'level': getattr(user, 'level', 1)  # Valeur par défaut de 1 si level n'existe pas
     })
+
+# Vues d'administration
+def admin_dashboard(request):
+    context = {
+        'total_users': 0,
+        'total_collections': 0,
+        'total_stories': 0,
+        'active_services': 0,
+        'recent_users': []
+    }
+    return render(request, 'authentication/admin/dashboard.html', context)
+
+def admin_users_list(request):
+    context = {
+        'users': []
+    }
+    return render(request, 'authentication/admin/users.html', context)
+
+def admin_user_edit(request, user_id):
+    context = {
+        'user': {
+            'id': user_id,
+            'email': 'exemple@email.com',
+            'pseudo': 'Exemple Utilisateur'
+        }
+    }
+    return render(request, 'authentication/admin/user_edit.html', context)
+
+
+# def admin_login(request):
+#     if request.method == 'POST':
+#         email = request.POST.get('email')
+#         password = request.POST.get('password')
+#         user = authenticate(username=email, password=password)
+#         if user is not None and user.is_staff:
+#             auth_login(request, user)
+#             return redirect('admin_dashboard')
+#         else:
+#             return render(request, 'authentication/admin/login.html', {
+#                 'error': 'Email ou mot de passe incorrect'
+#             })
+#     return render(request, 'authentication/admin/login.html')
