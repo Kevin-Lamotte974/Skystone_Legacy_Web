@@ -751,3 +751,141 @@
         transform: rotate(360deg);
     }
 }
+
+/* Style de base pour les cartes en main */
+.card-in-hand {
+    height: 380px;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center bottom;
+    margin: 0 -40px; /* Chevauchement négatif */
+}
+
+.card-in-hand .card,
+.card-in-hand .legendary-card,
+.card-in-hand .epic-card,
+.card-in-hand .rare-card {
+    height: 320px;
+    width: 100%;
+    margin: 0;
+}
+
+/* Conteneur de la main */
+.hand-container {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 20px;
+    width: fit-content;
+}
+
+/* Animation au survol */
+.card-in-hand:hover {
+    transform: translateY(-40px) scale(1.1);
+    z-index: 50;
+    margin: 0 -20px; /* Réduction du chevauchement au survol */
+}
+
+/* État par défaut des cartes dans la main */
+.card-in-hand .card,
+.card-in-hand .legendary-card,
+.card-in-hand .epic-card,
+.card-in-hand .rare-card {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    transform: scale(0.8);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animation au survol */
+.card-in-hand .card:hover,
+.card-in-hand .legendary-card:hover,
+.card-in-hand .epic-card:hover,
+.card-in-hand .rare-card:hover {
+    transform: translateY(-30px) scale(1);
+    z-index: 50;
+}
+
+/* Animation des cartes voisines */
+.hand-container:hover .card-in-hand:not(:hover) {
+    transform: translateX(-30px) scale(0.9);
+    opacity: 0.6;
+}
+
+.hand-container:hover .card-in-hand:hover ~ .card-in-hand {
+    transform: translateX(30px) scale(0.9);
+    opacity: 0.6;
+}
+
+/* Animation de distribution */
+@keyframes dealCard {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.card-in-hand {
+    animation: dealCard 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: calc(var(--index) * 0.1s);
+    
+}
+
+/* Style pour la prévisualisation de la prochaine carte */
+.preview {
+    transition: all 0.3s ease;
+}
+
+.preview .card,
+.preview .legendary-card,
+.preview .epic-card,
+.preview .rare-card {
+    font-size: 0.5em; /* Légèrement plus grand */
+}
+
+.preview .card-name {
+    font-size: 0.8em; /* Légèrement plus grand */
+    padding: 5px 0;
+}
+
+.preview .special-effect {
+    font-size: 0.8em; /* Légèrement plus grand */
+    margin: 10px;
+    padding: 5px;
+}
+
+.preview .energy-notch,
+.preview .damage-container,
+.preview .stat {
+    transform: scale(0.8); /* Légèrement plus grand */
+}
+
+/* Style pour les cartes non jouables */
+.unplayable {
+    filter: grayscale(100%) brightness(40%);
+    cursor: not-allowed;
+    transition: all 0.3s ease;
+}
+
+.unplayable:hover {
+    filter: grayscale(100%) brightness(50%);
+}
+
+.unplayable .card-frame,
+.unplayable .inner-frame,
+.unplayable .card-name,
+.unplayable .special-effect,
+.unplayable .energy-notch,
+.unplayable .damage-container,
+.unplayable .stat {
+    border-color: rgba(255, 255, 255, 0.2) !important; /* Bordures plus sombres */
+}
+

@@ -1,0 +1,130 @@
+[
+  {
+    "id": 1,
+    "type": "narration",
+    "speaker": null,
+    "text": "Le silence règne en ses lieux, et la luminosité peu présente. Une lumière blanche artificielle contrastant avec l'atmosphère de ses ruines apparaît au loin, accrochée au casque d'un jeune individu solitaire.",
+    "choices": [],
+    "next": 2
+  },
+  {
+    "id": 2,
+    "type": "narration",
+    "speaker": null,
+    "text": "Vêtue d'une armure en piteuse état, le jeune homme avançait péniblement. Essoufflé, à bout de force, le manque de sommeil se faisait ressentir. ",
+    "choices": [],
+    "next": 3
+  },
+  {
+    "id": 3,
+    "type": "narration",
+    "speaker": null,
+    "text": "Voilà près d'une semaine entière qu'il errait ainsi, et c'est en cherchant de quoi se nourrir que celui-ci constata avec effroi",
+    "choices": [],
+    "next": 4
+  },
+  {
+    "id": 4,
+    "type": "dialogue",
+    "speaker": "Klein",
+    "text": "Mes-mes provisions… j'ui à sec...",
+    "choices": [],
+    "next": 5
+  },
+  {
+    "id": 5,
+    "type": "narration",
+    "speaker": null,
+    "text": "Ce n'était pas sa première quête, il le savait donc très bien : en continuant ainsi, c'est la mort qu'il trouvera au bout du chemin.",
+    "choices": [],
+    "next": 6
+  },
+  {
+    "id": 6,
+    "type": "dialogue",
+    "speaker": "Klein",
+    "text": "Eh merde ! Une simple remarque de cette idiot à suffit pour que je fasse cette fichue quête seul ! Et à cause de ça je vais finir par crever de faim !",
+    "choices": [],
+    "next": 7
+  },
+  {
+    "id": 7,
+    "type": "narration",
+    "speaker": null,
+    "text": "Le jeune homme s'abaisse et saisit une simple pierre avant de la balancer de toutes ses forces plus loin. Un léger grognement survient alors… Mais le jeune homme, dans son excès de colère, n'y prête pas attention.",
+    "choices": [],
+    "next": 8
+  },
+  {
+    "id": 8,
+    "type": "dialogue",
+    "speaker": "Klein",
+    "text": "MERDEEEEEEEEEEEEE !",
+    "choices": [],
+    "next": 9
+  },
+  {
+    "id": 9,
+    "type": "dialogue",
+    "speaker": "Klein",
+    "text": "Bon faut que je me calme, la priorité c'est de trouver un moyen de sortir de ce trou au plus vite. Et puis, une fois rentré, je pense que j'aurais bien mérité une petite récompense de la part de Misha pour avoir survécu à toutes ses épreuves…",
+    "choices": [],
+    "next": 10
+  },
+  {
+    "id": 10,
+    "type": "narration",
+    "speaker": null,
+    "text": "Un sourire niai se dessine alors sur le visage du jeune homme pendant qu'il rêvasse.",
+    "choices": [],
+    "next": 11
+  },
+  {
+    "id": 11,
+    "type": "narration",
+    "speaker": null,
+    "text": "Celui-ci fut cependant très vite de retour à la réalité, lorsqu'il entendit derrière lui, des bruits de pas, tellement puissants que le sol en tremblait. En se retournant très prudemment, l'homme releva la tête et se trouva nez à nez avec une bête immense. Beaucoup plus grande que lui, elle semblait aussi robuste qu'un ours, un ours enragé.",
+    "choices": [],
+    "next": 12
+  },
+  {
+    "id": 12,
+    "type": "dialogue",
+    "speaker": "Klein",
+    "text": "Il manquait plus que ça…",
+    "choices": [
+      {
+        "text": "Se dresser seul face à l'armée de monstres et se battre.",
+        "next": 13
+      },
+      {
+        "text": "Mettre Klein sur son dos et prendre la fuite.",
+        "next": 14
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "type": "dialogue",
+    "speaker": "Klein",
+    "text": "C'est parti pour le combat !",
+    "choices": [
+      {
+        "text": "Combattre",
+        "fight": true
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "type": "narration",
+    "speaker": null,
+    "text": "Voyant que la fuite est impossible, vous initiez le combat.",
+    "choices": [
+      {
+        "text": "Combattre",
+        "fight": true
+      }
+    ]
+  }
+]

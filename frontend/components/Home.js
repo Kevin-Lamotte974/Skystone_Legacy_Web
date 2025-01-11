@@ -28,6 +28,10 @@ function Home() {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const handlePlayGame = () => {
+    router.push('/game');
+  };
+
   useEffect(() => {
     const playAudio = async () => {
       try {
@@ -134,6 +138,18 @@ function Home() {
 
           {/* Boutons d'action */}
           <div className="flex flex-wrap justify-center gap-6">
+            <button
+              onClick={handlePlayGame}
+              className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg font-bold
+                         hover:from-purple-500 hover:to-blue-500 transition-all duration-300 transform
+                         hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20 group flex items-center gap-2"
+            >
+              Jouer
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </button>
+
             <button
               onClick={() => setShowNewGame(true)}
               className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg font-bold
