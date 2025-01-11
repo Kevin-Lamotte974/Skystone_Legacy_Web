@@ -11,6 +11,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from .models import User
 
 # Create your views here.
 
@@ -32,7 +34,7 @@ def register(request):
 @permission_classes([AllowAny])
 def login(request):
     email = request.data.get('email')
-    password = request.data.get('password')
+    password = request.data.get('password')  # Utilisation de 'password' au lieu de 'motDePasse'
     
     if not email or not password:
         return Response({'error': 'Veuillez fournir un email et un mot de passe'}, 
@@ -58,47 +60,72 @@ def profile(request):
     return Response({
         'pseudo': user.pseudo,
         'email': user.email,
-        'level': getattr(user, 'level', 1)  # Valeur par défaut de 1 si level n'existe pas
+        'level': getattr(user, 'level', 1),
+        'roles': [{'name': role.name} for role in user.roles.all()]  # Ajout des rôles
     })
 
 # Vues d'administration
+@api_view(['GET'])
 def admin_dashboard(request):
-    context = {
-        'total_users': 0,
-        'total_collections': 0,
-        'total_stories': 0,
-        'active_services': 0,
-        'recent_users': []
-    }
-    return render(request, 'authentication/admin/dashboard.html', context)
-
-def admin_users_list(request):
-    context = {
-        'users': []
-    }
-    return render(request, 'authentication/admin/users.html', context)
-
-def admin_user_edit(request, user_id):
-    context = {
-        'user': {
-            'id': user_id,
-            'email': 'exemple@email.com',
-            'pseudo': 'Exemple Utilisateur'
+    # Essayer de récupérer le token de l'URL ou de l'en-tête
+    token = request.GET.get('Authorization', '').replace('Bearer ', '') or \
+            request.headers.get('Authorization', '').replace('Bearer ', '')
+    
+    if not token:
+        return HttpResponseForbidden("Token non fourni")
+    
+    try:
+        # Valider le token
+        jwt_auth = JWTAuthentication()
+        validated_token = jwt_auth.get_validated_token(token)
+        user = jwt_auth.get_user(validated_token)
+        
+        if not user.roles.filter(name__in=['admin', 'admin_dev']).exists():
+            return HttpResponseForbidden("Accès non autorisé")
+        
+        context = {
+            'total_users': User.objects.count(),
+            'total_collections': 0,
+            'total_stories': 0,
+            'active_services': 0,
+            'recent_users': User.objects.all()[:5],
+            'user': {
+                'username': user.username,
+                'email': user.email,
+                'roles': [role.name for role in user.roles.all()]
+            }
         }
-    }
-    return render(request, 'authentication/admin/user_edit.html', context)
+        return render(request, 'authentication/admin/dashboard.html', context)
+    except Exception as e:
+        return HttpResponseForbidden(str(e))
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def admin_users_list(request):
+    if not request.user.roles.filter(name__in=['admin', 'admin_dev']).exists():
+        return Response({'error': 'Accès non autorisé'}, status=status.HTTP_403_FORBIDDEN)
+    
+    users = User.objects.all()
+    return Response({
+        'users': UserSerializer(users, many=True).data
+    })
 
-# def admin_login(request):
-#     if request.method == 'POST':
-#         email = request.POST.get('email')
-#         password = request.POST.get('password')
-#         user = authenticate(username=email, password=password)
-#         if user is not None and user.is_staff:
-#             auth_login(request, user)
-#             return redirect('admin_dashboard')
-#         else:
-#             return render(request, 'authentication/admin/login.html', {
-#                 'error': 'Email ou mot de passe incorrect'
-#             })
-#     return render(request, 'authentication/admin/login.html')
+@api_view(['GET', 'PUT'])
+@permission_classes([IsAuthenticated])
+def admin_user_edit(request, user_id):
+    if not request.user.roles.filter(name__in=['admin', 'admin_dev']).exists():
+        return Response({'error': 'Accès non autorisé'}, status=status.HTTP_403_FORBIDDEN)
+    
+    try:
+        user = User.objects.get(id=user_id)
+    except User.DoesNotExist:
+        return Response({'error': 'Utilisateur non trouvé'}, status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'GET':
+        return Response(UserSerializer(user).data)
+    elif request.method == 'PUT':
+        serializer = UserSerializer(user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -154,10 +154,12 @@
                 </div>
                 <div class="dropdown">
                     <div class="d-flex align-items-center" role="button" data-bs-toggle="dropdown">
-                        <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="User">
+                        <div class="rounded-circle me-2 bg-primary text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                            <i class="bi bi-person-fill"></i>
+                        </div>
                         <div class="d-none d-md-block">
-                            <div class="fw-bold">John Doe</div>
-                            <div class="small text-muted">Admin</div>
+                            <div class="fw-bold">{{ user.username|default:user.email }}</div>
+                            <div class="small text-muted">{{ user.roles.0|title }}</div>
                         </div>
                         <i class="bi bi-chevron-down ms-2"></i>
                     </div>

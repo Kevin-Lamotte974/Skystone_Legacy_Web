@@ -1,11 +1,14 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
+const openDashboard = (token) => {
+  window.open(`http://localhost:8000/api/auth/admin/?Authorization=Bearer ${token}`, '_blank');
+};
 
 const Navbar = () => {
   const router = useRouter();
   const [activeLink, setActiveLink] = useState(router.pathname);
-  const [playerInfo, setPlayerInfo] = useState({ pseudo: '', level: 1 });
+  const [playerInfo, setPlayerInfo] = useState({ pseudo: '', level: 1, roles: [] });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -14,7 +17,7 @@ const Navbar = () => {
       if (!token) return;
 
       try {
-        const response = await fetch('https://slapi.kevinlamotte.fr/api/auth/profile/', {
+        const response = await fetch('http://localhost:8000/api/auth/profile/', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -29,7 +32,8 @@ const Navbar = () => {
         const data = await response.json();
         setPlayerInfo({ 
           pseudo: data.pseudo || 'Joueur', 
-          level: data.level || 1 
+          level: data.level || 1,
+          roles: data.roles || []
         });
       } catch (err) {
         console.error('Erreur lors de la récupération du profil:', err);
@@ -89,13 +93,21 @@ const Navbar = () => {
                 <span className="text-lg">Collections</span>
               </div>
             </Link>
-            <Link href="http://localhost:8000/api/auth/admin/">
-              <div className={`game-menu-item ${activeLink === '/admin' ? 'active' : ''}`}
-                   onClick={() => setActiveLink('/admin')}>
+            {playerInfo.roles.some(role => role.name === 'admin' || role.name === 'admin_dev') && (
+              <div 
+                className={`game-menu-item ${activeLink === '/admin' ? 'active' : ''} cursor-pointer`}
+                onClick={() => {
+                  const token = localStorage.getItem('token');
+                  if (!token) {
+                    router.push('/auth');
+                    return;
+                  }
+                  openDashboard(token);
+                }}>
                 <span className="text-xl">📊</span>
                 <span className="text-lg">Tableau de bord</span>
               </div>
-            </Link>
+            )}
             <div className="h-px bg-[#4a90e2]/20"></div>
             <button 
               onClick={handleLogout}

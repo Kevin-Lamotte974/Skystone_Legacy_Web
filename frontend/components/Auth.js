@@ -18,17 +18,23 @@ const Auth = () => {
     e.preventDefault();
     try {
       const endpoint = isLogin ? 'login' : 'register';
-      const response = await fetch(`https://slapi.kevinlamotte.fr/api/auth/${endpoint}/`, {
+      const response = await fetch(`http://localhost:8000/api/auth/${endpoint}/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           email: formData.email,
-          password: formData.motDePasse,
+          password: formData.motDePasse,  // Gardez motDePasse ici car c'est le nom dans votre state
           ...(isLogin ? {} : { pseudo: formData.pseudo })
         })
       });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        toast.error(errorData.error || 'Une erreur est survenue');
+        return;
+      }
 
       const data = await response.json();
       

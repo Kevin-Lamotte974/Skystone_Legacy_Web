@@ -20,5 +20,5 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('api/auth/', include('authentication.urls')),
-    path('', RedirectView.as_view(url='/api/auth/admin/', permanent=False)),  # Redirection directe vers le dashboard
+    path('', RedirectView.as_view(url='/api/auth/admin/', permanent=False)),  
 ]
