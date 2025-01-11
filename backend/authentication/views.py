@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import UserSerializer
 from django.contrib.admin.views.decorators import staff_member_required
@@ -100,15 +100,35 @@ def admin_dashboard(request):
         return HttpResponseForbidden(str(e))
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def admin_users_list(request):
-    if not request.user.roles.filter(name__in=['admin', 'admin_dev']).exists():
-        return Response({'error': 'Accès non autorisé'}, status=status.HTTP_403_FORBIDDEN)
-    
-    users = User.objects.all()
-    return Response({
-        'users': UserSerializer(users, many=True).data
-    })
+    try:
+        # Récupérer le token
+        token = request.GET.get('Authorization', '').replace('Bearer ', '') or \
+                request.headers.get('Authorization', '').replace('Bearer ', '')
+        
+        if not token:
+            return HttpResponseForbidden("Token non fourni")
+        
+        # Valider le token
+        jwt_auth = JWTAuthentication()
+        validated_token = jwt_auth.get_validated_token(token)
+        user = jwt_auth.get_user(validated_token)
+        
+        if not user.roles.filter(name__in=['admin', 'admin_dev']).exists():
+            return HttpResponseForbidden("Accès non autorisé")
+        
+        users = User.objects.all()
+        context = {
+            'users': users,
+            'user': {
+                'username': user.username,
+                'email': user.email,
+                'roles': [role.name for role in user.roles.all()]
+            }
+        }
+        return render(request._request, 'authentication/admin/users_list.html', context)
+    except Exception as e:
+        return HttpResponseForbidden(str(e))
 
 @api_view(['GET', 'PUT'])
 @permission_classes([IsAuthenticated])
