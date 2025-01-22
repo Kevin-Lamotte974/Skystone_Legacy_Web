@@ -12,6 +12,7 @@ import HealthBar from './game/HealthBar';
 import Deck from './game/Deck';
 import StoryOverlay from './game/StoryOverlay';
 import VictoryOverlay from './game/VictoryOverlay';
+import Character from './game/Character';
 
 const Game = () => {
     const { state } = useGameContext();
@@ -79,15 +80,23 @@ const Game = () => {
                     {/* Player */}
                     <div className="absolute left-1/4 top-1/2 -translate-y-1/2 transform">
                         <HealthBar currentHealth={state.player.health} maxHealth={state.player.maxHealth} />
-                        <div className="w-16 h-16 bg-blue-500 rounded-lg shadow-lg 
-                                    shadow-blue-500/50 border-2 border-blue-400" />
+                        <Character 
+                            isPlayer={true}
+                            health={state.player.health}
+                            maxHealth={state.player.maxHealth}
+                            state={state.playerState}
+                        />
                     </div>
 
                     {/* Enemy */}
                     <div className="absolute right-1/4 top-1/2 -translate-y-1/2 transform">
                         <HealthBar currentHealth={state.enemy.health} maxHealth={state.enemy.maxHealth} isEnemy />
-                        <div className="w-16 h-16 bg-red-500 rounded-lg shadow-lg 
-                                    shadow-red-500/50 border-2 border-red-400" />
+                        <Character 
+                            isPlayer={false}
+                            health={state.enemy.health}
+                            maxHealth={state.enemy.maxHealth}
+                            state={state.enemyState}
+                        />
                     </div>
                 </div>
 

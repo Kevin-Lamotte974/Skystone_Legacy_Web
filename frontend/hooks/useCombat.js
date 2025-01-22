@@ -32,6 +32,12 @@ export function useCombat() {
             return;
         }
 
+        // Set attacking animation
+        dispatch({
+            type: 'SET_GAME_DATA',
+            payload: { playerState: 'attacking' }
+        });
+
         // Animation de la carte
         const cardElement = document.querySelector(`[data-card-id="${card.id}"]`);
         if (cardElement) {
@@ -41,12 +47,19 @@ export function useCombat() {
 
         // Appliquer les dégâts/soins
         if (card.damage_base > 0) {
+            // Set enemy hurt animation
+            dispatch({
+                type: 'SET_GAME_DATA',
+                payload: { enemyState: 'hurt' }
+            });
+
             const newHealth = Math.max(0, state.enemy.health - card.damage_base);
             dispatch({
                 type: 'SET_GAME_DATA',
                 payload: {
                     enemy: { ...state.enemy, health: newHealth },
-                    isVictory: newHealth <= 0
+                    isVictory: newHealth <= 0,
+                    enemyState: 'idle'
                 }
             });
         } else if (card.damage_base < 0) {
@@ -107,18 +120,30 @@ export function useCombat() {
     };
 
     const playEnemyCard = async (card) => {
+        // Set enemy attacking animation
+        dispatch({
+            type: 'SET_GAME_DATA',
+            payload: { enemyState: 'attacking' }
+        });
+
         // Animation de la carte ennemie
         await new Promise(resolve => setTimeout(resolve, 500));
 
-        // Appliquer les dégâts
         if (card.damage_base > 0) {
+            // Set player hurt animation
+            dispatch({
+                type: 'SET_GAME_DATA',
+                payload: { playerState: 'hurt' }
+            });
+
             const newHealth = Math.max(0, state.player.health - card.damage_base);
             dispatch({
                 type: 'SET_GAME_DATA',
                 payload: {
                     player: { 
                         ...state.player, 
-                        health: newHealth 
+                        health: newHealth,
+                        playerState: 'idle'
                     }
                 }
             });
