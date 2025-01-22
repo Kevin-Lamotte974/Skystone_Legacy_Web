@@ -1,0 +1,26 @@
+frontend/
+├── components/
+│   ├── game/
+│   │   ├── Card.js                # Card component logic
+│   │   ├── CardHand.js            # Hand container and card display
+│   │   ├── Deck.js                # Deck visualization
+│   │   ├── EnergyDisplay.js       # Energy crystals display
+│   │   ├── HealthBar.js           # Health bar component
+│   │   ├── PlayerStats.js         # Player statistics display
+│   │   ├── StoryOverlay.js        # Story dialog component
+│   │   ├── TurnIndicator.js       # Turn display
+│   │   └── VictoryOverlay.js      # Victory screen
+│   └── Game.js                    # Main game orchestrator
+├── hooks/
+│   ├── useCards.js                # Card management logic
+│   ├── useCombat.js               # Combat system logic
+│   ├── useGameState.js            # Game state management
+│   ├── useMusic.js                # Audio management
+│   └── useStory.js                # Story progression logic
+├── utils/
+│   ├── cardUtils.js               # Card helper functions
+│   ├── combatUtils.js             # Combat calculations
+│   ├── constants.js               # Game constants
+│   └── starEffect.js              # Star animation
+└── contexts/
+    └── GameContext.js             # Global game state

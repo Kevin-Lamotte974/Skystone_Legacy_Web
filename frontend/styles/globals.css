@@ -353,3 +353,61 @@ body {
     padding: 15px;
   }
 }
+
+/* Styles pour les images pixelisées */
+.pixelated {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+/* Animation de secousse */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Classe pour l'animation de secousse */
+.hurt {
+    animation: shake 0.4s ease-in-out;
+}
+
+/* Animations pour le personnage */
+.character-image {
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+}
+
+/* Animation d'attaque */
+.character-image.attacking {
+    animation: attack 0.5s ease-in-out;
+    filter: brightness(1.2) drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
+}
+
+/* Animation de dégâts */
+.character-image.hurt {
+    animation: hurt 0.4s ease-in-out;
+    filter: brightness(1.5) saturate(1.5) drop-shadow(0 0 15px rgba(255, 0, 0, 0.5));
+}
+
+@keyframes attack {
+    0% { transform: translateX(0) scale(1); }
+    25% { transform: translateX(30px) scale(1.1); }
+    75% { transform: translateX(-5px) scale(1.05); }
+    100% { transform: translateX(0) scale(1); }
+}
+
+@keyframes hurt {
+    0% { transform: translateX(0) scale(1); opacity: 1; }
+    25% { transform: translateX(-20px) scale(0.95); opacity: 0.7; }
+    50% { transform: translateX(10px) scale(0.97); opacity: 0.8; }
+    75% { transform: translateX(-5px) scale(0.98); opacity: 0.9; }
+    100% { transform: translateX(0) scale(1); opacity: 1; }
+}
+
+/* Effet de hover optionnel */
+.character-image:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1) drop-shadow(0 0 12px rgba(255, 255, 255, 0.3));
+}
