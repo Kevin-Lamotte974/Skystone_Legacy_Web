@@ -1388,7 +1388,7 @@
         "value": 1.8
       },
       "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=55",
+      "image": "/assets/images/cards/lame_crystalline.png",
       "special_effect": "Augmente les dégâts d'attaque de 80% pendant 1 tour",
       "level_requirement": 5
     },
@@ -1412,7 +1412,7 @@
         "value": 1.7
       },
       "applicability": "single_target",
-      "image": "https://picsum.photos/500/500?random=98",
+      "image": "/assets/images/cards/cristal_ultime.png",
       "special_effect": "Augmente les dégâts de 75% si la cible est étourdie",
       "level_requirement": 5
     },
@@ -1436,13 +1436,13 @@
         "value": 2
       },
       "applicability": "single_target",
-      "image": "https://picsum.photos/500/500?random=56",
+      "image": "/assets/images/cards/coeur_de_rubis.png",
       "special_effect": "Les dégâts ignorent toute résistance",
       "level_requirement": 6
     },
     {
       "id": 64,
-      "name": "Aura d'Émeraude",
+      "name": "Aura d'Aquamarine",
       "description": "Crée une aura de régénération cristalline",
       "energy_cost": 5,
       "stats": {
@@ -1460,7 +1460,7 @@
         "value": 5
       },
       "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=57",
+      "image": "/assets/images/cards/aura_d_aquamarine.png",
       "special_effect": "Régénère 5 PV par tour pendant 3 tours",
       "level_requirement": 6
     },
@@ -1484,7 +1484,7 @@
         "value": 3
       },
       "applicability": "area_effect",
-      "image": "https://picsum.photos/500/500?random=58",
+      "image": "/assets/images/cards/nova_prismatique.png",
       "special_effect": "Détruit toutes les protections et inflige des dégâts massifs",
       "level_requirement": 8
     },
@@ -1508,7 +1508,7 @@
         "value": 0.4
       },
       "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=31",
+      "image": "/assets/images/cards/bond_celeste.png",
       "special_effect": "40% de chance d'esquiver la prochaine attaque",
       "level_requirement": 1
     },
@@ -1532,7 +1532,7 @@
         "value": 0.5
       },
       "applicability": "area_effect",
-      "image": "https://picsum.photos/500/500?random=39",
+      "image": "/assets/images/cards/danse_des_vents.png",
       "special_effect": "Réduit la précision des ennemis de 50% pendant 2 tours",
       "level_requirement": 3
     },
@@ -1556,7 +1556,7 @@
         "value": 1
       },
       "applicability": "area_effect",
-      "image": "https://picsum.photos/500/500?random=33",
+      "image": "/assets/images/cards/eclaireur_vigilant.png",
       "special_effect": "Augmente la précision de 20% pendant 2 tours",
       "level_requirement": 1
     },
@@ -1580,7 +1580,7 @@
         "value": 0.5
       },
       "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=43",
+      "image": "/assets/images/cards/guide_des_cieux.png",
       "special_effect": "Impossible de subir des coups critiques pendant 3 tours",
       "level_requirement": 6
     },
@@ -1604,7 +1604,7 @@
         "value": 2
       },
       "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=34",
+      "image": "/assets/images/cards/pas_leger.png",
       "special_effect": "20% de chance de doubler les dégâts de la prochaine carte",
       "level_requirement": 1
     },
@@ -1628,7 +1628,7 @@
         "value": 1
       },
       "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=44",
+      "image": "/assets/images/cards/protection_des_airs.png",
       "special_effect": "Devient invulnérable pendant 1 tour, puis régénère 50% des PV max",
       "level_requirement": 8
     },
@@ -1652,7 +1652,7 @@
         "value": 10
       },
       "applicability": "self_and_adjacent",
-      "image": "https://picsum.photos/500/500?random=35",
+      "image": "/assets/images/cards/rafale_protectrice.png",
       "special_effect": "Crée un bouclier de 10 PV",
       "level_requirement": 2
     },
@@ -1676,7 +1676,7 @@
         "value": 0.3
       },
       "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=40",
+      "image": "/assets/images/cards/reconnaissance_aerienne.png",
       "special_effect": "Augmente votre esquive de 30% pendant 2 tours",
       "level_requirement": 4
     },
@@ -1700,7 +1700,7 @@
         "value": 3
       },
       "applicability": "single_target",
-      "image": "https://picsum.photos/500/500?random=38",
+      "image": "/assets/images/cards/souffle_vital.png",
       "special_effect": "Régénère 3 PV par tour pendant 3 tours",
       "level_requirement": 2
     },
@@ -1724,7 +1724,7 @@
         "value": 3
       },
       "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=37",
+      "image": "/assets/images/cards/sprint_aerien.png",
       "special_effect": "30% de chance d'appliquer un effet 2 fois sur la prochaine carte",
       "level_requirement": 2
     },
