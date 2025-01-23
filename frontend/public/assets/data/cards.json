@@ -1748,7 +1748,7 @@
         "value": 1.5
       },
       "applicability": "area_effect",
-      "image": "https://picsum.photos/500/500?random=97",
+      "image": "/assets/images/cards/tempete_des_vents.png",
       "special_effect": "Inflige des dégâts",
       "level_requirement": 4
     },
@@ -1772,7 +1772,7 @@
         "value": 2
       },
       "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=42",
+      "image": "/assets/images/cards/agilite_du_zephyr.png",
       "special_effect": "Double le nombre de carte pioché pendant 2 tours",
       "level_requirement": 5
     },
@@ -1796,7 +1796,7 @@
         "value": 2
       },
       "applicability": "area_effect",
-      "image": "https://picsum.photos/500/500?random=41",
+      "image": "/assets/images/cards/bourrasque_salvatrice.png",
       "special_effect": "Réduit la défense des ennemis de 20% pendant 2 tours",
       "level_requirement": 4
     },
@@ -1820,7 +1820,7 @@
         "value": 15
       },
       "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=32",
+      "image": "/assets/images/cards/vent_de_guerison.png",
       "special_effect": "Soigne 15 PV",
       "level_requirement": 3
     },
@@ -1844,7 +1844,7 @@
         "value": 2
       },
       "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=59",
+      "image": "/assets/images/cards/marchandage_astucieux.png",
       "special_effect": "Gagne 2 points d'énergie",
       "level_requirement": 1
     },
@@ -1868,7 +1868,7 @@
         "value": 0.4
       },
       "applicability": "single_target",
-      "image": "https://picsum.photos/500/500?random=60",
+      "image": "/assets/images/cards/offre_irresistible.png",
       "special_effect": "40% de chance d'étourdir l'ennemi",
       "level_requirement": 1
     },
@@ -1892,7 +1892,7 @@
         "value": 0.2
       },
       "applicability": "all_allies",
-      "image": "https://picsum.photos/500/500?random=61",
+      "image": "/assets/images/cards/pacte_commercial.png",
       "special_effect": "Augmente les dégâts de 20% pendant 2 tours",
       "level_requirement": 2
     },
@@ -1916,7 +1916,7 @@
         "value": 3
       },
       "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=62",
+      "image": "/assets/images/cards/influence_marchande.png",
       "special_effect": "Gagne 3 points d'énergie",
       "level_requirement": 2
     },
@@ -1940,7 +1940,7 @@
         "value": 0.3
       },
       "applicability": "single_target",
-      "image": "https://picsum.photos/500/500?random=64",
+      "image": "/assets/images/cards/negociation_habile.png",
       "special_effect": "30% de chance d'étourdir l'ennemi",
       "level_requirement": 2
     },
@@ -1964,7 +1964,7 @@
         "value": 2
       },
       "applicability": "all_allies",
-      "image": "https://picsum.photos/500/500?random=63",
+      "image": "/assets/images/cards/reseau_d_alliance.png",
       "special_effect": "Augmente vos dégâts de 30% pendant 2 tours",
       "level_requirement": 2
     },
@@ -1988,7 +1988,7 @@
         "value": 2
       },
       "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=65",
+      "image": "/assets/images/cards/troc_avantageux.png",
       "special_effect": "Pioche 1 carte",
       "level_requirement": 2
     },
@@ -2012,7 +2012,7 @@
         "value": 0.4
       },
       "applicability": "area_effect",
-      "image": "https://picsum.photos/500/500?random=66",
+      "image": "/assets/images/cards/diplomatie_commerciale.png",
       "special_effect": "Réduit les dégâts des ennemis de 40% pendant 2 tours",
       "level_requirement": 2
     },
@@ -2036,7 +2036,7 @@
         "value": 3
       },
       "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=67",
+      "image": "/assets/images/cards/relations_privilegiees.png",
       "special_effect": "Augmente vos dégâts et votre défense de 40% pendant 2 tours",
       "level_requirement": 4
     },
@@ -2060,7 +2060,7 @@
         "value": 0.5
       },
       "applicability": "area_effect",
-      "image": "https://picsum.photos/500/500?random=68",
+      "image": "/assets/images/cards/monopole_tactique.png",
       "special_effect": "Réduit les dégâts des ennemis de 50% pendant 2 tours",
       "level_requirement": 4
     },
@@ -2084,7 +2084,7 @@
         "value": 4
       },
       "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=69",
+      "image": "/assets/images/cards/opportunite_d_affaires.png",
       "special_effect": "Double les dégâts infligés pendant 3 tours",
       "level_requirement": 5
     },
@@ -2108,7 +2108,7 @@
         "value": 5
       },
       "applicability": "all_allies",
-      "image": "https://picsum.photos/500/500?random=70",
+      "image": "/assets/images/cards/contrat_lucratif.png",
       "special_effect": "Régénère 5 PV par tour pendant 5 tours",
       "level_requirement": 5
     },
@@ -2132,7 +2132,7 @@
         "value": 1
       },
       "applicability": "single_target",
-      "image": "https://picsum.photos/500/500?random=71",
+      "image": "/assets/images/cards/echange_equitable.png",
       "special_effect": "Étourdit l'ennemi pendant 2 tours",
       "level_requirement": 6
     },
@@ -2156,7 +2156,7 @@
         "value": 10
       },
       "applicability": "self",
-      "image": "https://picsum.photos/500/500?random=72",
+      "image": "/assets/images/cards/investissement_sage.png",
       "special_effect": "Sacrifie 5 PV pour gagner 10 points d'énergie",
       "level_requirement": 7
     },
@@ -2180,7 +2180,7 @@
         "value": 5
       },
       "applicability": "all_allies",
-      "image": "https://picsum.photos/500/500?random=73",
+      "image": "/assets/images/cards/fortune_du_marchand.png",
       "special_effect": "Énergie illimitée pendant 1 tour, baisse toutes les stats de 20, pioche 5 cartes et défausse toutes les cartes à la fin du tour",
       "level_requirement": 8
     }
