@@ -2,10 +2,14 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 
+const openDashboard = (token) => {
+  window.open(`http://localhost:8000/api/auth/admin/?Authorization=Bearer ${token}`, '_blank');
+};
+
 const Navbar = () => {
   const router = useRouter();
   const [activeLink, setActiveLink] = useState(router.pathname);
-  const [playerInfo, setPlayerInfo] = useState({ pseudo: '', level: 1 });
+  const [playerInfo, setPlayerInfo] = useState({ pseudo: '', level: 1, role: 'Player' });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -20,23 +24,24 @@ const Navbar = () => {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',
           },
+          credentials: 'include'
         });
 
         if (!response.ok) {
-          throw new Error('Erreur d\'authentification');
+          const error = await response.json();
+          throw new Error(error.error || 'Erreur d\'authentification');
         }
 
         const data = await response.json();
         setPlayerInfo({ 
           pseudo: data.pseudo || 'Joueur', 
-          level: data.level || 1 
+          level: data.level || 1,
+          role: data.role || 'Player'
         });
       } catch (err) {
         console.error('Erreur lors de la récupération du profil:', err);
-        if (err.message === 'Erreur d\'authentification') {
-          localStorage.removeItem('token');
-          router.push('/auth');
-        }
+        localStorage.removeItem('token');
+        router.push('/auth');
       }
     };
 
@@ -89,6 +94,21 @@ const Navbar = () => {
                 <span className="text-lg">Collections</span>
               </div>
             </Link>
+            {(playerInfo.role === 'Admin' || playerInfo.role === 'Staff') && (
+              <div 
+                className={`game-menu-item ${activeLink === '/admin' ? 'active' : ''} cursor-pointer`}
+                onClick={() => {
+                  const token = localStorage.getItem('token');
+                  if (!token) {
+                    router.push('/auth');
+                    return;
+                  }
+                  openDashboard(token);
+                }}>
+                <span className="text-xl">📊</span>
+                <span className="text-lg">Tableau de bord</span>
+              </div>
+            )}
             <div className="h-px bg-[#4a90e2]/20"></div>
             <button 
               onClick={handleLogout}

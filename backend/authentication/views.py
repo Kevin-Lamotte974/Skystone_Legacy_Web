@@ -53,5 +53,92 @@ def profile(request):
     return Response({
         'pseudo': user.pseudo,
         'email': user.email,
-        'level': getattr(user, 'level', 1)  # Valeur par défaut de 1 si level n'existe pas
+        'level': getattr(user, 'level', 1),
+        'roles': [{'name': role.name} for role in user.roles.all()]  # Ajout des rôles
     })
+
+# Vues d'administration
+@api_view(['GET'])
+def admin_dashboard(request):
+    # Essayer de récupérer le token de l'URL ou de l'en-tête
+    token = request.GET.get('Authorization', '').replace('Bearer ', '') or \
+            request.headers.get('Authorization', '').replace('Bearer ', '')
+    
+    if not token:
+        return HttpResponseForbidden("Token non fourni")
+    
+    try:
+        # Valider le token
+        jwt_auth = JWTAuthentication()
+        validated_token = jwt_auth.get_validated_token(token)
+        user = jwt_auth.get_user(validated_token)
+        
+        if not user.roles.filter(name__in=['admin', 'admin_dev']).exists():
+            return HttpResponseForbidden("Accès non autorisé")
+        
+        context = {
+            'total_users': User.objects.count(),
+            'total_collections': 0,
+            'total_stories': 0,
+            'active_services': 0,
+            'recent_users': User.objects.all()[:5],
+            'user': {
+                'username': user.username,
+                'email': user.email,
+                'roles': [role.name for role in user.roles.all()]
+            }
+        }
+        return render(request, 'authentication/admin/dashboard.html', context)
+    except Exception as e:
+        return HttpResponseForbidden(str(e))
+
+@api_view(['GET'])
+def admin_users_list(request):
+    try:
+        # Récupérer le token
+        token = request.GET.get('Authorization', '').replace('Bearer ', '') or \
+                request.headers.get('Authorization', '').replace('Bearer ', '')
+        
+        if not token:
+            return HttpResponseForbidden("Token non fourni")
+        
+        # Valider le token
+        jwt_auth = JWTAuthentication()
+        validated_token = jwt_auth.get_validated_token(token)
+        user = jwt_auth.get_user(validated_token)
+        
+        if not user.roles.filter(name__in=['admin', 'admin_dev']).exists():
+            return HttpResponseForbidden("Accès non autorisé")
+        
+        users = User.objects.all()
+        context = {
+            'users': users,
+            'user': {
+                'username': user.username,
+                'email': user.email,
+                'roles': [role.name for role in user.roles.all()]
+            }
+        }
+        return render(request._request, 'authentication/admin/users_list.html', context)
+    except Exception as e:
+        return HttpResponseForbidden(str(e))
+
+@api_view(['GET', 'PUT'])
+@permission_classes([IsAuthenticated])
+def admin_user_edit(request, user_id):
+    if not request.user.roles.filter(name__in=['admin', 'admin_dev']).exists():
+        return Response({'error': 'Accès non autorisé'}, status=status.HTTP_403_FORBIDDEN)
+    
+    try:
+        user = User.objects.get(id=user_id)
+    except User.DoesNotExist:
+        return Response({'error': 'Utilisateur non trouvé'}, status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'GET':
+        return Response(UserSerializer(user).data)
+    elif request.method == 'PUT':
+        serializer = UserSerializer(user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

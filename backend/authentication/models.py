@@ -24,7 +24,8 @@ class User(AbstractUser):
     pseudo = models.CharField(max_length=50, unique=True)
     date_joined = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
-    level = models.IntegerField(default=1)  # Ajout du champ level
+    level = models.IntegerField(default=1)
+    roles = models.ManyToManyField(Role, related_name='users', blank=True)
 
     objects = UserManager()
 

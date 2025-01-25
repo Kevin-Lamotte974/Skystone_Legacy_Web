@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Skystone Legacy Admin{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        .sidebar .logo {
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #2D31FA;
+        }
+        .sidebar .nav-link {
+            color: #666;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .sidebar .nav-link:hover {
+            background-color: #f8f9fa;
+        }
+        .sidebar .nav-link.active {
+            background-color: #e8efff;
+            color: #2D31FA;
+        }
+        .sidebar .nav-link i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 15px 25px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .search-bar {
+            flex: 1;
+            max-width: 400px;
+        }
+        .search-bar .input-group-text {
+            border-radius: 8px 0 0 8px;
+        }
+        .search-bar input {
+            border-radius: 0 8px 8px 0;
+            padding: 10px 15px;
+            border: 1px solid #eee;
+        }
+        .top-bar-icon {
+            font-size: 1.2rem;
+            color: #666;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+        .top-bar-icon:hover {
+            background-color: #f8f9fa;
+        }
+        .badge {
+            font-size: 0.6rem;
+            padding: 0.25em 0.6em;
+            transform: translate(25%, -25%) !important;
+        }
+        .dropdown-menu {
+            padding: 0.5rem 0;
+            border: none;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .dropdown-item {
+            padding: 0.5rem 1rem;
+        }
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            </i> Skystone Legacy
+        </div>
+        <nav>
+            <a href="{% url 'admin_dashboard' %}?Authorization={{ request.GET.Authorization }}" class="nav-link {% if request.resolver_match.url_name == 'admin_dashboard' %}active{% endif %}">
+                <i class="bi bi-grid-1x2"></i> Dashboard
+            </a>
+            <a href="#" class="nav-link">
+                <i class="bi bi-collection"></i> Collection
+            </a>
+            <a href="#" class="nav-link">
+                <i class="bi bi-book"></i> Histoire / Gameplay
+            </a>
+            <a href="#" class="nav-link">
+                <i class="bi bi-gear"></i> Services
+            </a>
+            <a href="{% url 'admin_users_list' %}?Authorization={{ request.GET.Authorization }}" class="nav-link {% if request.resolver_match.url_name == 'admin_users_list' %}active{% endif %}">
+                <i class="bi bi-people"></i> Utilisateurs
+            </a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <div class="top-bar">
+            <div class="search-bar">
+                {% comment %} <div class="input-group">
+                    <span class="input-group-text bg-white border-end-0">
+                        <i class="bi bi-search"></i>
+                    </span>
+                    <input type="text" class="form-control border-start-0" placeholder="Search for something">
+                </div> {% endcomment %}
+            </div>
+            <div class="d-flex align-items-center">
+                <div class="top-bar-icon me-4">
+                    <i class="bi bi-bell position-relative">
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            2
+                        </span>
+                    </i>
+                </div>
+                <div class="top-bar-icon me-4">
+                    <i class="bi bi-envelope position-relative">
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            3
+                        </span>
+                    </i>
+                </div>
+                <div class="dropdown">
+                    <div class="d-flex align-items-center" role="button" data-bs-toggle="dropdown">
+                        <div class="rounded-circle me-2 bg-primary text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                            <i class="bi bi-person-fill"></i>
+                        </div>
+                        <div class="d-none d-md-block">
+                            <div class="fw-bold">{{ user.username|default:user.email }}</div>
+                            <p class="card-text">
+                                Rôle: <span class="badge {% if user.role == 'Admin' %}bg-danger{% elif user.role == 'Staff' %}bg-warning{% else %}bg-primary{% endif %}">
+                                    {{ user.role }}
+                                </span>
+                            </p>
+                        </div>
+                        <i class="bi bi-chevron-down ms-2"></i>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Profile</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
