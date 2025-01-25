@@ -5,7 +5,11 @@ from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from django.http import HttpResponseForbidden
+from django.shortcuts import render
 from .serializers import UserSerializer
+from .models import User, Role
 
 # Create your views here.
 
