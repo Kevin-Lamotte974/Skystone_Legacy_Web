@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 const Auth = () => {
   const router = useRouter();
   const [isLogin, setIsLogin] = useState(true);
@@ -18,7 +20,7 @@ const Auth = () => {
     e.preventDefault();
     try {
       const endpoint = isLogin ? 'login' : 'register';
-      const response = await fetch(`https://slapi.kevinlamotte.fr/api/auth/${endpoint}/`, {
+      const response = await fetch(`${API_URL}/api/auth/${endpoint}/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

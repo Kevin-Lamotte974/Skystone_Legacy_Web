@@ -1,8 +1,11 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 const openDashboard = (token) => {
-  window.open(`https://slapi.kevinlamotte.fr/api/auth/admin/?Authorization=Bearer ${token}`, '_blank');
+  window.open(`${API_URL}/api/auth/admin/?Authorization=Bearer ${token}`, '_blank');
 };
 
 const Navbar = () => {
@@ -17,7 +20,7 @@ const Navbar = () => {
       if (!token) return;
 
       try {
-        const response = await fetch('https://slapi.kevinlamotte.fr/api/auth/profile/', {
+        const response = await fetch(`${API_URL}/api/auth/profile/`, {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,

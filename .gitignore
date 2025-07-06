@@ -1,5 +1,5 @@
 # Environnements virtuels
-venv_backend/
+venv/
 
 # Fichiers de dépendances Python
 __pycache__/
@@ -10,6 +10,8 @@ __pycache__/
 # Node.js (frontend)
 node_modules/
 .env
+.env.local
+.env.production
 .next/
 
 # Autres fichiers inutiles
